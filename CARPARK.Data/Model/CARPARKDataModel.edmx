@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CARPARKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abone">
+          <Key>
+            <PropertyRef Name="AboneID" />
+          </Key>
+          <Property Name="AboneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="TCNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CepTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitTarihi" Type="datetime" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="AracID" Type="int" />
+          <Property Name="UyeID" Type="int" />
+          <Property Name="YetkiID" Type="int" />
+        </EntityType>
+        <EntityType Name="AboneOdeme">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tutar" Type="money" />
+          <Property Name="OdemeTarihi" Type="datetime" />
+          <Property Name="OdemeDurum" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboneID" Type="int" />
+        </EntityType>
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="AracID" />
+          </Key>
+          <Property Name="AracID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkaID" Type="int" />
+          <Property Name="ModelID" Type="int" />
+        </EntityType>
+        <EntityType Name="AracMarka">
+          <Key>
+            <PropertyRef Name="MarkaID" />
+          </Key>
+          <Property Name="MarkaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AracModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="KullaniciYetki">
+          <Key>
+            <PropertyRef Name="YetkiID" />
+          </Key>
+          <Property Name="YetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HizmetTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="AracID" Type="int" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="MusteriPark">
+          <Key>
+            <PropertyRef Name="ParkID" />
+          </Key>
+          <Property Name="ParkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GirisTarihi" Type="datetime" />
+          <Property Name="CikisTarihi" Type="datetime" />
+          <Property Name="Tutar" Type="money" />
+          <Property Name="MusteriID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusteriYikama">
+          <Key>
+            <PropertyRef Name="YikamaID" />
+          </Key>
+          <Property Name="YikamaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YikamaTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeslimSaati" Type="datetime" />
+          <Property Name="Tutar" Type="money" />
+          <Property Name="MusteriID" Type="int" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="TCNo" Type="int" />
+          <Property Name="Fotograf" Type="nvarchar" MaxLength="500" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="UyeID" Type="int" />
+          <Property Name="YetkiID" Type="int" Nullable="false" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Abone_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abone_KullaniciYetki">
+          <End Role="KullaniciYetki" Type="Self.KullaniciYetki" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYetki">
+              <PropertyRef Name="YetkiID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abone_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AboneOdeme_Abone">
+          <End Role="Abone" Type="Self.Abone" Multiplicity="0..1" />
+          <End Role="AboneOdeme" Type="Self.AboneOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Abone">
+              <PropertyRef Name="AboneID" />
+            </Principal>
+            <Dependent Role="AboneOdeme">
+              <PropertyRef Name="AboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arac_AracMarka">
+          <End Role="AracMarka" Type="Self.AracMarka" Multiplicity="0..1" />
+          <End Role="Arac" Type="Self.Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AracMarka">
+              <PropertyRef Name="MarkaID" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arac_AracModel">
+          <End Role="AracModel" Type="Self.AracModel" Multiplicity="0..1" />
+          <End Role="Arac" Type="Self.Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AracModel">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusteriPark_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="MusteriPark" Type="Self.MusteriPark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="MusteriID" />
+            </Principal>
+            <Dependent Role="MusteriPark">
+              <PropertyRef Name="MusteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusteriYikama_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1" />
+          <End Role="MusteriYikama" Type="Self.MusteriYikama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="MusteriID" />
+            </Principal>
+            <Dependent Role="MusteriYikama">
+              <PropertyRef Name="MusteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_KullaniciYetki">
+          <End Role="KullaniciYetki" Type="Self.KullaniciYetki" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYetki">
+              <PropertyRef Name="YetkiID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CARPARKModelStoreContainer">
+          <EntitySet Name="Abone" EntityType="Self.Abone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AboneOdeme" EntityType="Self.AboneOdeme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Abone_Arac" Association="Self.FK_Abone_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abone_KullaniciYetki" Association="Self.FK_Abone_KullaniciYetki">
+            <End Role="KullaniciYetki" EntitySet="KullaniciYetki" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abone_Uye" Association="Self.FK_Abone_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AboneOdeme_Abone" Association="Self.FK_AboneOdeme_Abone">
+            <End Role="Abone" EntitySet="Abone" />
+            <End Role="AboneOdeme" EntitySet="AboneOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arac_AracMarka" Association="Self.FK_Arac_AracMarka">
+            <End Role="AracMarka" EntitySet="AracMarka" />
+            <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arac_AracModel" Association="Self.FK_Arac_AracModel">
+            <End Role="AracModel" EntitySet="AracModel" />
+            <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusteriPark_Musteri" Association="Self.FK_MusteriPark_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="MusteriPark" EntitySet="MusteriPark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusteriYikama_Musteri" Association="Self.FK_MusteriYikama_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="MusteriYikama" EntitySet="MusteriYikama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_KullaniciYetki" Association="Self.FK_Personel_KullaniciYetki">
+            <End Role="KullaniciYetki" EntitySet="KullaniciYetki" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Uye" Association="Self.FK_Personel_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CARPARKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Abone">
+          <Key>
+            <PropertyRef Name="AboneID" />
+          </Key>
+          <Property Name="AboneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CepTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="AracID" Type="Int32" />
+          <Property Name="UyeID" Type="Int32" />
+          <Property Name="YetkiID" Type="Int32" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Abone_Arac" FromRole="Abone" ToRole="Arac" />
+          <NavigationProperty Name="KullaniciYetki" Relationship="Self.FK_Abone_KullaniciYetki" FromRole="Abone" ToRole="KullaniciYetki" />
+          <NavigationProperty Name="Uye" Relationship="Self.FK_Abone_Uye" FromRole="Abone" ToRole="Uye" />
+          <NavigationProperty Name="AboneOdeme" Relationship="Self.FK_AboneOdeme_Abone" FromRole="Abone" ToRole="AboneOdeme" />
+        </EntityType>
+        <EntityType Name="AboneOdeme">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OdemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="OdemeDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboneID" Type="Int32" />
+          <NavigationProperty Name="Abone" Relationship="Self.FK_AboneOdeme_Abone" FromRole="AboneOdeme" ToRole="Abone" />
+        </EntityType>
+        <EntityType Name="Arac">
+          <Key>
+            <PropertyRef Name="AracID" />
+          </Key>
+          <Property Name="AracID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkaID" Type="Int32" />
+          <Property Name="ModelID" Type="Int32" />
+          <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Arac" FromRole="Arac" ToRole="Abone" />
+          <NavigationProperty Name="AracMarka" Relationship="Self.FK_Arac_AracMarka" FromRole="Arac" ToRole="AracMarka" />
+          <NavigationProperty Name="AracModel" Relationship="Self.FK_Arac_AracModel" FromRole="Arac" ToRole="AracModel" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Arac" FromRole="Arac" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="AracMarka">
+          <Key>
+            <PropertyRef Name="MarkaID" />
+          </Key>
+          <Property Name="MarkaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marka" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Arac_AracMarka" FromRole="AracMarka" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="AracModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Arac_AracModel" FromRole="AracModel" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="KullaniciYetki">
+          <Key>
+            <PropertyRef Name="YetkiID" />
+          </Key>
+          <Property Name="YetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_KullaniciYetki" FromRole="KullaniciYetki" ToRole="Abone" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_KullaniciYetki" FromRole="KullaniciYetki" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HizmetTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AracID" Type="Int32" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Musteri_Arac" FromRole="Musteri" ToRole="Arac" />
+          <NavigationProperty Name="MusteriPark" Relationship="Self.FK_MusteriPark_Musteri" FromRole="Musteri" ToRole="MusteriPark" />
+          <NavigationProperty Name="MusteriYikama" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="Musteri" ToRole="MusteriYikama" />
+        </EntityType>
+        <EntityType Name="MusteriPark">
+          <Key>
+            <PropertyRef Name="ParkID" />
+          </Key>
+          <Property Name="ParkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MusteriID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriPark_Musteri" FromRole="MusteriPark" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="MusteriYikama">
+          <Key>
+            <PropertyRef Name="YikamaID" />
+          </Key>
+          <Property Name="YikamaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YikamaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimSaati" Type="DateTime" Precision="3" />
+          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MusteriID" Type="Int32" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TCNo" Type="Int32" />
+          <Property Name="Fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UyeID" Type="Int32" />
+          <Property Name="YetkiID" Type="Int32" Nullable="false" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="KullaniciYetki" Relationship="Self.FK_Personel_KullaniciYetki" FromRole="Personel" ToRole="KullaniciYetki" />
+          <NavigationProperty Name="Uye" Relationship="Self.FK_Personel_Uye" FromRole="Personel" ToRole="Uye" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Uye" FromRole="Uye" ToRole="Abone" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Uye" FromRole="Uye" ToRole="Personel" />
+        </EntityType>
+        <Association Name="FK_Abone_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abone_KullaniciYetki">
+          <End Role="KullaniciYetki" Type="Self.KullaniciYetki" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYetki">
+              <PropertyRef Name="YetkiID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abone_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="Abone" Type="Self.Abone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Abone">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AboneOdeme_Abone">
+          <End Role="Abone" Type="Self.Abone" Multiplicity="0..1" />
+          <End Role="AboneOdeme" Type="Self.AboneOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Abone">
+              <PropertyRef Name="AboneID" />
+            </Principal>
+            <Dependent Role="AboneOdeme">
+              <PropertyRef Name="AboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arac_AracMarka">
+          <End Role="AracMarka" Type="Self.AracMarka" Multiplicity="0..1" />
+          <End Role="Arac" Type="Self.Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AracMarka">
+              <PropertyRef Name="MarkaID" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arac_AracModel">
+          <End Role="AracModel" Type="Self.AracModel" Multiplicity="0..1" />
+          <End Role="Arac" Type="Self.Arac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AracModel">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Arac">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_KullaniciYetki">
+          <End Role="KullaniciYetki" Type="Self.KullaniciYetki" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYetki">
+              <PropertyRef Name="YetkiID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusteriPark_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="MusteriPark" Type="Self.MusteriPark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="MusteriID" />
+            </Principal>
+            <Dependent Role="MusteriPark">
+              <PropertyRef Name="MusteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusteriYikama_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1" />
+          <End Role="MusteriYikama" Type="Self.MusteriYikama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="MusteriID" />
+            </Principal>
+            <Dependent Role="MusteriYikama">
+              <PropertyRef Name="MusteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CARPARKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abone" EntityType="Self.Abone" />
+          <EntitySet Name="AboneOdeme" EntityType="Self.AboneOdeme" />
+          <EntitySet Name="Arac" EntityType="Self.Arac" />
+          <EntitySet Name="AracMarka" EntityType="Self.AracMarka" />
+          <EntitySet Name="AracModel" EntityType="Self.AracModel" />
+          <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+          <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
+          <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uye" EntityType="Self.Uye" />
+          <AssociationSet Name="FK_Abone_Arac" Association="Self.FK_Abone_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abone_KullaniciYetki" Association="Self.FK_Abone_KullaniciYetki">
+            <End Role="KullaniciYetki" EntitySet="KullaniciYetki" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abone_Uye" Association="Self.FK_Abone_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="Abone" EntitySet="Abone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AboneOdeme_Abone" Association="Self.FK_AboneOdeme_Abone">
+            <End Role="Abone" EntitySet="Abone" />
+            <End Role="AboneOdeme" EntitySet="AboneOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arac_AracMarka" Association="Self.FK_Arac_AracMarka">
+            <End Role="AracMarka" EntitySet="AracMarka" />
+            <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arac_AracModel" Association="Self.FK_Arac_AracModel">
+            <End Role="AracModel" EntitySet="AracModel" />
+            <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_KullaniciYetki" Association="Self.FK_Personel_KullaniciYetki">
+            <End Role="KullaniciYetki" EntitySet="KullaniciYetki" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusteriPark_Musteri" Association="Self.FK_MusteriPark_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="MusteriPark" EntitySet="MusteriPark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusteriYikama_Musteri" Association="Self.FK_MusteriYikama_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="MusteriYikama" EntitySet="MusteriYikama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Uye" Association="Self.FK_Personel_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CARPARKModelStoreContainer" CdmEntityContainer="CARPARKEntities">
+          <EntitySetMapping Name="Abone">
+            <EntityTypeMapping TypeName="CARPARKModel.Abone">
+              <MappingFragment StoreEntitySet="Abone">
+                <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="TCNO" ColumnName="TCNO" />
+                <ScalarProperty Name="CepTel" ColumnName="CepTel" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="AracID" ColumnName="AracID" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AboneOdeme">
+            <EntityTypeMapping TypeName="CARPARKModel.AboneOdeme">
+              <MappingFragment StoreEntitySet="AboneOdeme">
+                <ScalarProperty Name="OdemeID" ColumnName="OdemeID" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
+                <ScalarProperty Name="OdemeDurum" ColumnName="OdemeDurum" />
+                <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arac">
+            <EntityTypeMapping TypeName="CARPARKModel.Arac">
+              <MappingFragment StoreEntitySet="Arac">
+                <ScalarProperty Name="AracID" ColumnName="AracID" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AracMarka">
+            <EntityTypeMapping TypeName="CARPARKModel.AracMarka">
+              <MappingFragment StoreEntitySet="AracMarka">
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AracModel">
+            <EntityTypeMapping TypeName="CARPARKModel.AracModel">
+              <MappingFragment StoreEntitySet="AracModel">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciYetki">
+            <EntityTypeMapping TypeName="CARPARKModel.KullaniciYetki">
+              <MappingFragment StoreEntitySet="KullaniciYetki">
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteri">
+            <EntityTypeMapping TypeName="CARPARKModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+                <ScalarProperty Name="HizmetTuru" ColumnName="HizmetTuru" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="AracID" ColumnName="AracID" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriPark">
+            <EntityTypeMapping TypeName="CARPARKModel.MusteriPark">
+              <MappingFragment StoreEntitySet="MusteriPark">
+                <ScalarProperty Name="ParkID" ColumnName="ParkID" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriYikama">
+            <EntityTypeMapping TypeName="CARPARKModel.MusteriYikama">
+              <MappingFragment StoreEntitySet="MusteriYikama">
+                <ScalarProperty Name="YikamaID" ColumnName="YikamaID" />
+                <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
+                <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="CARPARKModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+                <ScalarProperty Name="Fotograf" ColumnName="Fotograf" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CARPARKModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uye">
+            <EntityTypeMapping TypeName="CARPARKModel.Uye">
+              <MappingFragment StoreEntitySet="Uye">
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
