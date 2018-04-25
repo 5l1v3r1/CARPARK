@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitisDTO\PersonelDTO.cs" />
+    <Compile Include="EntitisDTO\KullaniciYetkiDTO.cs" />
+    <Compile Include="EntitisDTO\UyeDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntitisDTO\" />
     <Folder Include="EntitisModelViewDTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

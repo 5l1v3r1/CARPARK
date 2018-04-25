@@ -1,0 +1,6 @@
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\bin\Debug\CARPARK.COMMON.dll
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\bin\Debug\CARPARK.COMMON.pdb
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\obj\Debug\CARPARK.Common.csprojResolveAssemblyReference.cache
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\obj\Debug\CARPARK.Common.csproj.CoreCompileInputs.cache
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\obj\Debug\CARPARK.COMMON.dll
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.COMMON\obj\Debug\CARPARK.COMMON.pdb

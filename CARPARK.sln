@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARPARK.Service", "CARPARK.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARPARK.Common", "CARPARK.COMMON\CARPARK.Common.csproj", "{8691B255-5A2D-4227-8068-E6F41CDF1DC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CARPARK.Web", "CARPARK.Web\CARPARK.Web.csproj", "{9BE4DC4F-0AB0-47D7-AB50-661D49D7546A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8691B255-5A2D-4227-8068-E6F41CDF1DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8691B255-5A2D-4227-8068-E6F41CDF1DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8691B255-5A2D-4227-8068-E6F41CDF1DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE4DC4F-0AB0-47D7-AB50-661D49D7546A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE4DC4F-0AB0-47D7-AB50-661D49D7546A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE4DC4F-0AB0-47D7-AB50-661D49D7546A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE4DC4F-0AB0-47D7-AB50-661D49D7546A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

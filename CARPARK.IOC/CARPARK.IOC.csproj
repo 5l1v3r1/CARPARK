@@ -95,5 +95,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CARPARK.Data\CARPARK.Data.csproj">
+      <Project>{823DA8E0-E937-4718-805A-0E9797081024}</Project>
+      <Name>CARPARK.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
