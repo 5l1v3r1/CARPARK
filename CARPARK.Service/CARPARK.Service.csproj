@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LoginService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CARPARK.Data\CARPARK.Data.csproj">
+      <Project>{823DA8E0-E937-4718-805A-0E9797081024}</Project>
+      <Name>CARPARK.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CARPARK.DTO\CARPARK.DTO.csproj">
+      <Project>{5F88C29C-9D2F-4ED7-A024-0878DABD6574}</Project>
+      <Name>CARPARK.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

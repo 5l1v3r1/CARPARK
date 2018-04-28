@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+@{if (Session["SessionContext"] != null)
+    {
+        Response.Redirect("/Dashboard");
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/Home/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Login/Login.css" rel="stylesheet" />
+    <link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+    <script src="~/Content/Home/assets/js/jquery.min.js"></script>
+    <script src="~/Content/Toastr/toastr.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="~/Content/Home/assets/fonts/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
+                <div id="iosBlurBg">
+                    <div id="whiteBg"></div>
+                </div>
+                <div id="bottomEnter"></div>
+                <div id="bottomBlurBg"></div>
+                <!-- Login Form -->
+                <div class="loginForm">
+                    <div class="title">
+                        <p>Parkur Otopark<br><span>SİSTEMİ</span></p>
+                        <hr>
+                        <hr class="short">
+                    </div>
+                    <form>
+                        <div class="col-3">
+                            <input id="inputUsername" class="effect-2" type="text" placeholder="Kullanıcı Adı...">
+                            <span class="focus-border"></span>
+                            <input id="inputPassword" class="effect-2" type="password" placeholder="Şifre...">
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="forget">
+                            <button class="btn btn-default btn-sm">Parolanızı mı Unuttunuz?</button>
+                        </div>
+                    </form>
+                </div>
+                <a href="javascript: LoginControl()">
+                    <div class="enterButton">
+                        <i class="fa fa-lock fa-2x text-white"></i><br>
+                        <span class="enterText text-white">Giriş</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/Dashboard/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Content/Home/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/Toastr/Utility.js"></script>
+    <script type="text/javascript">
+        function LoginControl() {
+            var model = { KullaniciAdi: $("#inputUsername").val(), Parola: $("#inputPassword").val() };
+            if (model.KullaniciAdi.trim() != "" && model.Parola.trim()) {
+                $.ajax({
+                    url: "/Login/Login",
+                    type: "POST",
+                    data: model,
+                    success: function (e) {
+                        var sonuc = e;
+                        if (e == "")
+                            ShowMessage("error", "Giriş Hatası", "Yanlış Kullanıcı adı veya şifre");
+                        else
+                            window.location = e;
+                    }
+                });
+
+            } else {
+                ShowMessage("warning", "Boş Geçilemez", "Lütfen Kullanıcı Adı ve Şifre giriniz.");
+            }
+        }
+    </script>
+</body>
+</html>

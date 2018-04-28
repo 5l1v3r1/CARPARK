@@ -100,6 +100,10 @@
       <Project>{823DA8E0-E937-4718-805A-0E9797081024}</Project>
       <Name>CARPARK.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CARPARK.Service\CARPARK.Service.csproj">
+      <Project>{3848E850-3AED-4226-B65C-25C1CEEFD4FB}</Project>
+      <Name>CARPARK.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

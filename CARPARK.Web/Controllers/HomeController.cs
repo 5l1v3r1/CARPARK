@@ -13,16 +13,21 @@ namespace CARPARK.Web.Controllers
         {
             return View();
         }
-
-        [Route("Login")]
-        public  ActionResult Login()
+        
+        [Route("Contact")]
+        public ActionResult Contact()
         {
             return View();
         }
 
+        [Route("OurPrice")]
+        public ActionResult OurPrice()
+        {
+            return View();
+        }
 
-        [Route("Contact")]
-        public ActionResult Contact()
+        [Route("OurService")]
+        public ActionResult OurService()
         {
             return View();
         }
