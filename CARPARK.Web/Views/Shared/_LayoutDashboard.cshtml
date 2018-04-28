@@ -6,166 +6,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/Dashboard/assets/images/favicon.png">
-    <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="~/Content/Dashboard/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- chartist CSS -->
-    <link href="~/Content/Dashboard/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="~/Content/Dashboard/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-    <link href="~/Content/Dashboard/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <!--This page css - Morris CSS -->
-    <link href="~/Content/Dashboard/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-
-    <link href="~/Content/Dashboard/lite/css/style.css" rel="stylesheet" />
-    <!-- You can change the theme colors from here -->
-    <link href="~/Content/Dashboard/lite/css/colors/blue.css" id="theme" rel="stylesheet" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <title>Parkur Admin Panel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/fullcalendar.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/matrix-media.css" />
+    <link href="~/Content/Dashboard/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/jquery.gritter.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
-<body class="fix-header fix-sidebar card-no-border>
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
+<body>
+    <!--Header-part-->
+    <div id="header">
+        <h1><a href="dashboard.html">Matrix Admin</a></h1>
     </div>
-    <div id="main-wrapper">
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Light Logo icon -->
-                            <img src="~/Content/Dashboard/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-
-                            <!-- Light Logo text -->
-                            <img src="~/Content/Dashboard/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                        </span>
-                    </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Content/Dashboard/assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />@Session["KullaniciAdi"]</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li>
-                            <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Basic Table</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Google Map</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Error 404</span></a>
-                        </li>
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <!-- Bottom points-->
-            <div class="sidebar-footer">
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
-            </div>
-            <!-- End Bottom points-->
-        </aside>
+    <!--close-Header-part-->
+    <!--top-Header-menu-->
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav">
+            <li class="dropdown" id="profile-messages">
+                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Hoşgeldin @Session["KullaniciAdi"]</span><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="icon-user"></i> Profil Sayfam</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/LogOut"><i class="icon-key"></i> Çıkış Yap</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" id="menu-messages">
+                <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Mesajlarım</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> Yeni Mesaj</a></li>
+                    <li class="divider"></li>
+                    <li><a class="sInbox" title="" href="#"><i class="icon-envelope"></i> Gelen</a></li>
+                    <li class="divider"></li>
+                    <li><a class="sOutbox" title="" href="#"><i class="icon-arrow-up"></i> Giden</a></li>
+                </ul>
+            </li>
+            <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Ayarlar</span></a></li>
+        </ul>
     </div>
-    <div class="page-wrapper">
-        <div class="container-fluid">
-            <div class="row page-titles">
-                <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor">Dashboard</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
-            @RenderBody()
-        </div>
+    <!--close-top-Header-menu-->
+    <!--start-top-serch-->
+    <div id="search">
+        <input type="text" placeholder="Search here..." />
+        <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
     </div>
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="~/Content/Dashboard/assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="~/Content/Dashboard/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="~/Content/Dashboard/lite/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="~/Content/Dashboard/lite/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="~/Content/Dashboard/lite/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="~/Content/Dashboard/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="~/Content/Dashboard/lite/js/custom.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!-- chartist chart -->
-    <script src="~/Content/Dashboard/assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="~/Content/Dashboard/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!--c3 JavaScript -->
-    <script src="~/Content/Dashboard/assets/plugins/d3/d3.min.js"></script>
-    <script src="~/Content/Dashboard/assets/plugins/c3-master/c3.min.js"></script>
-    <!-- Chart JS -->
-    <script src="~/Content/Dashboard/lite/js/dashboard1.js"></script>
+    <!--close-top-serch-->
+    <!--sidebar-menu-->
+    <div id="sidebar">
+        <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+        <ul>
+            <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+            <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
+            <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
+            <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
+            <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
+            <li class="submenu">
+                <a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span class="label label-important">3</span></a>
+                <ul>
+                    <li><a href="form-common.html">Basic Form</a></li>
+                    <li><a href="form-validation.html">Form with Validation</a></li>
+                    <li><a href="form-wizard.html">Form with Wizard</a></li>
+                </ul>
+            </li>
+           
+        </ul>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+
+    <script src="~/Content/Dashboard/js/excanvas.min.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.min.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
+    <script src="~/Content/Dashboard/js/bootstrap.min.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.flot.min.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.flot.resize.min.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.peity.min.js"></script>
+    <script src="~/Content/Dashboard/js/fullcalendar.min.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.dashboard.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.gritter.min.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.interface.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.chat.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.validate.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.form_validation.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.wizard.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.uniform.js"></script>
+    <script src="~/Content/Dashboard/js/select2.min.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.popover.js"></script>
+    <script src="~/Content/Dashboard/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+
+    <script type="text/javascript">
+        // This function is called from the pop-up menus to transfer to
+        // a different page. Ignore if the value returned is a null string:
+        function goPage(newURL) {
+
+            // if url is empty, skip the menu dividers and reset the menu selection to default
+            if (newURL != "") {
+
+                // if url is "-", it is this page -- reset the menu:
+                if (newURL == "-") {
+                    resetMenu();
+                }
+                // else, send page to designated URL
+                else {
+                    document.location.href = newURL;
+                }
+            }
+        }
+
+        // resets the menu selection upon entry to this page:
+        function resetMenu() {
+            document.gomenu.selector.selectedIndex = 2;
+        }
+    </script>
 </body>
 </html>

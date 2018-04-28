@@ -11,59 +11,61 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <link href="~/Content/Home/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Login/Login.css" rel="stylesheet" />
+    <title>Matrix Admin</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/Dashboard/css/matrix-login.css" />
+    <link href="~/Content/Dashboard/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
-    <script src="~/Content/Home/assets/js/jquery.min.js"></script>
-    <script src="~/Content/Toastr/toastr.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    <link href="~/Content/Home/assets/fonts/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
+ 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
-                <div id="iosBlurBg">
-                    <div id="whiteBg"></div>
-                </div>
-                <div id="bottomEnter"></div>
-                <div id="bottomBlurBg"></div>
-                <!-- Login Form -->
-                <div class="loginForm">
-                    <div class="title">
-                        <p>Parkur Otopark<br><span>SİSTEMİ</span></p>
-                        <hr>
-                        <hr class="short">
+    <div id="loginbox">
+        <form id="loginform" class="form-vertical" action="index.html">
+            <div class="control-group normal_text"> <h3><img src="~/Content/Dashboard/img/logo.png" alt="Logo" /></h3></div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+                        <input type="text" id="inputUsername" placeholder="Kullanıcı Adı" />
                     </div>
-                    <form>
-                        <div class="col-3">
-                            <input id="inputUsername" class="effect-2" type="text" placeholder="Kullanıcı Adı...">
-                            <span class="focus-border"></span>
-                            <input id="inputPassword" class="effect-2" type="password" placeholder="Şifre...">
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="forget">
-                            <button class="btn btn-default btn-sm">Parolanızı mı Unuttunuz?</button>
-                        </div>
-                    </form>
                 </div>
-                <a href="javascript: LoginControl()">
-                    <div class="enterButton">
-                        <i class="fa fa-lock fa-2x text-white"></i><br>
-                        <span class="enterText text-white">Giriş</span>
-                    </div>
-                </a>
             </div>
-        </div>
-    </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                        <input type="password" id="inputPassword" placeholder="Şifre" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Şifremi Unuttum</a></span>
+                <span class="pull-right"><a type="submit" href="javascript: LoginControl()" class="btn btn-success" /> Giriş Yap</a></span>
+            </div>
+        </form>
+        <form id="recoverform" action="#" class="form-vertical">
+            <p class="normal_text">E-posta adresinizi aşağıya girin ve size bir şifreyi nasıl kurtaracağınıza dair talimatları göndereceğiz.</p>
 
-    <script src="~/Content/Dashboard/assets/plugins/jquery/jquery.min.js"></script>
-    <script src="~/Content/Home/assets/js/bootstrap.min.js"></script>
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail Adresi" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Geri Dön</a></span>
+                <span class="pull-right"><a class="btn btn-info" />Şifre Gönder</a></span>
+            </div>
+        </form>
+    </div>
+    <script src="~/Content/Dashboard/js/jquery.min.js"></script>
+    <script src="~/Content/Dashboard/js/matrix.login.js"></script>
     <script src="~/Content/Toastr/Utility.js"></script>
+    <script src="~/Content/Toastr/toastr.js"></script>
     <script type="text/javascript">
         function LoginControl() {
             var model = { KullaniciAdi: $("#inputUsername").val(), Parola: $("#inputPassword").val() };

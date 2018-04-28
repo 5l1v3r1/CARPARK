@@ -49,7 +49,7 @@ namespace CARPARK.Web.Controllers
                 return Json("", JsonRequestBehavior.AllowGet);
 
         }
-
+        [Route("LogOut")]
         public ActionResult LogOut()
         {
             Session.Abandon(); //butun sessionları temizler.
