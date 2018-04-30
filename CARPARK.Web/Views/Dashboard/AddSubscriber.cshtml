@@ -12,6 +12,11 @@
         margin-bottom: 0;
     }
 </style>
+<link rel="stylesheet" href="~/Content/Dashboard/css/colorpicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/datepicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-wysihtml5.css" />
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
@@ -20,3 +25,83 @@
     </div>
 </div>
 
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Personel Ekle</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="#" method="get" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">İsim :</label>
+                            <div class="controls">
+                                <input type="text" class="span4" placeholder="İsim Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Soyadı :</label>
+                            <div class="controls">
+                                <input type="text" class="span4" placeholder="Soyadı Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">TC Kimlik :</label>
+                            <div class="controls">
+                                <input type="text" class="span4" placeholder="TC Kimlik Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Telefon :</label>
+                            <div class="controls">
+                                <input type="text" class="span4" placeholder="Telefon Numarası Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">E-Posta :</label>
+                            <div class="controls">
+                                <input type="email" class="span4" placeholder="E-Posta Adresi Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Kullanıcı Adı :</label>
+                            <div class="controls">
+                                <input type="text" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Parolo :</label>
+                            <div class="controls">
+                                <input type="password" class="span4" placeholder="Parolo Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Personel Resmi :</label>
+                            <div class="controls">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Adres :</label>
+                            <div class="controls">
+                                <textarea class="span10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>

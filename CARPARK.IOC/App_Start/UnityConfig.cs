@@ -26,6 +26,7 @@ namespace CARPARK.IOC
             //Bu kýsýmda oluþturulan nesneler tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her nesne tanýmlamasý yapýlmak zorundadýr.
             container.BindInRequestScope<IUnitofWork, UnitofWork>();
             container.BindInRequestScope<ILoginService, LoginService>();
+            container.BindInRequestScope<IPersonelService, PersonelService>();
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
 
         }

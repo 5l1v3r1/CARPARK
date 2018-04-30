@@ -250,6 +250,7 @@
     <Content Include="Content\Dashboard\img\menu-active.png" />
     <Content Include="Content\Dashboard\img\rarrow.png" />
     <Content Include="Content\Dashboard\img\saturation.png" />
+    <Content Include="Content\Dashboard\img\select2x2.png" />
     <Content Include="Content\Dashboard\img\select2.png" />
     <Content Include="Content\Dashboard\img\spinner.gif" />
     <Content Include="Content\Dashboard\img\sprite.png" />
@@ -314,7 +315,6 @@
     <Content Include="Content\Home\images\pic03.jpg" />
     <Content Include="Content\Home\images\pic04.jpg" />
     <Content Include="Content\Home\images\pic05.jpg" />
-    <Content Include="Content\Login\Login.css" />
     <Content Include="Content\Toastr\toastr.css" />
     <Content Include="Content\Toastr\toastr.js" />
     <Content Include="Content\Toastr\Utility.js" />
@@ -393,6 +393,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Subscribers.cshtml" />
     <Content Include="Views\Dashboard\AddSubscriber.cshtml" />
+    <Content Include="Views\Dashboard\DetailSubscriber.cshtml" />
+    <Content Include="Views\Dashboard\UpdateSubscriber.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

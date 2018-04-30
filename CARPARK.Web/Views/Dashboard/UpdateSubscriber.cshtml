@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "UpdateSubscriber";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<style>
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<link rel="stylesheet" href="~/Content/Dashboard/css/colorpicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/datepicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-wysihtml5.css" />
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/Subscribers" title="Aboneler Sayfasına Geri Dön" class="tip-bottom"> Aboneler</a>
+        <a href="#" class="current">Abone Ekle</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Personel Düzenle</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="#" method="get" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">İsim :</label>
+                            <div class="controls">
+                                <input value="Ad" type="text" class="span4" placeholder="İsim Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Soyadı :</label>
+                            <div class="controls">
+                                <input value="Soyad" type="text" class="span4" placeholder="Soyadı Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">TC Kimlik :</label>
+                            <div class="controls">
+                                <input value="TCNo" type="text" class="span4" placeholder="TC Kimlik Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Telefon :</label>
+                            <div class="controls">
+                                <input value="Telefon" type="text" class="span4" placeholder="Telefon Numarası Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">E-Posta :</label>
+                            <div class="controls">
+                                <input type="email" class="span4" placeholder="E-Posta Adresi Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Kullanıcı Adı :</label>
+                            <div class="controls">
+                                <input value="KullaniciAdi" type="text" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Adres :</label>
+                            <div class="controls">
+                                <textarea class="span10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
