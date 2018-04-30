@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "Subscribers";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<style>
+    #abnEkle:hover {
+        color: darkblue;
+    }
+
+    #abnEkle h5:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+    #sub{
+        margin-bottom:0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current">Aboneler</a> </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Abone Tablosu</h5>
+                    </div>
+                    <a href="/AddSubscriber" class="pull-right" id="abnEkle">
+                        <span class="icon"><i class="icon-plus"></i></span>
+                        <h5>Abone Ekle</h5>
+                    </a>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>Plaka</th>
+                                <th>Ad Soyad</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="gradeX">
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>
+                                    Internet
+                                    Explorer 4.0Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>
+                                    Win 95+Internet
+                                    Explorer 4.0
+                                </td>
+                                <td class="taskOptions">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>

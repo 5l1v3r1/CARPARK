@@ -3,3 +3,4 @@ C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\bin\Debu
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.csproj.CoreCompileInputs.cache
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.dll
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.pdb
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.csprojResolveAssemblyReference.cache

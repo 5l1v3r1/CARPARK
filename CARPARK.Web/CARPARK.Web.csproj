@@ -391,6 +391,8 @@
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\Subscribers.cshtml" />
+    <Content Include="Views\Dashboard\AddSubscriber.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
