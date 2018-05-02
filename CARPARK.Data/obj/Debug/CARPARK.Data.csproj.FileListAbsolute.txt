@@ -8,4 +8,3 @@ C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Data\bin\Deb
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Data\obj\Debug\CARPARK.Data.csproj.CoreCompileInputs.cache
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Data\obj\Debug\CARPARK.Data.dll
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Data\obj\Debug\CARPARK.Data.pdb
-C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Data\obj\Debug\CARPARK.Data.csprojResolveAssemblyReference.cache

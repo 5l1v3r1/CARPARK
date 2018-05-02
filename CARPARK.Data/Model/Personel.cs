@@ -17,7 +17,7 @@ namespace CARPARK.Data.Model
         public int PersonelID { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
-        public Nullable<int> TCNo { get; set; }
+        public string TCNo { get; set; }
         public string Fotograf { get; set; }
         public string Adres { get; set; }
         public string Telefon { get; set; }

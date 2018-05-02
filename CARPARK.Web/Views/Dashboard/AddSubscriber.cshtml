@@ -20,8 +20,8 @@
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
-        <a href="/Subscribers" title="Aboneler Sayfasına Geri Dön" class="tip-bottom"> Aboneler</a>
-        <a href="#" class="current">Abone Ekle</a>
+        <a href="/Subscribers" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
+        <a href="#" class="current">Personel Ekle</a>
     </div>
 </div>
 
@@ -35,59 +35,59 @@
                     <h5>Personel Ekle</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="#" method="get" class="form-horizontal">
+                    <form action="/Dashboard/AddSubscriber" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                         <div class="control-group">
                             <label class="control-label">İsim :</label>
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="İsim Giriniz..." />
+                                <input type="text" name="Ad" class="span4" placeholder="İsim Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Soyadı :</label>
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="Soyadı Giriniz..." />
+                                <input type="text" name="Soyad" class="span4" placeholder="Soyadı Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">TC Kimlik :</label>
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="TC Kimlik Giriniz..." />
+                                <input type="text" name="TCNo" class="span4" placeholder="TC Kimlik Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Telefon :</label>
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="Telefon Numarası Giriniz..." />
+                                <input type="text" name="Telefon" class="span4" placeholder="Telefon Numarası Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">E-Posta :</label>
                             <div class="controls">
-                                <input type="email" class="span4" placeholder="E-Posta Adresi Giriniz..." />
+                                <input type="email" name="Eposta" class="span4" placeholder="E-Posta Adresi Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Kullanıcı Adı :</label>
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
+                                <input type="text" name="KullaniciAdi" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Parolo :</label>
                             <div class="controls">
-                                <input type="password" class="span4" placeholder="Parolo Giriniz..." />
+                                <input type="password" name="Parola" class="span4" placeholder="Parolo Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Personel Resmi :</label>
                             <div class="controls">
-                                <input type="file" />
+                                <input name="Fotograf" type="file" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Adres :</label>
                             <div class="controls">
-                                <textarea class="span10"></textarea>
+                                <textarea name="Adres" class="span10"></textarea>
                             </div>
                         </div>
                         <div class="form-actions">

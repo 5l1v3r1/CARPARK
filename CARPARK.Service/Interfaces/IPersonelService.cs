@@ -20,7 +20,13 @@ namespace CARPARK.Service.Interfaces
         /// Butun personelleri getirir.
         /// </summary>
         /// <returns></returns>
-        List<PersonelDTO> GetAllPersonel();
+        List<PersonelUyeDTO> GetAllPersonel();
+
+        /// <summary>
+        /// Personel ekleme işlemi yapar.
+        /// </summary>
+        /// <param name="personel"></param>
+        void Insert(PersonelUyeDTO personel);
 
     }
 }

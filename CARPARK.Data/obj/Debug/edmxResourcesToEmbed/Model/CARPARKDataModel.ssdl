@@ -91,11 +91,11 @@
       <PropertyRef Name="PersonelID" />
     </Key>
     <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
-    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
-    <Property Name="TCNo" Type="int" />
-    <Property Name="Fotograf" Type="nvarchar" MaxLength="500" />
-    <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="100" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="TCNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fotograf" Type="nvarchar(max)" />
+    <Property Name="Adres" Type="nvarchar(max)" />
     <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
     <Property Name="UyeID" Type="int" />
     <Property Name="YetkiID" Type="int" Nullable="false" />

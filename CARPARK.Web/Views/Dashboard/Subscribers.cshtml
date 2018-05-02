@@ -1,4 +1,5 @@
-﻿@model CARPARK.DTO.EntitisModelViewDTO.PersonelViewModel
+﻿@model List<CARPARK.DTO.EntitisDTO.PersonelUyeDTO>
+
 @{
     ViewBag.Title = "Subscribers";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
@@ -6,11 +7,11 @@
 <link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <style>
-    #abnEkle:hover {
+    #perEkle:hover {
         color: darkblue;
     }
 
-    #abnEkle h5:hover {
+    #perEkle h5:hover {
         color: darkblue;
         text-decoration: underline;
     }
@@ -24,7 +25,7 @@
     }
 </style>
 <div id="content-header">
-    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current">Aboneler</a> </div>
+    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Personeller</a> </div>
 </div>
 
 <div class="container-fluid">
@@ -35,43 +36,36 @@
                 <div class="widget-title">
                     <div class="pull-left">
                         <span class="icon"><i class="icon-th"></i></span>
-                        <h5>Abone Tablosu</h5>
+                        <h5>Personel Tablosu</h5>
                     </div>
-                    <a href="/AddSubscriber" class="pull-right" id="abnEkle">
+                    <a href="/AddSubscriber" class="pull-right" id="perEkle">
                         <span class="icon"><i class="icon-plus"></i></span>
-                        <h5>Abone Ekle</h5>
+                        <h5>Personel Ekle</h5>
                     </a>
                 </div>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>Plaka</th>
                                 <th>Ad Soyad</th>
-                                <th>Durum</th>
+                                <th>Telefon</th>
+                                <th>Adres</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var per in Model.ButunPersoneller)
+                            @foreach (var per in Model)
                             {
-                                <tr class="gradeX">
-                                    <td></td>
-                                    <td>
-                                        Internet
-                                        Explorer 4.0Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>
-                                        Win 95+Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td class="taskOptions">
-                                        <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
-                                        <a href="UpdateSubscriber" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
-                                        <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
-                                    </td>
-                                </tr>
+                            <tr class="gradeX">
+                                <td style="text-align:center;">@per.Ad @per.Soyad</td>
+                                <td style="text-align:center;">@per.Telefon</td>
+                                <td style="text-align:center;">@per.Adres</td>
+                                <td class="taskOptions" style="">
+                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="UpdateSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
                             }
 
 

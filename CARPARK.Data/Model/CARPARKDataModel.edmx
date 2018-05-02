@@ -96,11 +96,11 @@
             <PropertyRef Name="PersonelID" />
           </Key>
           <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
-          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
-          <Property Name="TCNo" Type="int" />
-          <Property Name="Fotograf" Type="nvarchar" MaxLength="500" />
-          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="100" />
+          <Property Name="TCNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fotograf" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
           <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
           <Property Name="UyeID" Type="int" />
           <Property Name="YetkiID" Type="int" Nullable="false" />
@@ -429,11 +429,11 @@
             <PropertyRef Name="PersonelID" />
           </Key>
           <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TCNo" Type="Int32" />
-          <Property Name="Fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TCNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UyeID" Type="Int32" />
           <Property Name="YetkiID" Type="Int32" Nullable="false" />
@@ -594,7 +594,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CARPARKEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Abone" EntityType="Self.Abone" />
           <EntitySet Name="AboneOdeme" EntityType="Self.AboneOdeme" />
           <EntitySet Name="Arac" EntityType="Self.Arac" />
@@ -657,7 +657,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CARPARKModelStoreContainer" CdmEntityContainer="CARPARKEntities">
+        <EntityContainerMapping StorageEntityContainer="CARPARKModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Abone">
             <EntityTypeMapping TypeName="CARPARKModel.Abone">
               <MappingFragment StoreEntitySet="Abone">

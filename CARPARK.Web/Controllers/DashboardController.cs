@@ -1,5 +1,6 @@
 ﻿using CARPARK.COMMON;
 using CARPARK.Data.UnitofWork;
+using CARPARK.DTO.EntitisDTO;
 using CARPARK.DTO.EntitisModelViewDTO;
 using CARPARK.Service.Interfaces;
 using System;
@@ -13,29 +14,28 @@ namespace CARPARK.Web.Controllers
     public class DashboardController : Controller
     {
         private readonly IPersonelService _personelService;
+        private readonly IUyeService _uyeService;
         private readonly IUnitofWork _uow;
         private SessionContext _sessionContext;
-        public DashboardController(IUnitofWork uow, IPersonelService personelService)
+        public DashboardController(IUnitofWork uow, IPersonelService personelService,IUyeService uyeService)
         {
             _uow = uow;
             _personelService = personelService;
+            _uyeService = uyeService;
             _sessionContext = new SessionContext();
         }
 
         [Route("Dashboard")]
         public ActionResult Index()
         {
-            //Personel Id göre bagıntılı tablolardan veri cek!
-            var model = new PersonelViewModel();
-            model.PersonelListesi = _personelService.GetAllPersonel();
-           
-            return View(model);
+            return View();
         }
 
         [Route("Subscribers")]
         public ActionResult Subscribers()
         {
-            return View();
+            List<PersonelUyeDTO> liste = _personelService.GetAllPersonel();
+            return View(liste);
         }
 
         [Route("AddSubscriber")]
@@ -45,18 +45,27 @@ namespace CARPARK.Web.Controllers
         }
 
         [HttpPost]
+        public ActionResult AddSubscriber(PersonelUyeDTO personel)
+        {
+            _personelService.Insert(personel);
+            return RedirectToAction("Subscribers", "Dashboard");
+        }
+
+        [HttpPost]
         [Route("DetailSubscriber")]
         public ActionResult DetailSubscriber(int id)
         {
-            var model = new PersonelViewModel();
-            //model.Personel = _personelService.Personel(id);
             return View();
         }
 
-        [Route("UpdateSubscriber")]
-        public ActionResult UpdateSubscriber()
+        [Route("UpdateSubscriber/{id}")]
+        public ActionResult UpdateSubscriber(int id)
         {
-            return View();
+            var entity = _personelService.Personel(id);
+            var model = new PersonelViewModel();
+            model.Personel = entity;
+            model.Uye = _uyeService.Uye(entity.UyeID);
+            return View(model);
         }
     }
 }

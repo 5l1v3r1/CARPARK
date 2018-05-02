@@ -44,3 +44,5 @@ C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debu
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debug\CARPARK.DTO.dll
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debug\CARPARK.Service.pdb
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debug\CARPARK.DTO.pdb
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debug\AutoMapper.dll
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.IOC\bin\Debug\AutoMapper.xml

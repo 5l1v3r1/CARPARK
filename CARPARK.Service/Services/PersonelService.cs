@@ -15,39 +15,48 @@ namespace CARPARK.Service.Services
     {
 
         private readonly IRepository<Personel> _personelRepo;
+        private readonly IRepository<Uye> _uyeRepo;
         private readonly IUnitofWork _uow;
         private PersonelDTO _personelDTO;
-
+        private UyeDTO _uyeDTO;
         public PersonelService(UnitofWork uow)
         {
             _uow = uow;
             _personelRepo = _uow.GetRepository<Personel>();
+            _uyeRepo = _uow.GetRepository<Uye>();
             _personelDTO = new PersonelDTO();
+            _uyeDTO = new UyeDTO();
         }
 
-        public List<PersonelDTO> GetAllPersonel()
+        public List<PersonelUyeDTO> GetAllPersonel()
         {
             try
             {
                 var personelListe = (from u in _personelRepo.GetAll()
-                                     select new PersonelDTO
+                                     join uye in _uyeRepo.GetAll() on u.UyeID equals uye.UyeID
+                                     where u.Durum == true
+                                     orderby u.PersonelID descending
+                                     select new PersonelUyeDTO
                                      {
                                          PersonelID = u.PersonelID,
                                          Ad = u.Ad,
                                          Soyad = u.Soyad,
-                                         TCNo = Convert.ToInt32(u.TCNo),
+                                         TCNo = u.TCNo,
                                          Telefon = u.Telefon,
                                          Adres = u.Adres,
-                                         Durum = Convert.ToBoolean(u.Durum),
+                                         Durum = u.Durum,
                                          Fotograf = u.Fotograf,
-                                         UyeID = Convert.ToInt32(u.UyeID),
-                                         YetkiID = Convert.ToInt32(u.YetkiID)
+                                         UyeID = u.UyeID,
+                                         YetkiID = u.YetkiID,
+                                         Eposta = uye.Eposta,
+                                         KullaniciAdi = uye.KullaniciAdi,
+                                         Parola = uye.Parola
                                      }).ToList();
                 return personelListe;
             }
             catch (Exception)
             {
-                return new List<PersonelDTO>();
+                return new List<PersonelUyeDTO>();
             }
         }
 
@@ -62,13 +71,13 @@ namespace CARPARK.Service.Services
                                    PersonelID = u.PersonelID,
                                    Ad = u.Ad,
                                    Soyad = u.Soyad,
-                                   TCNo = Convert.ToInt32(u.TCNo),
+                                   TCNo = u.TCNo,
                                    Telefon = u.Telefon,
                                    Adres = u.Adres,
                                    Durum = Convert.ToBoolean(u.Durum),
-                                   Fotograf=u.Fotograf,
-                                   UyeID= Convert.ToInt32(u.UyeID),
-                                   YetkiID= Convert.ToInt32(u.YetkiID)
+                                   Fotograf = u.Fotograf,
+                                   UyeID = Convert.ToInt32(u.UyeID),
+                                   YetkiID = Convert.ToInt32(u.YetkiID)
                                }).SingleOrDefault();
                 return entitis;
             }
@@ -79,6 +88,25 @@ namespace CARPARK.Service.Services
 
         }
 
-     
+        public void Insert(PersonelUyeDTO personel)
+        {
+            // install - package automapper - version:4.1
+            try
+            {
+                var uye = AutoMapper.Mapper.DynamicMap<Uye>(personel);
+                _uyeRepo.Insert(uye);
+                _uow.SaveChanges();
+                var entity = AutoMapper.Mapper.DynamicMap<Personel>(personel);
+                entity.Durum = true;
+                entity.YetkiID = 2;
+                entity.UyeID = uye.UyeID;
+                _personelRepo.Insert(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

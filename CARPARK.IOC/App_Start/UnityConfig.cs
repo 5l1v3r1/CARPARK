@@ -23,12 +23,13 @@ namespace CARPARK.IOC
 
         private static void RegisterTypes(UnityContainer container)
         {
-            //Bu kýsýmda oluþturulan nesneler tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her nesne tanýmlamasý yapýlmak zorundadýr.
+            //Bu kýsýmda oluþturulan Sýnýf,Service tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her sýnýf ve service tanýmlamasý yapýlmak zorundadýr.
             container.BindInRequestScope<IUnitofWork, UnitofWork>();
             container.BindInRequestScope<ILoginService, LoginService>();
             container.BindInRequestScope<IPersonelService, PersonelService>();
+            container.BindInRequestScope<IUyeService, UyeService>();
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
-
+            container.BindInRequestScope<IRepository<Personel>, Repository<Personel>>();
         }
         public static void BindInRequestScope<T1, T2>(this IUnityContainer container) where T2 : T1
         {
