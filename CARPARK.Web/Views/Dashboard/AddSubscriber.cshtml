@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-wysihtml5.css" />
+<link href="~/Content/Dashboard/css/jquery-ui.min.css" rel="stylesheet" /><!--GoogleMap input için-->
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
@@ -43,9 +44,9 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Soyadı :</label>
+                            <label class="control-label">Soyisim :</label>
                             <div class="controls">
-                                <input type="text" name="Soyad" class="span4" placeholder="Soyadı Giriniz..." />
+                                <input type="text" name="Soyad" class="span4" placeholder="Soyisim Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
@@ -85,10 +86,29 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Adres :</label>
+                            <label class="control-label"><br />Adres :</label>
                             <div class="controls">
-                                <textarea name="Adres" class="span10"></textarea>
+                                <div class="buttons">
+                                    <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i> Google Map</a>
+                                    <div class="modal hide" id="modal-add-event">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                            <h3>Google Map</h3>
+                                        </div>
+                                        <div class="modal-body" style="padding:0;">
+                                            <div class="google-map-container">
+                                                <input id="address" type="text" class="form-control span12" />
+                                                <br />
+                                                <div id="map_canvas" style="height:300px; border:1px solid lightgrey;"></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">İptal</a> <a href="#" id="add-event-submit" class="btn btn-primary">Adres Ekle</a> </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="Adres" class="span11" placeholder="Adres bilgisini yazınız. Google Map ile daha kolayca adres bilgisini girebilirsiniz." />
                             </div>
+
                         </div>
                         <div class="form-actions">
                             <div class="control-group">
@@ -103,5 +123,7 @@
     </div>
 
 </div>
-<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/GoogleMapJS/jquery-1.4.2.min.js"></script>
 <script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyCmkj-xLsbn3SoTiHGe9oQaDLz04tjZvGw"></script>
+<script src="~/Content/Dashboard/GoogleMapJS/main.js"></script>

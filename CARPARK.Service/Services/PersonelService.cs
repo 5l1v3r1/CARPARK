@@ -127,5 +127,20 @@ namespace CARPARK.Service.Services
                 throw new Exception(ex.Message);
             }
         }
+
+        public void Delete(int perID)
+        {
+            try
+            {
+                var entity = _personelRepo.Find(perID);
+                entity.Durum = false;
+                _personelRepo.Update(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

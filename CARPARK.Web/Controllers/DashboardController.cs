@@ -50,12 +50,15 @@ namespace CARPARK.Web.Controllers
             _personelService.Insert(personel);
             return RedirectToAction("Subscribers", "Dashboard");
         }
-
-        [HttpPost]
-        [Route("DetailSubscriber")]
+        
+        [Route("DetailSubscriber/{id}")]
         public ActionResult DetailSubscriber(int id)
         {
-            return View();
+            var personel = _personelService.Personel(id);
+            PersonelViewModel model = new PersonelViewModel();
+            model.Personel = personel;
+            model.Uye = _uyeService.Uye(Convert.ToInt32(personel.UyeID));
+            return View(model);
         }
 
         [Route("UpdateSubscriber/{id}")]
@@ -75,5 +78,11 @@ namespace CARPARK.Web.Controllers
             return RedirectToAction("Subscribers", "Dashboard");
         }
 
+        [HttpPost]
+        public ActionResult DeleteSubscriber(int id)
+        {
+            _personelService.Delete(id);
+            return RedirectToAction("Subscribers", "Dashboard");
+        }
     }
 }

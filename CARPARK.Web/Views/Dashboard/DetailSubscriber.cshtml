@@ -1,5 +1,92 @@
-﻿
+﻿@model CARPARK.DTO.EntitisModelViewDTO.PersonelViewModel
+
 @{
     ViewBag.Title = "DetailSubscriber";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
+<style>
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/Subscribers" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
+        <a href="#" class="current">Personel Detay</a>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        @*<div class="span3"></div>*@
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Personel Detay</h5>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <div id="order-view-content" class="table-responsive">
+                        <ul id="order-view-tabs" class="nav nav-tabs tabs-left">
+                            <li class="active"><a href="#order-view-tabs-order-details" data-toggle="tab"><strong>Personel Bilgileri</strong></a></li>
+                            <li><a href="#order-view-tabs-payment" data-toggle="tab"><strong>Üyelik Bilgileri</strong></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="order-view-tabs-order-details" class="tab-pane active">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-md-3">Personel ID:</td>
+                                            <td class="col-md-9">@Model.Personel.PersonelID</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">İsim:</td>
+                                            <td class="col-md-9">@Model.Personel.Ad</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">Soyad:</td>
+                                            <td class="col-md-9">@Model.Personel.Soyad</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">TC Kimlik Numara:</td>
+                                            <td class="col-md-9">@Model.Personel.TCNo</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">Telefon:</td>
+                                            <td class="col-md-9">@Model.Personel.Telefon</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">Adres</td>
+                                            <td class="col-md-9">@Model.Personel.Adres</td>
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="order-view-tabs-payment">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-md-3">Kullanıcı Adı:</td>
+                                            <td class="col-md-9">@Model.Uye.KullaniciAdi</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-3">E-posta:</td>
+                                            <td class="col-md-9">@Model.Uye.Eposta</td>
+                                        </tr>
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

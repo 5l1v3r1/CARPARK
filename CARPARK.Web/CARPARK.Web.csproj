@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\CustomErrorAttribute.cs" />
+    <Compile Include="Controllers\AboneController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -185,6 +186,8 @@
     <Content Include="Content\Dashboard\font-awesome\css\font-awesome.css" />
     <Content Include="Content\Dashboard\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\Dashboard\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Content\Dashboard\GoogleMapJS\jquery-1.4.2.min.js" />
+    <Content Include="Content\Dashboard\GoogleMapJS\main.js" />
     <Content Include="Content\Dashboard\img\breadcrumb.png" />
     <Content Include="Content\Dashboard\img\demo\av1.jpg" />
     <Content Include="Content\Dashboard\img\demo\av2.jpg" />
@@ -393,10 +396,12 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Subscribers.cshtml" />
     <Content Include="Views\Dashboard\AddSubscriber.cshtml" />
-    <Content Include="Views\Dashboard\DetailSubscriber.cshtml" />
     <Content Include="Views\Dashboard\UpdateSubscriber.cshtml" />
+    <Content Include="Views\Dashboard\DetailSubscriber.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Abone\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

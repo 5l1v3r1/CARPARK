@@ -34,5 +34,11 @@ namespace CARPARK.Service.Interfaces
         /// <param name="personel"></param>
         void Update(PersonelUyeDTO personel);
 
+        /// <summary>
+        /// Personel silme durum false yapar.
+        /// </summary>
+        /// <param name="perID"></param>
+        void Delete(int  perID);
+        
     }
 }

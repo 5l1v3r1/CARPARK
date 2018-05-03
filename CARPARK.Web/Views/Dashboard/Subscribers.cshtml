@@ -6,6 +6,7 @@
 }
 <link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
 <style>
     #perEkle:hover {
         color: darkblue;
@@ -56,16 +57,16 @@
                         <tbody>
                             @foreach (var per in Model)
                             {
-                            <tr class="gradeX">
-                                <td style="text-align:center;">@per.Ad @per.Soyad</td>
-                                <td style="text-align:center;">@per.Telefon</td>
-                                <td style="text-align:center;">@per.Adres</td>
-                                <td class="taskOptions" style="">
-                                    <a href="#" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
-                                    <a href="UpdateSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
-                                    <a href="#" class="tip-top btn-large" data-original-title="Sil"><i class="icon-remove"></i></a>
-                                </td>
-                            </tr>
+                                <tr class="gradeX">
+                                    <td style="text-align:center;">@per.Ad @per.Soyad</td>
+                                    <td style="text-align:center;">@per.Telefon</td>
+                                    <td style="text-align:center;">@per.Adres</td>
+                                    <td>
+                                        <a href="DetailSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                        <a href="UpdateSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                        <a href="#" class="tip-top btn-large prsSil" data-perid="@per.PersonelID" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                    </td>
+                                </tr>
                             }
 
 
@@ -78,4 +79,29 @@
 </div>
 <script src="~/Content/Dashboard/js/jquery.min.js"></script>
 <script src="~/Content/Dashboard/js/matrix.tables.js"></script>
-
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+@section scripts{
+    <script>
+        $(".prsSil").click(function () {
+            var sonuc = confirm("Kayıt Silinsin mi?")
+            if (sonuc) {
+                var perId = $(this).data("perid");
+                $.ajax({
+                    type: "POST",
+                    url: "/Dashboard/DeleteSubscriber/" + perId,
+                    success: function () {
+                        ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
+                        window.location.replace("/Subscribers");
+                    },
+                    error: function () {
+                        ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
+                    }
+                });
+            }
+            else {
+                ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
+            }
+        });
+    </script>
+}
