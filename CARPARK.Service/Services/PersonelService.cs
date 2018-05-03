@@ -65,7 +65,7 @@ namespace CARPARK.Service.Services
             try
             {
                 var entitis = (from u in _personelRepo.GetAll()
-                               where u.PersonelID == id && u.Durum == true
+                               where u.PersonelID == id
                                select new PersonelDTO
                                {
                                    PersonelID = u.PersonelID,
@@ -74,10 +74,10 @@ namespace CARPARK.Service.Services
                                    TCNo = u.TCNo,
                                    Telefon = u.Telefon,
                                    Adres = u.Adres,
-                                   Durum = Convert.ToBoolean(u.Durum),
+                                   Durum = u.Durum,
                                    Fotograf = u.Fotograf,
-                                   UyeID = Convert.ToInt32(u.UyeID),
-                                   YetkiID = Convert.ToInt32(u.YetkiID)
+                                   UyeID = u.UyeID,
+                                   YetkiID = u.YetkiID
                                }).SingleOrDefault();
                 return entitis;
             }
@@ -101,6 +101,25 @@ namespace CARPARK.Service.Services
                 entity.YetkiID = 2;
                 entity.UyeID = uye.UyeID;
                 _personelRepo.Insert(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Update(PersonelUyeDTO personel)
+        {
+            try
+            {
+                var perEntity = _personelRepo.Find(personel.PersonelID);
+                AutoMapper.Mapper.DynamicMap(personel, perEntity);
+                _personelRepo.Update(perEntity);
+                var uyeEntity = _uyeRepo.Find(Convert.ToInt32(personel.UyeID));
+                uyeEntity.KullaniciAdi = personel.KullaniciAdi;
+                uyeEntity.Eposta = personel.Eposta;
+                _uyeRepo.Update(uyeEntity);
                 _uow.SaveChanges();
             }
             catch (Exception ex)

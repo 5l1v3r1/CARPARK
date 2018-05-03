@@ -17,7 +17,7 @@ namespace CARPARK.Web.Controllers
         private readonly IUyeService _uyeService;
         private readonly IUnitofWork _uow;
         private SessionContext _sessionContext;
-        public DashboardController(IUnitofWork uow, IPersonelService personelService,IUyeService uyeService)
+        public DashboardController(IUnitofWork uow, IPersonelService personelService, IUyeService uyeService)
         {
             _uow = uow;
             _personelService = personelService;
@@ -64,8 +64,16 @@ namespace CARPARK.Web.Controllers
             var entity = _personelService.Personel(id);
             var model = new PersonelViewModel();
             model.Personel = entity;
-            model.Uye = _uyeService.Uye(entity.UyeID);
+            model.Uye = _uyeService.Uye(Convert.ToInt32(entity.UyeID));
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult UpdateSubscriber(PersonelUyeDTO personel)
+        {
+            _personelService.Update(personel);
+            return RedirectToAction("Subscribers", "Dashboard");
+        }
+
     }
 }

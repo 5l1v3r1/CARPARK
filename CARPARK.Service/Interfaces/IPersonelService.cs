@@ -28,5 +28,11 @@ namespace CARPARK.Service.Interfaces
         /// <param name="personel"></param>
         void Insert(PersonelUyeDTO personel);
 
+        /// <summary>
+        /// Personel bilgilerini günceller.
+        /// </summary>
+        /// <param name="personel"></param>
+        void Update(PersonelUyeDTO personel);
+
     }
 }

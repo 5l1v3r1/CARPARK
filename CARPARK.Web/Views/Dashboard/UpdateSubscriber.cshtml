@@ -1,4 +1,4 @@
-﻿
+﻿@model CARPARK.DTO.EntitisModelViewDTO.PersonelViewModel
 @{
     ViewBag.Title = "UpdateSubscriber";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
@@ -20,8 +20,8 @@
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
-        <a href="/Subscribers" title="Aboneler Sayfasına Geri Dön" class="tip-bottom"> Aboneler</a>
-        <a href="#" class="current">Abone Ekle</a>
+        <a href="/Subscribers" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
+        <a href="#" class="current">Personel Düzenle</a>
     </div>
 </div>
 
@@ -35,47 +35,51 @@
                     <h5>Personel Düzenle</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="#" method="get" class="form-horizontal">
+                    <form action="/Dashboard/UpdateSubscriber" method="post" class="form-horizontal" role="form">
+                        @Html.Hidden("PersonelID", Model.Personel.PersonelID)
+                        @Html.Hidden("UyeID", Model.Uye.UyeID)
+                        @Html.Hidden("Durum", Model.Personel.Durum)
+                        @Html.Hidden("YetkiID", Model.Personel.YetkiID)
                         <div class="control-group">
                             <label class="control-label">İsim :</label>
                             <div class="controls">
-                                <input value="Ad" type="text" class="span4" placeholder="İsim Giriniz..." />
+                                <input value="@Model.Personel.Ad" name="Ad" type="text" class="span4" placeholder="İsim Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Soyadı :</label>
                             <div class="controls">
-                                <input value="Soyad" type="text" class="span4" placeholder="Soyadı Giriniz..." />
+                                <input value="@Model.Personel.Soyad" name="Soyad" type="text" class="span4" placeholder="Soyadı Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">TC Kimlik :</label>
                             <div class="controls">
-                                <input value="TCNo" type="text" class="span4" placeholder="TC Kimlik Giriniz..." />
+                                <input value="@Model.Personel.TCNo" name="TCNo" type="text" class="span4" placeholder="TC Kimlik Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Telefon :</label>
                             <div class="controls">
-                                <input value="Telefon" type="text" class="span4" placeholder="Telefon Numarası Giriniz..." />
+                                <input value="@Model.Personel.Telefon" name="Telefon" type="text" class="span4" placeholder="Telefon Numarası Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">E-Posta :</label>
                             <div class="controls">
-                                <input type="email" class="span4" placeholder="E-Posta Adresi Giriniz..." />
+                                <input type="email" value="@Model.Uye.Eposta" name="Eposta" class="span4" placeholder="E-Posta Adresi Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Kullanıcı Adı :</label>
                             <div class="controls">
-                                <input value="KullaniciAdi" type="text" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
+                                <input value="@Model.Uye.KullaniciAdi" type="text" name="KullaniciAdi" class="span4" placeholder="Kullanıcı Adı Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Adres :</label>
                             <div class="controls">
-                                <textarea class="span10"></textarea>
+                                <textarea name="Adres" class="span10">@Model.Personel.Adres</textarea>
                             </div>
                         </div>
                         <div class="form-actions">

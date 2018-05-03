@@ -15,9 +15,9 @@ namespace CARPARK.DTO.EntitisDTO
         public string Fotograf { get; set; }
         public string Adres { get; set; }
         public string Telefon { get; set; }
-        public int UyeID { get; set; }
+        public int ?UyeID { get; set; }
         public int YetkiID { get; set; }
-        public bool Durum { get; set; }
+        public bool ?Durum { get; set; }
 
     }
 }
