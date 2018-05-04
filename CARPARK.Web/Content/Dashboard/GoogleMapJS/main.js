@@ -10,9 +10,9 @@ var marker;
 
 function initialize(){
 //MAP
-    var latlng = new google.maps.LatLng(38.234509, 27.971330999999964);
+    var latlng = new google.maps.LatLng(41.0055005, 28.7319856);
   var options = {
-      zoom: 13,
+      zoom: 9,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.Marker,
       streetViewControl: false

@@ -159,10 +159,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\CustomErrorAttribute.cs" />
-    <Compile Include="Controllers\AboneController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +177,7 @@
     <Content Include="Content\Dashboard\css\datepicker.css" />
     <Content Include="Content\Dashboard\css\font-awesome.css" />
     <Content Include="Content\Dashboard\css\fullcalendar.css" />
+    <Content Include="Content\Dashboard\css\jquery-ui.min.css" />
     <Content Include="Content\Dashboard\css\jquery.easy-pie-chart.css" />
     <Content Include="Content\Dashboard\css\jquery.gritter.css" />
     <Content Include="Content\Dashboard\css\matrix-login.css" />
@@ -393,15 +395,14 @@
     <Content Include="Views\Home\OurService.cshtml" />
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\Subscribers.cshtml" />
-    <Content Include="Views\Dashboard\AddSubscriber.cshtml" />
-    <Content Include="Views\Dashboard\UpdateSubscriber.cshtml" />
-    <Content Include="Views\Dashboard\DetailSubscriber.cshtml" />
+    <Content Include="Views\Staff\StaffList.cshtml" />
+    <Content Include="Views\Staff\StaffAdd.cshtml" />
+    <Content Include="Views\Staff\StaffDetail.cshtml" />
+    <Content Include="Views\Staff\StaffUpdate.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Subscriber\SubscriberList.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Abone\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

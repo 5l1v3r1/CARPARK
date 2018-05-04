@@ -10,7 +10,6 @@ namespace CARPARK.DTO.EntitisModelViewDTO
     public class PersonelViewModel
     {
         public PersonelDTO Personel { get; set; }
-        public List<PersonelUyeDTO> PersonelListesi { get; set; }
         public UyeDTO Uye { get; set; }
 
     }

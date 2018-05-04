@@ -11,32 +11,27 @@ using System.Threading.Tasks;
 
 namespace CARPARK.Service.Services
 {
-    public class PersonelService : IPersonelService
+    public class StaffService : IStaffService
     {
 
         private readonly IRepository<Personel> _personelRepo;
-        private readonly IRepository<Uye> _uyeRepo;
         private readonly IUnitofWork _uow;
         private PersonelDTO _personelDTO;
-        private UyeDTO _uyeDTO;
-        public PersonelService(UnitofWork uow)
+        public StaffService(UnitofWork uow)
         {
             _uow = uow;
             _personelRepo = _uow.GetRepository<Personel>();
-            _uyeRepo = _uow.GetRepository<Uye>();
             _personelDTO = new PersonelDTO();
-            _uyeDTO = new UyeDTO();
         }
 
-        public List<PersonelUyeDTO> GetAllPersonel()
+        public List<PersonelDTO> GetAllStaff()
         {
             try
             {
                 var personelListe = (from u in _personelRepo.GetAll()
-                                     join uye in _uyeRepo.GetAll() on u.UyeID equals uye.UyeID
                                      where u.Durum == true
                                      orderby u.PersonelID descending
-                                     select new PersonelUyeDTO
+                                     select new PersonelDTO
                                      {
                                          PersonelID = u.PersonelID,
                                          Ad = u.Ad,
@@ -47,20 +42,17 @@ namespace CARPARK.Service.Services
                                          Durum = u.Durum,
                                          Fotograf = u.Fotograf,
                                          UyeID = u.UyeID,
-                                         YetkiID = u.YetkiID,
-                                         Eposta = uye.Eposta,
-                                         KullaniciAdi = uye.KullaniciAdi,
-                                         Parola = uye.Parola
+                                         YetkiID = u.YetkiID
                                      }).ToList();
                 return personelListe;
             }
             catch (Exception)
             {
-                return new List<PersonelUyeDTO>();
+                return new List<PersonelDTO>();
             }
         }
 
-        public PersonelDTO Personel(int id)
+        public PersonelDTO Staff(int id)
         {
             try
             {
@@ -88,18 +80,15 @@ namespace CARPARK.Service.Services
 
         }
 
-        public void Insert(PersonelUyeDTO personel)
+        public void Insert(PersonelDTO personel, int uyeID)
         {
             // install - package automapper - version:4.1
             try
             {
-                var uye = AutoMapper.Mapper.DynamicMap<Uye>(personel);
-                _uyeRepo.Insert(uye);
-                _uow.SaveChanges();
                 var entity = AutoMapper.Mapper.DynamicMap<Personel>(personel);
                 entity.Durum = true;
                 entity.YetkiID = 2;
-                entity.UyeID = uye.UyeID;
+                entity.UyeID = uyeID;
                 _personelRepo.Insert(entity);
                 _uow.SaveChanges();
             }
@@ -109,17 +98,13 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public void Update(PersonelUyeDTO personel)
+        public void Update(PersonelDTO personel)
         {
             try
             {
                 var perEntity = _personelRepo.Find(personel.PersonelID);
                 AutoMapper.Mapper.DynamicMap(personel, perEntity);
                 _personelRepo.Update(perEntity);
-                var uyeEntity = _uyeRepo.Find(Convert.ToInt32(personel.UyeID));
-                uyeEntity.KullaniciAdi = personel.KullaniciAdi;
-                uyeEntity.Eposta = personel.Eposta;
-                _uyeRepo.Update(uyeEntity);
                 _uow.SaveChanges();
             }
             catch (Exception ex)

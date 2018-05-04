@@ -11,20 +11,51 @@ using System.Threading.Tasks;
 
 namespace CARPARK.Service.Services
 {
-    public class UyeService : IUyeService
+    public class UserService : IUserService
     {
 
         private readonly IRepository<Uye> _uyeRepo;
         private readonly IUnitofWork _uow;
         private UyeDTO _uyeDTO;
 
-        public UyeService(UnitofWork uow)
+        public UserService(UnitofWork uow)
         {
             _uow = uow;
             _uyeRepo = _uow.GetRepository<Uye>();
             _uyeDTO = new UyeDTO();
         }
-        public UyeDTO Uye(int id)
+
+        public int Insert(UyeDTO uye)
+        {
+            try
+            {
+                var liste = AutoMapper.Mapper.DynamicMap<Uye>(uye);
+                _uyeRepo.Insert(liste);
+                _uow.SaveChanges();
+                return liste.UyeID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+        }
+
+        public void Update(UyeDTO uye)
+        {
+            try
+            {
+                var uyeEntity = _uyeRepo.Find(Convert.ToInt32(uye.UyeID));
+                _uyeRepo.Update(uyeEntity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public UyeDTO User(int id)
         {
             try
             {

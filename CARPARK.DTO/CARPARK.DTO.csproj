@@ -45,7 +45,6 @@
     <Compile Include="EntitisDTO\LoginDTO.cs" />
     <Compile Include="EntitisDTO\PersonelDTO.cs" />
     <Compile Include="EntitisDTO\KullaniciYetkiDTO.cs" />
-    <Compile Include="EntitisDTO\PersonelUyeDTO.cs" />
     <Compile Include="EntitisDTO\UyeDTO.cs" />
     <Compile Include="EntitisModelViewDTO\PersonelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

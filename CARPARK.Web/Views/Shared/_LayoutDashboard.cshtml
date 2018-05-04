@@ -17,7 +17,7 @@
     <link href="~/Content/Dashboard/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/Dashboard/css/jquery.gritter.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-
+    @RenderSection("head", false)
 </head>
 <body>
     <!--Header-part-->
@@ -65,8 +65,8 @@
         <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
         <ul>
             <li class="active"><a href="/Dashboard"><i class="icon icon-home"></i> <span>Anasayfa</span></a> </li>
-            <li> <a href="/Subscribers"><i class="icon icon-user"></i> <span>Personeller</span></a> </li>
-            <li> <a href="widgets.html"><i class="icon icon-truck"></i> <span>Aboneler</span></a> </li>
+            <li> <a href="/StaffList"><i class="icon icon-user"></i> <span>Personeller</span></a> </li>
+            <li> <a href="/SubscriberList"><i class="icon icon-truck"></i> <span>Aboneler</span></a> </li>
             <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
             <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
             <li class="submenu">

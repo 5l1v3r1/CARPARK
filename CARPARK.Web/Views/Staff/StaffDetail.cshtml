@@ -1,9 +1,9 @@
 ﻿@model CARPARK.DTO.EntitisModelViewDTO.PersonelViewModel
-
 @{
-    ViewBag.Title = "DetailSubscriber";
+    ViewBag.Title = "StaffDetail";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
+
 <style>
     #sub {
         margin-bottom: 0;
@@ -12,7 +12,7 @@
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
-        <a href="/Subscribers" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
+        <a href="/StaffList" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
         <a href="#" class="current">Personel Detay</a>
     </div>
 </div>
@@ -64,7 +64,7 @@
                                             <td class="col-md-3">Adres</td>
                                             <td class="col-md-9">@Model.Personel.Adres</td>
                                         </tr>
-                                      
+
                                     </tbody>
                                 </table>
                             </div>
@@ -79,7 +79,7 @@
                                             <td class="col-md-3">E-posta:</td>
                                             <td class="col-md-9">@Model.Uye.Eposta</td>
                                         </tr>
-                                
+
                                     </tbody>
                                 </table>
                             </div>

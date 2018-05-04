@@ -26,8 +26,9 @@ namespace CARPARK.IOC
             //Bu kýsýmda oluþturulan Sýnýf,Service tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her sýnýf ve service tanýmlamasý yapýlmak zorundadýr.
             container.BindInRequestScope<IUnitofWork, UnitofWork>();
             container.BindInRequestScope<ILoginService, LoginService>();
-            container.BindInRequestScope<IPersonelService, PersonelService>();
-            container.BindInRequestScope<IUyeService, UyeService>();
+            container.BindInRequestScope<IStaffService, StaffService>();
+            container.BindInRequestScope<IUserService, UserService>();
+            container.BindInRequestScope<ISubscriberService, SubscriberService>();
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
             container.BindInRequestScope<IRepository<Personel>, Repository<Personel>>();
         }

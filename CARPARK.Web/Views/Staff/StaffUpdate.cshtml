@@ -1,8 +1,9 @@
 ﻿@model CARPARK.DTO.EntitisModelViewDTO.PersonelViewModel
 @{
-    ViewBag.Title = "UpdateSubscriber";
+    ViewBag.Title = "StaffUpdate";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
+
 <style>
     .container-fluid .row-fluid:first-child {
         margin-top: 0;
@@ -17,10 +18,20 @@
 <link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-wysihtml5.css" />
+<link href="~/Content/Dashboard/css/jquery-ui.min.css" rel="stylesheet" /><!--GoogleMap input tasarım için-->
+
+<script>
+    function terminate() {//Modalda bulunan googlemap adres bilgisini sayfaya ekler.
+        var vReturnValue = new Object();
+        vReturnValue.firstname = document.getElementById("address").value;
+        window.returnValue = vReturnValue;
+        document.getElementById("formAdres").value = vReturnValue.firstname;
+    }
+</script>
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
-        <a href="/Subscribers" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
+        <a href="/StaffList" title="Personel Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Personeller</a>
         <a href="#" class="current">Personel Düzenle</a>
     </div>
 </div>
@@ -35,7 +46,7 @@
                     <h5>Personel Düzenle</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="/Dashboard/UpdateSubscriber" method="post" class="form-horizontal" role="form">
+                    <form action="/Staff/StaffUpdate" method="post" class="form-horizontal" role="form">
                         @Html.Hidden("PersonelID", Model.Personel.PersonelID)
                         @Html.Hidden("UyeID", Model.Uye.UyeID)
                         @Html.Hidden("Durum", Model.Personel.Durum)
@@ -77,10 +88,31 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Adres :</label>
+                            <label class="control-label"><br />Adres :</label>
                             <div class="controls">
-                                <textarea name="Adres" class="span10">@Model.Personel.Adres</textarea>
+                                <div class="buttons">
+                                    <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i> Google Map</a>
+                                    <div class="modal hide" id="modal-add-event">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                            <h3>Google Map</h3>
+                                        </div>
+                                        <div class="modal-body" style="padding:0;">
+                                            <div class="google-map-container">
+                                                <input id="address" type="text" class="form-control span12" />
+                                                <br />
+                                                <div id="map_canvas" style="height:300px; border:1px solid lightgrey;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" class="btn" data-dismiss="modal">İptal</a>
+                                            <a href="#" data-dismiss="modal" id="add-event-submit" onclick="terminate()" class="btn btn-primary">Adres Ekle</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="Adres" id="formAdres" value="@Model.Personel.Adres" class="span11" placeholder="Adres bilgisini yazınız. Google Map ile daha kolayca adres bilgisini girebilirsiniz." />
                             </div>
+
                         </div>
                         <div class="form-actions">
                             <div class="control-group">
@@ -95,5 +127,7 @@
     </div>
 
 </div>
-<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/GoogleMapJS/jquery-1.4.2.min.js"></script>
 <script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyCmkj-xLsbn3SoTiHGe9oQaDLz04tjZvGw"></script>
+<script src="~/Content/Dashboard/GoogleMapJS/main.js"></script>

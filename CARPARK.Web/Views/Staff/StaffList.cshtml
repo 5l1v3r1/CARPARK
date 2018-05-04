@@ -1,9 +1,9 @@
-﻿@model List<CARPARK.DTO.EntitisDTO.PersonelUyeDTO>
-
+﻿@model List<CARPARK.DTO.EntitisDTO.PersonelDTO>
 @{
-    ViewBag.Title = "Subscribers";
+    ViewBag.Title = "StaffList";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
+
 <link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
@@ -39,7 +39,7 @@
                         <span class="icon"><i class="icon-th"></i></span>
                         <h5>Personel Tablosu</h5>
                     </div>
-                    <a href="/AddSubscriber" class="pull-right" id="perEkle">
+                    <a href="/StaffAdd" class="pull-right" id="perEkle">
                         <span class="icon"><i class="icon-plus"></i></span>
                         <h5>Personel Ekle</h5>
                     </a>
@@ -61,9 +61,9 @@
                                     <td style="text-align:center;">@per.Ad @per.Soyad</td>
                                     <td style="text-align:center;">@per.Telefon</td>
                                     <td style="text-align:center;">@per.Adres</td>
-                                    <td>
-                                        <a href="DetailSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
-                                        <a href="UpdateSubscriber/@per.PersonelID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <td style="text-align:center;">
+                                        <a href="StaffDetail/@per.PersonelID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                        <a href="StaffUpdate/@per.PersonelID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
                                         <a href="#" class="tip-top btn-large prsSil" data-perid="@per.PersonelID" data-original-title="Sil"><i class="icon-remove"></i></a>
                                     </td>
                                 </tr>
@@ -81,18 +81,18 @@
 <script src="~/Content/Dashboard/js/matrix.tables.js"></script>
 <script src="~/Content/Toastr/Utility.js"></script>
 <script src="~/Content/Toastr/toastr.js"></script>
-@section scripts{
-    <script>
+
+<script>
         $(".prsSil").click(function () {
             var sonuc = confirm("Kayıt Silinsin mi?")
             if (sonuc) {
                 var perId = $(this).data("perid");
                 $.ajax({
                     type: "POST",
-                    url: "/Dashboard/DeleteSubscriber/" + perId,
+                    url: "/Staff/StaffDelete/" + perId,
                     success: function () {
                         ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
-                        window.location.replace("/Subscribers");
+                        window.location.replace("/StaffList");
                     },
                     error: function () {
                         ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
@@ -103,5 +103,4 @@
                 ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
             }
         });
-    </script>
-}
+</script>

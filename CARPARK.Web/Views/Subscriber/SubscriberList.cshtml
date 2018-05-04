@@ -1,0 +1,107 @@
+﻿@model List<CARPARK.DTO.EntitisDTO.AboneDTO>
+@{
+    ViewBag.Title = "SubscriberList";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+<style>
+    #perEkle:hover {
+        color: darkblue;
+    }
+
+    #perEkle h5:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Aboneler</a> </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Abone Tablosu</h5>
+                    </div>
+                    <a href="/SubscriberAdd" class="pull-right" id="perEkle">
+                        <span class="icon"><i class="icon-plus"></i></span>
+                        <h5>Abone Ekle</h5>
+                    </a>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>Telefon</th>
+                                <th>TC Kimlik</th>
+                                <th>Telefon</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var per in Model)
+                            {
+                            <tr class="gradeX">
+                                <td style="text-align:center;">@per.Adi @per.Soyad</td>
+                                <td style="text-align:center;">@per.CepTel</td>
+                                <td style="text-align:center;">@per.TCNO</td>
+                                <td style="text-align:center;">@per.CepTel</td>
+                                <td style="text-align:center;">
+                                    <a href="SubscriberDetail/@per.AboneID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                    <a href="SubscriberUpdate/@per.AboneID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="tip-top btn-large prsSil" data-perid="@per.AboneID" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+
+<script>
+    $(".prsSil").click(function () {
+        var sonuc = confirm("Kayıt Silinsin mi?")
+        if (sonuc) {
+            var perId = $(this).data("perid");
+            $.ajax({
+                type: "POST",
+                url: "/Subscriber/SubscriberDelete/" + perId,
+                success: function () {
+                    ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
+                    window.location.replace("/Staff");
+                },
+                error: function () {
+                    ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
+                }
+            });
+        }
+        else {
+            ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
+        }
+    });
+</script>
