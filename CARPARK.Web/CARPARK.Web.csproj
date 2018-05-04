@@ -401,6 +401,7 @@
     <Content Include="Views\Staff\StaffUpdate.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Subscriber\SubscriberList.cshtml" />
+    <Content Include="Views\Subscriber\SubscriberAdd.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

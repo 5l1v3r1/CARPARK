@@ -40,6 +40,8 @@ namespace CARPARK.Web.Controllers
         [HttpPost]
         public ActionResult StaffAdd(PersonelDTO personel, UyeDTO uye)
         {
+            uye.KullaniciAdi = (personel.Ad + personel.Soyad).Trim().Replace(" ", string.Empty).ToLower();
+            uye.Parola = personel.TCNo;
             int id = _uyeService.Insert(uye);
             _personelService.Insert(personel, id);
             return RedirectToAction("StaffList", "Staff");

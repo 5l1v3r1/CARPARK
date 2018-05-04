@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\Visual Studio 2017\Projects\OtoparkTakipSistemi\OtoparkTakipSistemi\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +45,13 @@
   <ItemGroup>
     <Compile Include="EntitisDTO\AboneDTO.cs" />
     <Compile Include="EntitisDTO\AracDTO.cs" />
+    <Compile Include="EntitisDTO\AracMarkaDTO.cs" />
+    <Compile Include="EntitisDTO\AracModelDTO.cs" />
     <Compile Include="EntitisDTO\LoginDTO.cs" />
     <Compile Include="EntitisDTO\PersonelDTO.cs" />
     <Compile Include="EntitisDTO\KullaniciYetkiDTO.cs" />
     <Compile Include="EntitisDTO\UyeDTO.cs" />
+    <Compile Include="EntitisModelViewDTO\AracViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\PersonelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
