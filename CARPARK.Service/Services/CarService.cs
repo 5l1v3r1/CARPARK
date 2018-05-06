@@ -31,6 +31,27 @@ namespace CARPARK.Service.Services
             _modelDTO = new AracModelDTO();
         }
 
+        public AracDTO Car(int id)
+        {
+            try
+            {
+                var aracEntity = (from a in _aracRepo.GetAll()
+                                  where a.AracID == id
+                                  select new AracDTO
+                                  {
+                                      AracID = a.AracID,
+                                      Plaka = a.Plaka,
+                                      MarkaID = a.MarkaID,
+                                      ModelID = a.ModelID
+                                  }).SingleOrDefault();
+                return aracEntity;
+            }
+            catch (Exception)
+            {
+                return new AracDTO();
+            }
+        }
+
         public List<AracMarkaDTO> GetAllBrand()
         {
             try
@@ -67,6 +88,60 @@ namespace CARPARK.Service.Services
             catch (Exception)
             {
                 return new List<AracModelDTO>();
+            }
+        }
+
+        public int Insert(AracDTO arac)
+        {
+            try
+            {
+                var liste = AutoMapper.Mapper.DynamicMap<Arac>(arac);
+                _aracRepo.Insert(liste);
+                _uow.SaveChanges();
+                return liste.AracID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public AracModelDTO Model(int modelID)
+        {
+            try
+            {
+                var model = (from md in _modelRepo.GetAll()
+                             where md.ModelID == modelID
+                             select new AracModelDTO
+                             {
+                                 ModelID = md.ModelID,
+                                 Model = md.Model,
+                                 MarkaID = md.MarkaID
+                             }).SingleOrDefault();
+                return model;
+            }
+            catch (Exception)
+            {
+                return new AracModelDTO();
+            }
+        }
+
+        public AracMarkaDTO Brand(int markaID)
+        {
+            try
+            {
+                var marka = (from mk in _markaRepo.GetAll()
+                             where mk.MarkaID == markaID
+                             select new AracMarkaDTO
+                             {
+                                 MarkaID = mk.MarkaID,
+                                 Marka = mk.Marka
+                             }).SingleOrDefault();
+                return marka;
+            }
+            catch (Exception)
+            {
+                return new AracMarkaDTO();
             }
         }
     }

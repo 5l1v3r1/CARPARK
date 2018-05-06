@@ -22,7 +22,6 @@
     <Property Name="OdemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Tutar" Type="money" />
     <Property Name="OdemeTarihi" Type="datetime" />
-    <Property Name="OdemeDurum" Type="nvarchar" MaxLength="50" />
     <Property Name="AboneID" Type="int" />
   </EntityType>
   <EntityType Name="Arac">

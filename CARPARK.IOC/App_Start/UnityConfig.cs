@@ -32,6 +32,8 @@ namespace CARPARK.IOC
             container.BindInRequestScope<ISubscriberService, SubscriberService>();
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
             container.BindInRequestScope<IRepository<Personel>, Repository<Personel>>();
+            container.BindInRequestScope<IRepository<Abone>, Repository<Abone>>();
+            container.BindInRequestScope<IRepository<Arac>, Repository<Arac>>();
         }
         public static void BindInRequestScope<T1, T2>(this IUnityContainer container) where T2 : T1
         {

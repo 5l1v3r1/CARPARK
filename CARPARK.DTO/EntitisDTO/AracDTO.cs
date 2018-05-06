@@ -10,7 +10,7 @@ namespace CARPARK.DTO.EntitisDTO
     {
         public int AracID { get; set; }
         public string Plaka { get; set; }
-        public int MarkaID { get; set; }
-        public int ModelID { get; set; }
+        public int ?MarkaID { get; set; }
+        public int ?ModelID { get; set; }
     }
 }

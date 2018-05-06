@@ -1,8 +1,10 @@
-﻿@model CARPARK.DTO.EntitisModelViewDTO.AracViewModel
+﻿@model CARPARK.DTO.EntitisModelViewDTO.AboneViewModel
+
 @{
-    ViewBag.Title = "SubscriberAdd";
+    ViewBag.Title = "SubscriberUpdate";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
+
 
 <style>
     .container-fluid .row-fluid:first-child {
@@ -23,7 +25,7 @@
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
         <a href="/SubscriberList" title="Abone Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Aboneler</a>
-        <a href="#" class="current">Abone Ekle</a>
+        <a href="#" class="current">Abone Düzenle</a>
     </div>
 </div>
 
@@ -34,54 +36,62 @@
             <div class="widget-box">
                 <div class="widget-title">
                     <span class="icon"> <i class="icon-align-justify"></i> </span>
-                    <h5>Abone Ekle</h5>
+                    <h5>Abone Düzenle</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="/Subscriber/SubscriberAdd" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                    <form action="/Subscriber/SubscriberUpdate" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                         <div class="control-group">
                             <label class="control-label">İsim :</label>
                             <div class="controls">
-                                <input type="text" name="Adi" class="span4" placeholder="İsim Giriniz..." />
+                                <input type="text" value="@Model.Abone.Adi" name="Adi" class="span4" placeholder="İsim Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Soyisim :</label>
                             <div class="controls">
-                                <input type="text" name="Soyad" class="span4" placeholder="Soyisim Giriniz..." />
+                                <input type="text" value="@Model.Abone.Soyad" name="Soyad" class="span4" placeholder="Soyisim Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">TC Kimlik :</label>
                             <div class="controls">
-                                <input type="text" name="TCNo" class="span4" placeholder="TC Kimlik Giriniz..." />
+                                <input type="text" value="@Model.Abone.TCNO" name="TCNo" class="span4" placeholder="TC Kimlik Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Telefon :</label>
                             <div class="controls">
-                                <input type="text" name="CepTel" class="span4" placeholder="Telefon Numarası Giriniz..." />
+                                <input type="text" value="@Model.Abone.CepTel" name="CepTel" class="span4" placeholder="Telefon Numarası Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">E-Posta :</label>
                             <div class="controls">
-                                <input type="email" name="Eposta" class="span4" placeholder="E-Posta Adresi Giriniz..." />
+                                <input type="email" value="@Model.Uye.Eposta" name="Eposta" class="span4" placeholder="E-Posta Adresi Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Plaka :</label>
                             <div class="controls">
-                                <input type="text" name="Plaka" class="span4" placeholder="Plaka Giriniz..." />
+                                <input type="text" value="@Model.Arac.Plaka" name="Plaka" class="span4" placeholder="Plaka Giriniz..." />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Araç Marka :</label>
                             <div class="controls">
                                 <select class="span4" name="MarkaID" id="MarkaID">
-                                    @foreach (var item in Model.MarkaListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    @foreach (var item in Model.AracModel.MarkaListesi)
+                                    {
+                                        if (item.Text == Model.Marka.Marka)
+                                        {
+                                            <option selected="selected" value="@item.Value">@item.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>
@@ -89,10 +99,11 @@
                             <label class="control-label">Araç Model :</label>
                             <div class="controls">
                                 <select class="span4" name="ModelID" id="ModelID">
-                                    @foreach (var item in Model.ModelListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    @*<option selected="selected" value="@Model.Model.ModelID">@Model.Model.Model</option>*@
+                                    @foreach (var item in Model.AracModel.ModelListesi)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>

@@ -26,7 +26,9 @@ namespace CARPARK.Service.Interfaces
         /// Abone ekleme işlemi yapar.
         /// </summary>
         /// <param name="abone"></param>
-        void Insert(AboneDTO abone);
+        /// <param name="uyeID"></param>
+        /// <param name="aracID"></param>
+        void Insert(AboneDTO abone,int uyeID, int aracID);
 
         /// <summary>
         /// Abone bilgilerini günceller.
@@ -39,5 +41,17 @@ namespace CARPARK.Service.Interfaces
         /// </summary>
         /// <param name="abnID"></param>
         void Delete(int abnID);
+
+        /// <summary>
+        /// Tum abone ödemelerini liste olarak döndürür.
+        /// </summary>
+        /// <returns></returns>
+        List<AboneOdemeDTO> GetAllSubscriberPayment();
+
+        /// <summary>
+        /// Abone ödeme kayıtları ekler.
+        /// </summary>
+        /// <param name="odeme"></param>
+        void SubscriberPaymentInsert(AboneOdemeDTO odeme);
     }
 }

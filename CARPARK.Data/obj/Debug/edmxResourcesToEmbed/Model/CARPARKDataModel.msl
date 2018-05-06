@@ -23,7 +23,6 @@
           <ScalarProperty Name="OdemeID" ColumnName="OdemeID" />
           <ScalarProperty Name="Tutar" ColumnName="Tutar" />
           <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
-          <ScalarProperty Name="OdemeDurum" ColumnName="OdemeDurum" />
           <ScalarProperty Name="AboneID" ColumnName="AboneID" />
         </MappingFragment>
       </EntityTypeMapping>

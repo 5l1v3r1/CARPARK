@@ -63,9 +63,10 @@
                                 <td style="text-align:center;">@per.TCNO</td>
                                 <td style="text-align:center;">@per.CepTel</td>
                                 <td style="text-align:center;">
+                                    <a href="SubscriberPaymentList/@per.AboneID" class="tip-top btn-large" data-original-title="Abone Ödeme "><i class="icon-money"></i></a>
                                     <a href="SubscriberDetail/@per.AboneID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
                                     <a href="SubscriberUpdate/@per.AboneID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
-                                    <a href="#" class="tip-top btn-large prsSil" data-perid="@per.AboneID" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                    <a href="#" class="tip-top btn-large abnSil" data-abnid="@per.AboneID" data-original-title="Sil"><i class="icon-remove"></i></a>
                                 </td>
                             </tr>
                             }
@@ -84,24 +85,24 @@
 <script src="~/Content/Toastr/toastr.js"></script>
 
 <script>
-    $(".prsSil").click(function () {
+    $(".abnSil").click(function () {
         var sonuc = confirm("Kayıt Silinsin mi?")
         if (sonuc) {
-            var perId = $(this).data("perid");
+            var perId = $(this).data("abnid");
             $.ajax({
                 type: "POST",
                 url: "/Subscriber/SubscriberDelete/" + perId,
                 success: function () {
-                    ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
-                    window.location.replace("/Staff");
+                    ShowMessage("success", "Abone Kayıt Silme", "Kayıt Silindi");
+                    window.location.replace("/SubscriberList");
                 },
                 error: function () {
-                    ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
+                    ShowMessage("error", "Abone Kayıt Silme", "Kayıt Silmede Hata Olustu");
                 }
             });
         }
         else {
-            ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
+            ShowMessage("warning", "Abone Kayıt Silme", "Abone Kayıt Silme İşlemi İptal Edildi.");
         }
     });
 </script>

@@ -35,8 +35,7 @@ namespace CARPARK.Web.Controllers
             return View(liste);
         }
 
-        [Route("SubscriberAdd")]
-        public ActionResult SubscriberAdd()
+        public AracViewModel AracModel()
         {
             AracViewModel aracModel = new AracViewModel();
             List<AracMarkaDTO> markalar = _aracService.GetAllBrand();
@@ -48,7 +47,13 @@ namespace CARPARK.Web.Controllers
                                       }).ToList();
 
             aracModel.MarkaListesi.Insert(0, new SelectListItem { Text = "Marka Seçiniz", Value = "", Selected = true });
-            return View(aracModel);
+            return aracModel;
+        }
+
+        [Route("SubscriberAdd")]
+        public ActionResult SubscriberAdd()
+        {
+            return View(AracModel());
         }
 
         [HttpPost]
@@ -64,5 +69,69 @@ namespace CARPARK.Web.Controllers
                                              }).ToList();
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult SubscriberAdd(AboneDTO abone, UyeDTO uye, AracDTO arac)
+        {
+            uye.KullaniciAdi = (abone.Adi + abone.Soyad).Trim().Replace(" ", string.Empty).ToLower();
+            uye.Parola = abone.TCNO;
+            int uyeID = _uyeService.Insert(uye);
+            int aracID = _aracService.Insert(arac);
+            _aboneService.Insert(abone, uyeID, aracID);
+            return RedirectToAction("SubscriberList", "Subscriber");
+        }
+
+        public AboneViewModel AboneModel(int id)
+        {
+            AboneViewModel model = new AboneViewModel();
+            model.Abone = _aboneService.Subscriber(id);
+            model.Uye = _uyeService.User(Convert.ToInt32(model.Abone.UyeID));
+            model.Arac = _aracService.Car(Convert.ToInt32(model.Abone.AracID));
+            model.Marka = _aracService.Brand(Convert.ToInt32(model.Arac.MarkaID));
+            model.Model = _aracService.Model(Convert.ToInt32(model.Arac.ModelID));
+            return model;
+        }
+
+        [Route("SubscriberDetail/{id}")]
+        public ActionResult SubscriberDetail(int id)
+        {
+            AboneViewModel model = new AboneViewModel();
+            model = AboneModel(id);
+            return View(model);
+        }
+
+        [Route("SubscriberUpdate/{id}")]
+        public ActionResult SubscriberUpdate(int id)
+        {
+            AboneViewModel model = new AboneViewModel();
+            model = AboneModel(id);
+            model.AracModel = AracModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SubscriberDelete(int id)
+        {
+            _aboneService.Delete(id);
+            return RedirectToAction("SubscriberList", "Subscriber");
+        }
+
+        [Route("SubscriberPaymentList/{id}")]
+        public ActionResult SubscriberPaymentList(int id)
+        {
+            AboneViewModel model = new AboneViewModel();
+            model.Abone = _aboneService.Subscriber(id);
+            model.AboneOdeme = _aboneService.GetAllSubscriberPayment();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SubscriberPaymentAdd(AboneOdemeDTO odeme)
+        {
+            odeme.OdemeTarihi = DateTime.Now;
+            _aboneService.SubscriberPaymentInsert(odeme);
+            return RedirectToAction("SubscriberPaymentList", "Subscriber");
+        }
+
     }
 }

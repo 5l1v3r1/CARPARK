@@ -1,0 +1,107 @@
+﻿@model CARPARK.DTO.EntitisModelViewDTO.AboneViewModel
+@{
+    ViewBag.Title = "SubscriberPaymentList";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+<style>
+    #add-event:hover {
+        color: darkblue;
+    }
+
+    #add-event h5:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/SubscriberList" title="Abone Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Aboneler</a>
+        <a href="#" class="current">Abone Ödeme</a>
+    </div>
+</div>
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-user"></i></span>
+                        <h5>@Model.Abone.Adi @Model.Abone.Soyad</h5>
+                    </div>
+                    <a href="#modal-add-event" id="add-event" class="pull-right" data-toggle="modal">
+                        <span class="icon"><i class="icon-plus"></i></span>
+                        <h5>Ödeme Yap</h5>
+                    </a>
+                    <div class="modal hide" id="modal-add-event">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h3>Abone Ödeme</h3>
+                        </div>
+                        <div class="modal-body ">
+                            <form action="/Subscriber/SubscriberPaymentAdd" name="odeme" class="form-horizontal" method="post" role="form">
+                                <input type="number" class="span12" name="Tutar" placeholder="Ödenecek Tutarı Giriniz..." />
+                                @Html.Hidden("AboneID", Model.Abone.AboneID)
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript: submitForm()" role="button" id="add-event-submit" class="btn btn-success">Ödeme Yap</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>Ödeme ID</th>
+                                <th>Ödeme Tarihi</th>
+                                <th>Ödenen Tutar</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var per in Model.AboneOdeme)
+                            {
+                                <tr class="gradeX">
+                                    <td style="text-align:center;">@per.OdemeID</td>
+                                    <td style="text-align:center;">@per.OdemeTarihi</td>
+                                    <td style="text-align:center;">@per.Tutar</td>
+                                    <td style="text-align:center;">
+                                        <a href="SubscriberPaymentList/@per.AboneID" class="tip-top btn-large" data-original-title="Fatura"><i class="icon-money"></i></a>
+                                        <a href="SubscriberDetail/@per.AboneID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                        <a href="SubscriberUpdate/@per.AboneID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+
+<script type="text/javascript">
+    function submitForm() {
+        document.odeme.submit();
+    }
+</script>

@@ -14,13 +14,17 @@ namespace CARPARK.Service.Services
     public class SubscriberService : ISubscriberService
     {
         private readonly IRepository<Abone> _aboneRepo;
+        private readonly IRepository<AboneOdeme> _odemeRepo;
         private readonly IUnitofWork _uow;
         private AboneDTO _aboneDTO;
+        private AboneOdemeDTO _odemeDTO;
         public SubscriberService(UnitofWork uow)
         {
             _uow = uow;
             _aboneRepo = _uow.GetRepository<Abone>();
             _aboneDTO = new AboneDTO();
+            _odemeRepo = _uow.GetRepository<AboneOdeme>();
+            _odemeDTO = new AboneOdemeDTO();
         }
 
         public void Delete(int abnID)
@@ -66,18 +70,46 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public void Insert(AboneDTO abone)
+        public List<AboneOdemeDTO> GetAllSubscriberPayment()
         {
             try
             {
-                
+                var liste = (from o in _odemeRepo.GetAll()
+                             orderby o.OdemeID descending
+                             select new AboneOdemeDTO
+                             {
+                                 OdemeID = o.OdemeID,
+                                 OdemeTarihi = o.OdemeTarihi,
+                                 Tutar = o.Tutar,
+                                 AboneID = o.AboneID
+                             }).ToList();
+                return liste;
+            }
+            catch (Exception)
+            {
+                return new List<AboneOdemeDTO>();
+            }
+        }
+
+        public void Insert(AboneDTO abone, int uyeID,int aracID)
+        {
+            try
+            {
+                var entity = AutoMapper.Mapper.DynamicMap<Abone>(abone);
+                entity.Durum = true;
+                entity.KayitTarihi = DateTime.Now;
+                entity.YetkiID = 3;
+                entity.UyeID = uyeID;
+                entity.AracID = aracID;
+                _aboneRepo.Insert(entity);
+                _uow.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
+        
         public AboneDTO Subscriber(int id)
         {
             try
@@ -95,13 +127,27 @@ namespace CARPARK.Service.Services
                                  KayitTarihi = a.KayitTarihi,
                                  AracID = a.AracID,
                                  YetkiID = a.YetkiID,
-                                 UyeID=a.UyeID
+                                 UyeID = a.UyeID
                              }).SingleOrDefault();
                 return abone;
             }
             catch (Exception)
             {
                 return new AboneDTO();
+            }
+        }
+
+        public void SubscriberPaymentInsert(AboneOdemeDTO odeme)
+        {
+            try
+            {
+                var entity = AutoMapper.Mapper.DynamicMap<AboneOdeme>(odeme);
+                _odemeRepo.Insert(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

@@ -26,7 +26,6 @@
     <Property Name="OdemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="OdemeTarihi" Type="DateTime" Precision="3" />
-    <Property Name="OdemeDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AboneID" Type="Int32" />
     <NavigationProperty Name="Abone" Relationship="Self.FK_AboneOdeme_Abone" FromRole="AboneOdeme" ToRole="Abone" />
   </EntityType>

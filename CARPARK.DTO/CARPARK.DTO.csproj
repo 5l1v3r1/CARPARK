@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitisDTO\AboneDTO.cs" />
+    <Compile Include="EntitisDTO\AboneOdemeDTO.cs" />
     <Compile Include="EntitisDTO\AracDTO.cs" />
     <Compile Include="EntitisDTO\AracMarkaDTO.cs" />
     <Compile Include="EntitisDTO\AracModelDTO.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="EntitisDTO\PersonelDTO.cs" />
     <Compile Include="EntitisDTO\KullaniciYetkiDTO.cs" />
     <Compile Include="EntitisDTO\UyeDTO.cs" />
+    <Compile Include="EntitisModelViewDTO\AboneViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\AracViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\PersonelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

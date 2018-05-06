@@ -17,7 +17,6 @@ namespace CARPARK.Data.Model
         public int OdemeID { get; set; }
         public Nullable<decimal> Tutar { get; set; }
         public Nullable<System.DateTime> OdemeTarihi { get; set; }
-        public string OdemeDurum { get; set; }
         public Nullable<int> AboneID { get; set; }
     
         public virtual Abone Abone { get; set; }
