@@ -91,7 +91,7 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public void Insert(AboneDTO abone, int uyeID,int aracID)
+        public void Insert(AboneDTO abone, int uyeID, int aracID)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace CARPARK.Service.Services
                 throw new Exception(ex.Message);
             }
         }
-        
+
         public AboneDTO Subscriber(int id)
         {
             try
@@ -148,6 +148,28 @@ namespace CARPARK.Service.Services
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public AboneOdemeDTO SubscriberPayment(int id)
+        {
+            try
+            {
+                var odeme = (from o in _odemeRepo.GetAll()
+                             where o.OdemeID == id
+                             select new AboneOdemeDTO
+                             {
+                                 OdemeID=o.OdemeID,
+                                 OdemeTarihi=o.OdemeTarihi,
+                                 Tutar=o.Tutar,
+                                 AboneID=o.AboneID
+                             }).SingleOrDefault();
+                return odeme;
+                
+            }
+            catch (Exception)
+            {
+                return new AboneOdemeDTO();
             }
         }
 

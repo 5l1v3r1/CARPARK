@@ -69,6 +69,7 @@
           <ScalarProperty Name="HizmetTuru" ColumnName="HizmetTuru" />
           <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
           <ScalarProperty Name="AracID" ColumnName="AracID" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
           <ScalarProperty Name="Durum" ColumnName="Durum" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -79,7 +80,6 @@
           <ScalarProperty Name="ParkID" ColumnName="ParkID" />
           <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
           <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
-          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
           <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -90,7 +90,6 @@
           <ScalarProperty Name="YikamaID" ColumnName="YikamaID" />
           <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
           <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
-          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
           <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -49,6 +49,13 @@ namespace CARPARK.Service.Interfaces
         List<AboneOdemeDTO> GetAllSubscriberPayment();
 
         /// <summary>
+        /// Gelen ID'ye göre ilgili ödeme kaydını döndürür.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        AboneOdemeDTO SubscriberPayment(int id);
+
+        /// <summary>
         /// Abone ödeme kayıtları ekler.
         /// </summary>
         /// <param name="odeme"></param>

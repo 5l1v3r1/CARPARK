@@ -76,6 +76,7 @@
     <Property Name="HizmetTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="AracID" Type="Int32" />
+    <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Durum" Type="Boolean" />
     <NavigationProperty Name="Arac" Relationship="Self.FK_Musteri_Arac" FromRole="Musteri" ToRole="Arac" />
     <NavigationProperty Name="MusteriPark" Relationship="Self.FK_MusteriPark_Musteri" FromRole="Musteri" ToRole="MusteriPark" />
@@ -88,7 +89,6 @@
     <Property Name="ParkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
     <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
-    <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="MusteriID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriPark_Musteri" FromRole="MusteriPark" ToRole="Musteri" />
   </EntityType>
@@ -99,7 +99,6 @@
     <Property Name="YikamaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="YikamaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TeslimSaati" Type="DateTime" Precision="3" />
-    <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="MusteriID" Type="Int32" />
     <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
   </EntityType>

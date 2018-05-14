@@ -3,10 +3,21 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
-
+<link href="~/Content/Dashboard/Buton/DashboardButon.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <div id="content-header">
     <div id="breadcrumb">
-        <a href="/Dashboard"  class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/Dashboard" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
     </div>
 </div>
 
+<div class="container-fluid">
+    <br />
+    <div class="buttonHolder">
+        <a href="/CustomerInsert/@Convert.ToInt32(1)" class="button tick span3 tip-bottom" title="Araç Park"></a>
+        <a href="/CustomerInsert/@Convert.ToInt32(2)" class="button cross span3 tip-bottom" title="Araç Yıkama"></a>
+        <a href="#" class="button heart span3 tip-bottom"></a>
+        <a href="#" class="button flower span3 tip-bottom"></a>
+    </div>
+
+</div>

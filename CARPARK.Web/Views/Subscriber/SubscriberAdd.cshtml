@@ -77,11 +77,11 @@
                         <div class="control-group">
                             <label class="control-label">Araç Marka :</label>
                             <div class="controls">
-                                <select class="span4" name="MarkaID" id="MarkaID">
+                                <select class="span4" name="MarkaID" id="MarkaId">
                                     @foreach (var item in Model.MarkaListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>
@@ -90,9 +90,9 @@
                             <div class="controls">
                                 <select class="span4" name="ModelID" id="ModelID">
                                     @foreach (var item in Model.ModelListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>
@@ -114,7 +114,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#MarkaID").change(function () {
+        $("#MarkaId").change(function () {
             var markaID = $(this).val();
             var modellist = $("#ModelID");
             modellist.empty();

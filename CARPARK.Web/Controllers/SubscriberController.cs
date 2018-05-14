@@ -38,15 +38,7 @@ namespace CARPARK.Web.Controllers
         public AracViewModel AracModel()
         {
             AracViewModel aracModel = new AracViewModel();
-            List<AracMarkaDTO> markalar = _aracService.GetAllBrand();
-            aracModel.MarkaListesi = (from m in markalar
-                                      select new SelectListItem
-                                      {
-                                          Text = m.Marka,
-                                          Value = m.MarkaID.ToString()
-                                      }).ToList();
-
-            aracModel.MarkaListesi.Insert(0, new SelectListItem { Text = "Marka Seçiniz", Value = "", Selected = true });
+            aracModel.MarkaListesi = _aracService.GetAllBrand();
             return aracModel;
         }
 
@@ -59,14 +51,7 @@ namespace CARPARK.Web.Controllers
         [HttpPost]
         public JsonResult AracModelList(int id)
         {
-
-            List<AracModelDTO> modelList = _aracService.GetAllModel();
-            List<SelectListItem> itemList = (from md in modelList
-                                             select new SelectListItem
-                                             {
-                                                 Value = md.ModelID.ToString(),
-                                                 Text = md.Model
-                                             }).ToList();
+            List<SelectListItem> itemList = _aracService.GetAllModel(id);
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
 
@@ -128,9 +113,26 @@ namespace CARPARK.Web.Controllers
         [HttpPost]
         public ActionResult SubscriberPaymentAdd(AboneOdemeDTO odeme)
         {
-            odeme.OdemeTarihi = DateTime.Now;
-            _aboneService.SubscriberPaymentInsert(odeme);
-            return RedirectToAction("SubscriberPaymentList", "Subscriber");
+            if (odeme.Tutar != null)
+            {
+                odeme.OdemeTarihi = DateTime.Now;
+                _aboneService.SubscriberPaymentInsert(odeme);
+                return Json("/SubscriberList", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [Route("SubscriberPaymentInvoice/{id}")]
+        public ActionResult SubscriberPaymentInvoice(int id)
+        {
+            AboneViewModel model = new AboneViewModel();
+            model = AboneModel(id);
+            model.Odeme = _aboneService.SubscriberPayment(id);
+            return View(model);
         }
 
     }

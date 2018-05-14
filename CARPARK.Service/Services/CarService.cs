@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CARPARK.Service.Services
 {
@@ -52,42 +53,42 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public List<AracMarkaDTO> GetAllBrand()
+        public List<SelectListItem> GetAllBrand()
         {
             try
             {
-                var liste = (from b in _markaRepo.GetAll()
-                             orderby b.MarkaID descending
-                             select new AracMarkaDTO
+                var liste = (from m in _markaRepo.GetAll()
+                             select new SelectListItem
                              {
-                                 MarkaID = b.MarkaID,
-                                 Marka = b.Marka
+                                 Text = m.Marka,
+                                 Value = m.MarkaID.ToString()
                              }).ToList();
+                liste.Insert(0, new SelectListItem { Text = "Marka Seçiniz", Value = "", Selected = true });
                 return liste;
             }
             catch (Exception)
             {
-                return new List<AracMarkaDTO>();
+                return new List<SelectListItem>();
             }
         }
 
-        public List<AracModelDTO> GetAllModel()
+        public List<SelectListItem> GetAllModel(int markaID)
         {
             try
             {
-                var liste = (from b in _modelRepo.GetAll()
-                             orderby b.ModelID descending
-                             select new AracModelDTO
+                var liste = (from md in _modelRepo.GetAll()
+                             where md.MarkaID == markaID
+                             orderby md.ModelID descending
+                             select new SelectListItem
                              {
-                                 MarkaID = b.MarkaID,
-                                 ModelID = b.ModelID,
-                                 Model = b.Model
+                                 Value = md.ModelID.ToString(),
+                                 Text = md.Model
                              }).ToList();
                 return liste;
             }
             catch (Exception)
             {
-                return new List<AracModelDTO>();
+                return new List<SelectListItem>();
             }
         }
 

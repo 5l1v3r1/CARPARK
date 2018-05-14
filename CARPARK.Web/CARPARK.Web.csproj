@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\CustomErrorAttribute.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Dashboard\Buton\DashboardButon.css" />
     <Content Include="Content\Dashboard\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Dashboard\css\bootstrap-wysihtml5.css" />
     <Content Include="Content\Dashboard\css\bootstrap.min.css" />
@@ -405,6 +407,12 @@
     <Content Include="Views\Subscriber\SubscriberDetail.cshtml" />
     <Content Include="Views\Subscriber\SubscriberUpdate.cshtml" />
     <Content Include="Views\Subscriber\SubscriberPaymentList.cshtml" />
+    <Content Include="Views\Subscriber\SubscriberPaymentInvoice.cshtml" />
+    <Content Include="Views\Customer\CustomerList.cshtml" />
+    <Content Include="Views\Customer\CustomerDetail.cshtml" />
+    <Content Include="Views\Customer\CustomerInsert.cshtml" />
+    <Content Include="Views\Shared\MusteriParkPartial.cshtml" />
+    <Content Include="Views\Shared\MusteriYikamaPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

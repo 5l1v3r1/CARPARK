@@ -25,6 +25,7 @@ namespace CARPARK.Data.Model
         public string HizmetTuru { get; set; }
         public string Aciklama { get; set; }
         public Nullable<int> AracID { get; set; }
+        public Nullable<decimal> Tutar { get; set; }
         public Nullable<bool> Durum { get; set; }
     
         public virtual Arac Arac { get; set; }

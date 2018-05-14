@@ -68,6 +68,7 @@
           <Property Name="HizmetTuru" Type="nvarchar" MaxLength="50" />
           <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
           <Property Name="AracID" Type="int" />
+          <Property Name="Tutar" Type="money" />
           <Property Name="Durum" Type="bit" />
         </EntityType>
         <EntityType Name="MusteriPark">
@@ -77,7 +78,6 @@
           <Property Name="ParkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GirisTarihi" Type="datetime" />
           <Property Name="CikisTarihi" Type="datetime" />
-          <Property Name="Tutar" Type="money" />
           <Property Name="MusteriID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MusteriYikama">
@@ -87,7 +87,6 @@
           <Property Name="YikamaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="YikamaTuru" Type="nvarchar" MaxLength="50" />
           <Property Name="TeslimSaati" Type="datetime" />
-          <Property Name="Tutar" Type="money" />
           <Property Name="MusteriID" Type="int" />
         </EntityType>
         <EntityType Name="Personel">
@@ -395,6 +394,7 @@
           <Property Name="HizmetTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="AracID" Type="Int32" />
+          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Durum" Type="Boolean" />
           <NavigationProperty Name="Arac" Relationship="Self.FK_Musteri_Arac" FromRole="Musteri" ToRole="Arac" />
           <NavigationProperty Name="MusteriPark" Relationship="Self.FK_MusteriPark_Musteri" FromRole="Musteri" ToRole="MusteriPark" />
@@ -407,7 +407,6 @@
           <Property Name="ParkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
           <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
-          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="MusteriID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriPark_Musteri" FromRole="MusteriPark" ToRole="Musteri" />
         </EntityType>
@@ -418,7 +417,6 @@
           <Property Name="YikamaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="YikamaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TeslimSaati" Type="DateTime" Precision="3" />
-          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="MusteriID" Type="Int32" />
           <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
         </EntityType>
@@ -724,6 +722,7 @@
                 <ScalarProperty Name="HizmetTuru" ColumnName="HizmetTuru" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="AracID" ColumnName="AracID" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -734,7 +733,6 @@
                 <ScalarProperty Name="ParkID" ColumnName="ParkID" />
                 <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
                 <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
-                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
                 <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -745,7 +743,6 @@
                 <ScalarProperty Name="YikamaID" ColumnName="YikamaID" />
                 <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
                 <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
-                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
                 <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
               </MappingFragment>
             </EntityTypeMapping>

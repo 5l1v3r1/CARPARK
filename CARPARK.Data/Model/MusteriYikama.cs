@@ -17,7 +17,6 @@ namespace CARPARK.Data.Model
         public int YikamaID { get; set; }
         public string YikamaTuru { get; set; }
         public Nullable<System.DateTime> TeslimSaati { get; set; }
-        public Nullable<decimal> Tutar { get; set; }
         public Nullable<int> MusteriID { get; set; }
     
         public virtual Musteri Musteri { get; set; }

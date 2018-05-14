@@ -63,6 +63,7 @@
     <Property Name="HizmetTuru" Type="nvarchar" MaxLength="50" />
     <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
     <Property Name="AracID" Type="int" />
+    <Property Name="Tutar" Type="money" />
     <Property Name="Durum" Type="bit" />
   </EntityType>
   <EntityType Name="MusteriPark">
@@ -72,7 +73,6 @@
     <Property Name="ParkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GirisTarihi" Type="datetime" />
     <Property Name="CikisTarihi" Type="datetime" />
-    <Property Name="Tutar" Type="money" />
     <Property Name="MusteriID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MusteriYikama">
@@ -82,7 +82,6 @@
     <Property Name="YikamaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="YikamaTuru" Type="nvarchar" MaxLength="50" />
     <Property Name="TeslimSaati" Type="datetime" />
-    <Property Name="Tutar" Type="money" />
     <Property Name="MusteriID" Type="int" />
   </EntityType>
   <EntityType Name="Personel">

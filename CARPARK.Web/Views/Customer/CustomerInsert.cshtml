@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "CustomerParkInsert";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<style>
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<link rel="stylesheet" href="~/Content/Dashboard/css/colorpicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/datepicker.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/bootstrap-wysihtml5.css" />
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/CustomerPark" class="current">Müşteri Park</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            @{
+                if (Model.CustomerPartial == "Park")
+                {
+                    @Html.Partial("MusteriParkPartial")
+                }
+                else if (Model.CustomerPartial == "Yıkama")
+                {
+                    @Html.Partial("MusteriYikamaPartial")
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+

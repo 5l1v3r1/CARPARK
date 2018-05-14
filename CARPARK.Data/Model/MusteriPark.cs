@@ -17,7 +17,6 @@ namespace CARPARK.Data.Model
         public int ParkID { get; set; }
         public Nullable<System.DateTime> GirisTarihi { get; set; }
         public Nullable<System.DateTime> CikisTarihi { get; set; }
-        public Nullable<decimal> Tutar { get; set; }
         public int MusteriID { get; set; }
     
         public virtual Musteri Musteri { get; set; }

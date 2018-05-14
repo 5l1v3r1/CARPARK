@@ -1,0 +1,99 @@
+﻿@model List<CARPARK.DTO.EntitisDTO.MusteriDTO>
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+<style>
+
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Müşteriler</a> </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Müşteri Tablosu</h5>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>Müşteri ID</th>
+                                <th>Hizmet Türü</th>
+                                <th>Açıklama</th>
+                                <th>Plaka</th>
+                                <th>Marka</th>
+                                <th>Model</th>
+                                <th>Tutar</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td style="text-align:center;">@m.MusteriID</td>
+                                    <td style="text-align:center;">@m.HizmetTuru</td>
+                                    <td style="text-align:center;">@m.Aciklama</td>
+                                    <td style="text-align:center;">@m.Plaka</td>
+                                    <td style="text-align:center;">@m.Marka</td>
+                                    <td style="text-align:center;">@m.Model</td>
+                                    <td style="text-align:center;">@m.Tutar</td>
+                                    <td style="text-align:center;">
+                                        <a href="CustomerDetail/@m.MusteriID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
+                                        <a href="StaffUpdate/@m.MusteriID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>
+                                        <a href="#" class="tip-top btn-large prsSil" data-perid="@m.MusteriID" data-original-title="Sil"><i class="icon-remove"></i></a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+
+<script>
+    $(".prsSil").click(function () {
+        var sonuc = confirm("Kayıt Silinsin mi?")
+        if (sonuc) {
+            var perId = $(this).data("perid");
+            $.ajax({
+                type: "POST",
+                url: "/Staff/StaffDelete/" + perId,
+                success: function () {
+                    ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
+                    window.location.replace("/StaffList");
+                },
+                error: function () {
+                    ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
+                }
+            });
+        }
+        else {
+            ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
+        }
+    });
+</script>

@@ -49,11 +49,15 @@
     <Compile Include="EntitisDTO\AracMarkaDTO.cs" />
     <Compile Include="EntitisDTO\AracModelDTO.cs" />
     <Compile Include="EntitisDTO\LoginDTO.cs" />
+    <Compile Include="EntitisDTO\MusteriDTO.cs" />
+    <Compile Include="EntitisDTO\MusteriYikamaDTO.cs" />
+    <Compile Include="EntitisDTO\MusteriParkDTO.cs" />
     <Compile Include="EntitisDTO\PersonelDTO.cs" />
     <Compile Include="EntitisDTO\KullaniciYetkiDTO.cs" />
     <Compile Include="EntitisDTO\UyeDTO.cs" />
     <Compile Include="EntitisModelViewDTO\AboneViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\AracViewModel.cs" />
+    <Compile Include="EntitisModelViewDTO\MusteriViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\PersonelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

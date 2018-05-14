@@ -23,17 +23,21 @@ namespace CARPARK.IOC
 
         private static void RegisterTypes(UnityContainer container)
         {
-            //Bu kýsýmda oluþturulan Sýnýf,Service tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her sýnýf ve service tanýmlamasý yapýlmak zorundadýr.
+            //Bu kýsýmda oluþturulan Sýnýf,Service tanýmlanarak birden fazla kez nesne üretmenin önüne geçiþmektedir.Burada her sýnýf ve service tanýmlamasý yapýlarak birden fazla nesne üretmenin önüne geçilmektedir.
             container.BindInRequestScope<IUnitofWork, UnitofWork>();
             container.BindInRequestScope<ILoginService, LoginService>();
             container.BindInRequestScope<IStaffService, StaffService>();
             container.BindInRequestScope<IUserService, UserService>();
             container.BindInRequestScope<ICarService, CarService>();
+            container.BindInRequestScope<ICustomerService, CustomerService>();
             container.BindInRequestScope<ISubscriberService, SubscriberService>();
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
             container.BindInRequestScope<IRepository<Personel>, Repository<Personel>>();
             container.BindInRequestScope<IRepository<Abone>, Repository<Abone>>();
             container.BindInRequestScope<IRepository<Arac>, Repository<Arac>>();
+            container.BindInRequestScope<IRepository<Musteri>, Repository<Musteri>>();
+            container.BindInRequestScope<IRepository<MusteriPark>, Repository<MusteriPark>>();
+            container.BindInRequestScope<IRepository<MusteriYikama>, Repository<MusteriYikama>>();
         }
         public static void BindInRequestScope<T1, T2>(this IUnityContainer container) where T2 : T1
         {

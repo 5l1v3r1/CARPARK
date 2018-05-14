@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CARPARK.Service.Interfaces
 {
@@ -13,13 +14,13 @@ namespace CARPARK.Service.Interfaces
         /// Arac marka listesi döndürür.
         /// </summary>
         /// <returns></returns>
-        List<AracMarkaDTO> GetAllBrand();
+        List<SelectListItem> GetAllBrand();
 
         /// <summary>
         /// Arac model listesi döndürür.
         /// </summary>
         /// <returns></returns>
-        List<AracModelDTO> GetAllModel();
+        List<SelectListItem> GetAllModel(int markaID);
 
         /// <summary>
         /// Arac ekleme işlemi yapar.Geriye arac ıd döndürür.
