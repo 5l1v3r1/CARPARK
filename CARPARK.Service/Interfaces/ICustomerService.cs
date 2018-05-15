@@ -21,7 +21,11 @@ namespace CARPARK.Service.Interfaces
         MusteriParkDTO CustomerPark(int musteriID);
 
         MusteriYikamaDTO CustomerWashing(int musteriID);
-        
 
+        bool CustomerInsert(MusteriDTO musteri);
+
+        bool CustomerParkInsert(MusteriParkDTO park);
+
+        bool CustomerWashingInsert(MusteriYikamaDTO yikama);
     }
 }

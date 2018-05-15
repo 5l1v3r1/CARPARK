@@ -70,11 +70,12 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public List<AboneOdemeDTO> GetAllSubscriberPayment()
+        public List<AboneOdemeDTO> GetAllSubscriberPayment(int aboneID)
         {
             try
             {
                 var liste = (from o in _odemeRepo.GetAll()
+                             where o.AboneID == aboneID
                              orderby o.OdemeID descending
                              select new AboneOdemeDTO
                              {

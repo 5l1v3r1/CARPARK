@@ -36,7 +36,7 @@ namespace CARPARK.Service.Services
             _parkDTO = new MusteriParkDTO();
             _yikamaDTO = new MusteriYikamaDTO();
         }
-        
+
         public MusteriDTO Customer(int musteriID)
         {
             try
@@ -64,6 +64,25 @@ namespace CARPARK.Service.Services
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public bool CustomerInsert(MusteriDTO musteri)
+        {
+            try
+            {
+                if (musteri != null)
+                {
+                    var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);
+                    _musteriRepo.Insert(musteriEntity);
+                    _uow.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -117,6 +136,11 @@ namespace CARPARK.Service.Services
             }
         }
 
+        public bool CustomerParkInsert(MusteriParkDTO park)
+        {
+            throw new NotImplementedException();
+        }
+
         public MusteriYikamaDTO CustomerWashing(int musteriID)
         {
             try
@@ -136,6 +160,11 @@ namespace CARPARK.Service.Services
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public bool CustomerWashingInsert(MusteriYikamaDTO yikama)
+        {
+            throw new NotImplementedException();
         }
     }
 }

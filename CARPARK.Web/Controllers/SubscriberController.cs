@@ -1,4 +1,5 @@
 ﻿using CARPARK.COMMON;
+using CARPARK.COMMON.PassOperations;
 using CARPARK.Data.UnitofWork;
 using CARPARK.DTO.EntitisDTO;
 using CARPARK.DTO.EntitisModelViewDTO;
@@ -59,7 +60,7 @@ namespace CARPARK.Web.Controllers
         public ActionResult SubscriberAdd(AboneDTO abone, UyeDTO uye, AracDTO arac)
         {
             uye.KullaniciAdi = (abone.Adi + abone.Soyad).Trim().Replace(" ", string.Empty).ToLower();
-            uye.Parola = abone.TCNO;
+            uye.Parola = PassManager.Base64Encrypt(abone.TCNO);
             int uyeID = _uyeService.Insert(uye);
             int aracID = _aracService.Insert(arac);
             _aboneService.Insert(abone, uyeID, aracID);
@@ -106,7 +107,7 @@ namespace CARPARK.Web.Controllers
         {
             AboneViewModel model = new AboneViewModel();
             model.Abone = _aboneService.Subscriber(id);
-            model.AboneOdeme = _aboneService.GetAllSubscriberPayment();
+            model.AboneOdeme = _aboneService.GetAllSubscriberPayment(id);
             return View(model);
         }
 

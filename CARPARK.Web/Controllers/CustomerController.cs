@@ -77,6 +77,12 @@ namespace CARPARK.Web.Controllers
             List<SelectListItem> itemList = _aracService.GetAllModel(id);
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public ActionResult CustomerParkInsert(MusteriDTO musteri, MusteriParkDTO park)
+        {
+           
+            return View();
+        }
 
     }
 }

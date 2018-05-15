@@ -64,6 +64,10 @@
     <script src="~/Content/Toastr/Utility.js"></script>
     <script src="~/Content/Toastr/toastr.js"></script>
     <script type="text/javascript">
+           $("body").on("keydown", function (e) {
+        if (e.keyCode == 13)
+            LoginControl();
+    })
         function LoginControl() {
             var model = { KullaniciAdi: $("#inputUsername").val(), Parola: $("#inputPassword").val() };
             if (model.KullaniciAdi.trim() != "" && model.Parola.trim()) {

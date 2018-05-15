@@ -67,7 +67,14 @@
             <li class="active"><a href="/Dashboard"><i class="icon icon-home"></i> <span>Anasayfa</span></a> </li>
             <li> <a href="/StaffList"><i class="icon icon-user"></i> <span>Personeller</span></a> </li>
             <li> <a href="/SubscriberList"><i class="icon icon-truck"></i> <span>Aboneler</span></a> </li>
-            <li><a href="/CustomerList"><i class="icon icon-th"></i> <span>Müşteri</span></a></li>
+            <li class="submenu">
+                <a href="#"><i class="icon icon-th"></i> <span>Müşteriler</span></a>
+                <ul>
+                    <li><a href="/CustomerList"><i class="icon icon-th"></i> <span>Müşteri Listesi</span></a>
+                    <li><a href="/CustomerInsert/@Convert.ToInt32(1)"><i class="icon icon-th"></i> <span>Müşteri Park</span></a>
+                    <li><a href="/CustomerInsert/@Convert.ToInt32(2)"><i class="icon icon-th"></i> <span>Müşteri Yikama</span></a>
+                </ul>
+            </li>
             <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>
         </ul>
         <ul style="bottom:0px; position:fixed;">

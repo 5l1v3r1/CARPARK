@@ -1,4 +1,5 @@
 ﻿using CARPARK.COMMON;
+using CARPARK.COMMON.PassOperations;
 using CARPARK.Data.UnitofWork;
 using CARPARK.DTO.EntitisDTO;
 using CARPARK.Service.Interfaces;
@@ -30,9 +31,11 @@ namespace CARPARK.Web.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Login(LoginDTO uye)
         {
+            uye.Parola = PassManager.Base64Encrypt(uye.Parola);
             var result = _loginService.GetUserInformation(uye.KullaniciAdi, uye.Parola);
             if (result != null)
             {

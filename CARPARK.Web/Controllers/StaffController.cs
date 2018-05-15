@@ -1,4 +1,5 @@
 ﻿using CARPARK.COMMON;
+using CARPARK.COMMON.PassOperations;
 using CARPARK.Data.UnitofWork;
 using CARPARK.DTO.EntitisDTO;
 using CARPARK.DTO.EntitisModelViewDTO;
@@ -41,7 +42,7 @@ namespace CARPARK.Web.Controllers
         public ActionResult StaffAdd(PersonelDTO personel, UyeDTO uye)
         {
             uye.KullaniciAdi = (personel.Ad + personel.Soyad).Trim().Replace(" ", string.Empty).ToLower();
-            uye.Parola = personel.TCNo;
+            uye.Parola = PassManager.Base64Encrypt(personel.TCNo);
             int id = _uyeService.Insert(uye);
             _personelService.Insert(personel, id);
             return RedirectToAction("StaffList", "Staff");
