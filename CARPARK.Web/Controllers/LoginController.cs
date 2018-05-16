@@ -35,7 +35,7 @@ namespace CARPARK.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginDTO uye)
         {
-            uye.Parola = PassManager.Base64Encrypt(uye.Parola);
+            uye.Parola = PassManager.Base64Encrypt(uye.Parola);//Uye parola şifre çözümü yapıldı.
             var result = _loginService.GetUserInformation(uye.KullaniciAdi, uye.Parola);
             if (result != null)
             {

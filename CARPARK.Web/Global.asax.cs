@@ -19,6 +19,16 @@ namespace CARPARK.Web
             UnityConfig.RegisterComponents();
         }
 
+        //Olası hata alındığı an Application_Error() metodu devreye girmektedir.
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            if (ex is HttpException && ((HttpException)ex).GetHttpCode() == 404)
+            {
+                Response.Redirect("Hata/404");
+            }
+        }
+
         //Uye login olma işleminde login olduktan sonra  giriş sayfasına geri gelmesi engelleniyor.
         protected void Application_BeginRequest()
         {

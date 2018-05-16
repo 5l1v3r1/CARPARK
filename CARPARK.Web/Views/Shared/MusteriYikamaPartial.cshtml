@@ -1,71 +1,85 @@
 ﻿@model CARPARK.DTO.EntitisModelViewDTO.MusteriViewModel
-<div class="widget-box">
-    <div class="widget-title">
-        <span class="icon"> <i class="icon-align-justify"></i> </span>
-        <h5>Müşteri Yikama</h5>
-    </div>
-    <div class="widget-content nopadding">
-        <form action="/Subscriber/SubscriberAdd" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-            <div class="control-group">
-                <label class="control-label">Yıkama Türü:</label>
-                <div class="controls">
-                    <select class="span4" name="YikamaTuru" id="YikamaTuru">
-                        <option>Dış Yıkama</option>
-                        <option>Araç İçi Temizleme</option>
-                        <option>Komple Bakım</option>
-                    </select>
-                </div><br /><br />
-            </div>
-            <div class="control-group">
-                <label class="control-label">Teslim Saati :</label>
-                <div class="controls">
-                    <input type="datetime-local" name="TeslimSaati" class="span4" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Plaka :</label>
-                <div class="controls">
-                    <input type="text" name="Plaka" class="span4" placeholder="Plaka Giriniz..." />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Araç Marka :</label>
-                <div class="controls">
-                    <select class="span4" name="MarkaID" id="MarkaID">
-                        @foreach (var item in Model.AracModel.MarkaListesi)
-                        {
-                            <option value="@item.Value">@item.Text</option>
-                        }
-                    </select><br /><br />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Araç Model :</label>
-                <div class="controls">
-                    <select class="span4" name="ModelID" id="ModelID">
-                        @foreach (var item in Model.AracModel.ModelListesi)
-                        {
-                            <option value="@item.Value">@item.Text</option>
-                        }
-                    </select><br /><br />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Açıklama :</label>
-                <div class="controls">
-                    <textarea class="span10"></textarea>
-                </div>
-            </div>
-            <div class="form-actions">
-                <div class="control-group">
-                    <label class="control-label"></label>
-                    <button type="submit" class="btn btn-success">Kaydet</button>
-                </div>
-            </div>
-        </form>
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="#" class="current">Müşteri Yıkama</a>
     </div>
 </div>
-<script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Müşteri Yikama</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="/Subscriber/SubscriberAdd" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                        <div class="control-group">
+                            <label class="control-label">Yıkama Türü:</label>
+                            <div class="controls">
+                                <select class="span4" name="YikamaTuru" id="YikamaTuru">
+                                    <option>Dış Yıkama</option>
+                                    <option>Araç İçi Temizleme</option>
+                                    <option>Komple Bakım</option>
+                                </select>
+                            </div><br /><br />
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Teslim Saati :</label>
+                            <div class="controls">
+                                <input type="datetime-local" name="TeslimSaati" class="span4" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Plaka :</label>
+                            <div class="controls">
+                                <input type="text" name="Plaka" class="span4" placeholder="Plaka Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Araç Marka :</label>
+                            <div class="controls">
+                                <select class="span4" name="MarkaID" id="MarkaID">
+                                    @foreach (var item in Model.AracModel.MarkaListesi)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select><br /><br />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Araç Model :</label>
+                            <div class="controls">
+                                <select class="span4" name="ModelID" id="ModelID">
+                                    @foreach (var item in Model.AracModel.ModelListesi)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select><br /><br />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Açıklama :</label>
+                            <div class="controls">
+                                <textarea class="span10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="~/Content/Dashboard/GoogleMapJS/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -161,6 +161,7 @@
     <Compile Include="Code\CustomErrorAttribute.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -330,7 +331,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -403,7 +406,7 @@
     <Content Include="Views\Staff\StaffUpdate.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Subscriber\SubscriberList.cshtml" />
-    <Content Include="Views\Subscriber\SubscriberAdd.cshtml" />
+    <Content Include="Views\Subscriber\SubscriberInsert.cshtml" />
     <Content Include="Views\Subscriber\SubscriberDetail.cshtml" />
     <Content Include="Views\Subscriber\SubscriberUpdate.cshtml" />
     <Content Include="Views\Subscriber\SubscriberPaymentList.cshtml" />
@@ -413,6 +416,8 @@
     <Content Include="Views\Customer\CustomerInsert.cshtml" />
     <Content Include="Views\Shared\MusteriParkPartial.cshtml" />
     <Content Include="Views\Shared\MusteriYikamaPartial.cshtml" />
+    <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

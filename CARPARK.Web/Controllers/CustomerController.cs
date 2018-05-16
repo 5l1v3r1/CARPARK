@@ -26,13 +26,15 @@ namespace CARPARK.Web.Controllers
         }
 
         [Route("CustomerList")]
+        [HandleError]
         public ActionResult CustomerList()
         {
             var liste = _musteriService.CustomerList();
             return View(liste);
         }
-
+            
         [Route("CustomerDetail/{id}")]
+        [HandleError]
         public ActionResult CustomerDetail(int id)
         {
             MusteriViewModel model = new MusteriViewModel();
@@ -49,6 +51,7 @@ namespace CARPARK.Web.Controllers
         }
 
         [Route("CustomerInsert/{id}")]
+        [HandleError]
         public ActionResult CustomerInsert(int id)
         {
             MusteriViewModel model = new MusteriViewModel();
@@ -64,6 +67,7 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
+        [HandleError]
         public AracViewModel AracModel()
         {
             AracViewModel aracModel = new AracViewModel();
@@ -72,15 +76,17 @@ namespace CARPARK.Web.Controllers
         }
 
         [HttpPost]
+        [HandleError]
         public JsonResult AracModelList(int id)
         {
             List<SelectListItem> itemList = _aracService.GetAllModel(id);
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
+        [HandleError]
         public ActionResult CustomerParkInsert(MusteriDTO musteri, MusteriParkDTO park)
         {
-           
             return View();
         }
 

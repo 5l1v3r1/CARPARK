@@ -29,6 +29,7 @@ namespace CARPARK.Web.Controllers
             _sessionContext = new SessionContext();
         }
 
+        [HandleError]
         [Route("SubscriberList")]
         public ActionResult SubscriberList()
         {
@@ -36,6 +37,7 @@ namespace CARPARK.Web.Controllers
             return View(liste);
         }
 
+        [HandleError]
         public AracViewModel AracModel()
         {
             AracViewModel aracModel = new AracViewModel();
@@ -43,12 +45,14 @@ namespace CARPARK.Web.Controllers
             return aracModel;
         }
 
-        [Route("SubscriberAdd")]
-        public ActionResult SubscriberAdd()
+        [HandleError]
+        [Route("SubscriberInsert")]
+        public ActionResult SubscriberInsert()
         {
             return View(AracModel());
         }
 
+        [HandleError]
         [HttpPost]
         public JsonResult AracModelList(int id)
         {
@@ -56,8 +60,9 @@ namespace CARPARK.Web.Controllers
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
 
+        [HandleError]
         [HttpPost]
-        public ActionResult SubscriberAdd(AboneDTO abone, UyeDTO uye, AracDTO arac)
+        public ActionResult SubscriberInsert(AboneDTO abone, UyeDTO uye, AracDTO arac)
         {
             uye.KullaniciAdi = (abone.Adi + abone.Soyad).Trim().Replace(" ", string.Empty).ToLower();
             uye.Parola = PassManager.Base64Encrypt(abone.TCNO);
@@ -67,6 +72,7 @@ namespace CARPARK.Web.Controllers
             return RedirectToAction("SubscriberList", "Subscriber");
         }
 
+        [HandleError]
         public AboneViewModel AboneModel(int id)
         {
             AboneViewModel model = new AboneViewModel();
@@ -78,6 +84,7 @@ namespace CARPARK.Web.Controllers
             return model;
         }
 
+        [HandleError]
         [Route("SubscriberDetail/{id}")]
         public ActionResult SubscriberDetail(int id)
         {
@@ -86,6 +93,7 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
+        [HandleError]
         [Route("SubscriberUpdate/{id}")]
         public ActionResult SubscriberUpdate(int id)
         {
@@ -95,6 +103,7 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
+        [HandleError]
         [HttpPost]
         public ActionResult SubscriberDelete(int id)
         {
@@ -102,6 +111,7 @@ namespace CARPARK.Web.Controllers
             return RedirectToAction("SubscriberList", "Subscriber");
         }
 
+        [HandleError]
         [Route("SubscriberPaymentList/{id}")]
         public ActionResult SubscriberPaymentList(int id)
         {
@@ -111,6 +121,7 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
+        [HandleError]
         [HttpPost]
         public ActionResult SubscriberPaymentAdd(AboneOdemeDTO odeme)
         {
@@ -127,6 +138,7 @@ namespace CARPARK.Web.Controllers
 
         }
 
+        [HandleError]
         [Route("SubscriberPaymentInvoice/{id}")]
         public ActionResult SubscriberPaymentInvoice(int id)
         {

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "PageError";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="#">Hata</a>
+    </div>
+</div>
+<br /><br /><br />
+<div class="error_ex">
+    <h1>@Response.StatusCode</h1>
+    <h3>Geçersiz Adres</h3>
+    <p>Aradığınız sayfayı bulamıyoruz.</p>
+    <a class="btn btn-warning btn-big" href="/Dashboard">Anasayfa</a>
+</div>

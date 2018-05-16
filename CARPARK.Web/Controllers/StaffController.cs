@@ -25,7 +25,10 @@ namespace CARPARK.Web.Controllers
             _uyeService = uyeService;
             _sessionContext = new SessionContext();
         }
+
+
         [Route("StaffList")]
+        [HandleError]
         public ActionResult StaffList()
         {
             List<PersonelDTO> liste = _personelService.GetAllStaff();
@@ -33,12 +36,14 @@ namespace CARPARK.Web.Controllers
         }
 
         [Route("StaffAdd")]
+        [HandleError]
         public ActionResult StaffAdd()
         {
             return View();
         }
 
         [HttpPost]
+        [HandleError]
         public ActionResult StaffAdd(PersonelDTO personel, UyeDTO uye)
         {
             uye.KullaniciAdi = (personel.Ad + personel.Soyad).Trim().Replace(" ", string.Empty).ToLower();
@@ -49,6 +54,7 @@ namespace CARPARK.Web.Controllers
         }
 
         [Route("StaffDetail/{id}")]
+        [HandleError]
         public ActionResult StaffDetail(int id)
         {
             var personel = _personelService.Staff(id);
@@ -59,6 +65,7 @@ namespace CARPARK.Web.Controllers
         }
 
         [Route("StaffUpdate/{id}")]
+        [HandleError]
         public ActionResult StaffUpdate(int id)
         {
             var entity = _personelService.Staff(id);
@@ -69,6 +76,7 @@ namespace CARPARK.Web.Controllers
         }
 
         [HttpPost]
+        [HandleError]
         public ActionResult StaffUpdate(PersonelDTO personel, UyeDTO uye)
         {
             _personelService.Update(personel);
@@ -77,6 +85,7 @@ namespace CARPARK.Web.Controllers
         }
 
         [HttpPost]
+        [HandleError]
         public ActionResult StaffDelete(int id)
         {
             _personelService.Delete(id);
