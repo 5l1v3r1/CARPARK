@@ -16,7 +16,7 @@
                     <h5>Müşteri Yikama</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="/Subscriber/SubscriberAdd" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                    <form action="/Customer/CustomerWashingInsert" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                         <div class="control-group">
                             <label class="control-label">Yıkama Türü:</label>
                             <div class="controls">
@@ -34,6 +34,12 @@
                             </div>
                         </div>
                         <div class="control-group">
+                            <label class="control-label">Tutar :</label>
+                            <div class="controls">
+                                <input type="text" name="Tutar" class="span4" placeholder="Tutar Giriniz..." />
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <label class="control-label">Plaka :</label>
                             <div class="controls">
                                 <input type="text" name="Plaka" class="span4" placeholder="Plaka Giriniz..." />
@@ -44,9 +50,9 @@
                             <div class="controls">
                                 <select class="span4" name="MarkaID" id="MarkaID">
                                     @foreach (var item in Model.AracModel.MarkaListesi)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
+                {
+                    <option value="@item.Value">@item.Text</option>
+}
                                 </select><br /><br />
                             </div>
                         </div>
@@ -55,16 +61,16 @@
                             <div class="controls">
                                 <select class="span4" name="ModelID" id="ModelID">
                                     @foreach (var item in Model.AracModel.ModelListesi)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
+                {
+                    <option value="@item.Value">@item.Text</option>
+}
                                 </select><br /><br />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Açıklama :</label>
                             <div class="controls">
-                                <textarea class="span10"></textarea>
+                                <textarea class="span10" name="Aciklama"></textarea>
                             </div>
                         </div>
                         <div class="form-actions">
