@@ -401,7 +401,7 @@
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Staff\StaffList.cshtml" />
-    <Content Include="Views\Staff\StaffAdd.cshtml" />
+    <Content Include="Views\Staff\StaffInsert.cshtml" />
     <Content Include="Views\Staff\StaffDetail.cshtml" />
     <Content Include="Views\Staff\StaffUpdate.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />

@@ -35,16 +35,16 @@ namespace CARPARK.Web.Controllers
             return View(liste);
         }
 
-        [Route("StaffAdd")]
+        [Route("StaffInsert")]
         [HandleError]
-        public ActionResult StaffAdd()
+        public ActionResult StaffInsert()
         {
             return View();
         }
 
         [HttpPost]
         [HandleError]
-        public ActionResult StaffAdd(PersonelDTO personel, UyeDTO uye)
+        public ActionResult StaffInsert(PersonelDTO personel, UyeDTO uye)
         {
             uye.KullaniciAdi = (personel.Ad + personel.Soyad).Trim().Replace(" ", string.Empty).ToLower();
             uye.Parola = PassManager.Base64Encrypt(personel.TCNo);

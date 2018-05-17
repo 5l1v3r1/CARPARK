@@ -83,7 +83,7 @@ namespace CARPARK.Service.Services
                                  OdemeTarihi = o.OdemeTarihi,
                                  Tutar = o.Tutar,
                                  AboneID = o.AboneID
-                             }).ToList();
+                             }).OrderBy(x => x.OdemeID).ToList();
                 return liste;
             }
             catch (Exception)
@@ -160,13 +160,13 @@ namespace CARPARK.Service.Services
                              where o.OdemeID == id
                              select new AboneOdemeDTO
                              {
-                                 OdemeID=o.OdemeID,
-                                 OdemeTarihi=o.OdemeTarihi,
-                                 Tutar=o.Tutar,
-                                 AboneID=o.AboneID
+                                 OdemeID = o.OdemeID,
+                                 OdemeTarihi = o.OdemeTarihi,
+                                 Tutar = o.Tutar,
+                                 AboneID = o.AboneID
                              }).SingleOrDefault();
                 return odeme;
-                
+
             }
             catch (Exception)
             {

@@ -67,22 +67,21 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public bool CustomerInsert(MusteriDTO musteri)
+        public int CustomerInsert(MusteriDTO musteri,int aracID)
         {
             try
             {
-                if (musteri != null)
-                {
-                    var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);
-                    _musteriRepo.Insert(musteriEntity);
-                    _uow.SaveChanges();
-                    return true;
-                }
-                return false;
+                var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);
+                musteriEntity.HizmetTuru = "Park";
+                musteriEntity.AracID = aracID;
+                musteriEntity.Durum = true;
+                _musteriRepo.Insert(musteriEntity);
+                _uow.SaveChanges();
+                return musteriEntity.MusteriID;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -136,9 +135,20 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public bool CustomerParkInsert(MusteriParkDTO park)
+        public void CustomerParkInsert(MusteriParkDTO park, int musteriID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = AutoMapper.Mapper.DynamicMap<MusteriPark>(park);
+                entity.MusteriID = musteriID;
+                entity.GirisTarihi = DateTime.Now;
+                _parkRepo.Insert(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public MusteriYikamaDTO CustomerWashing(int musteriID)
@@ -162,9 +172,19 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public bool CustomerWashingInsert(MusteriYikamaDTO yikama)
+        public void CustomerWashingInsert(MusteriYikamaDTO yikama,int musteriID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = AutoMapper.Mapper.DynamicMap<MusteriYikama>(yikama);
+                entity.MusteriID = musteriID;
+                _yikamaRepo.Insert(entity);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

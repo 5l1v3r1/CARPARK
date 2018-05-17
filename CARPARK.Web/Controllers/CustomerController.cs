@@ -32,7 +32,7 @@ namespace CARPARK.Web.Controllers
             var liste = _musteriService.CustomerList();
             return View(liste);
         }
-            
+
         [Route("CustomerDetail/{id}")]
         [HandleError]
         public ActionResult CustomerDetail(int id)
@@ -87,7 +87,14 @@ namespace CARPARK.Web.Controllers
         [HandleError]
         public ActionResult CustomerParkInsert(MusteriDTO musteri, MusteriParkDTO park)
         {
-            return View();
+            AracDTO arac = new AracDTO();
+            arac.MarkaID = musteri.MarkaID;
+            arac.ModelID = musteri.ModelID;
+            arac.Plaka = musteri.Plaka;
+            int aracID = _aracService.Insert(arac);
+            int musteriID = _musteriService.CustomerInsert(musteri, aracID);
+            _musteriService.CustomerParkInsert(park,musteriID);
+            return RedirectToAction("CustomerList", "Customer");
         }
 
     }

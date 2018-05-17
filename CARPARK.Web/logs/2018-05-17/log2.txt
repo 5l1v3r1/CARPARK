@@ -1,0 +1,64 @@
+2018-05-17 00:01:50.8287   17 ERROR CARPARK.Web.Code.CustomErrorAttribute System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: ASP._Page_Views_Subscriber_SubscriberList_cshtml.Execute() C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Web\Views\Subscriber\SubscriberList.cshtml içinde: satýr 58
+   konum: System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   konum: System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   konum: System.Web.WebPages.StartPage.RunPage()
+   konum: System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   konum: System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   konum: System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   konum: System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   konum: System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult) System.NullReferenceException: Nesne baþvurusu bir nesnenin örneðine ayarlanmadý.
+   konum: ASP._Page_Views_Subscriber_SubscriberList_cshtml.Execute() C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.Web\Views\Subscriber\SubscriberList.cshtml içinde: satýr 58
+   konum: System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   konum: System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   konum: System.Web.WebPages.StartPage.RunPage()
+   konum: System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   konum: System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   konum: System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   konum: System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   konum: System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2018-05-17 03:03:07.6606   21 ERROR CARPARK.Web.Code.CustomErrorAttribute System.InvalidOperationException: The view 'CustomerParkInsert' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Customer/CustomerParkInsert.aspx
+~/Views/Customer/CustomerParkInsert.ascx
+~/Views/Shared/CustomerParkInsert.aspx
+~/Views/Shared/CustomerParkInsert.ascx
+~/Views/Customer/CustomerParkInsert.cshtml
+~/Views/Customer/CustomerParkInsert.vbhtml
+~/Views/Shared/CustomerParkInsert.cshtml
+~/Views/Shared/CustomerParkInsert.vbhtml
+   konum: System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   konum: System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult) System.InvalidOperationException: The view 'CustomerParkInsert' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Customer/CustomerParkInsert.aspx
+~/Views/Customer/CustomerParkInsert.ascx
+~/Views/Shared/CustomerParkInsert.aspx
+~/Views/Shared/CustomerParkInsert.ascx
+~/Views/Customer/CustomerParkInsert.cshtml
+~/Views/Customer/CustomerParkInsert.vbhtml
+~/Views/Shared/CustomerParkInsert.cshtml
+~/Views/Shared/CustomerParkInsert.vbhtml
+   konum: System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   konum: System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   konum: System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   konum: System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)

@@ -51,8 +51,8 @@
                             <h3>Abone Ödeme</h3>
                         </div>
                         <div class="modal-body ">
-                            <form action="/Subscriber/SubscriberPaymentAdd" name="odeme" class="form-horizontal" method="post" role="form">
-                                <input type="number" class="span12" name="Tutar" placeholder="Ödenecek Tutarı Giriniz..." />
+                            <form action="/Subscriber/SubscriberPaymentInsert" name="odeme" class="form-horizontal" method="post" role="form">
+                                <input type="number" class="span12" name="Tutar" id="tutar" placeholder="Ödenecek Tutarı Giriniz..." />
                                 @Html.Hidden("AboneID", Model.Abone.AboneID)
                             </form>
                         </div>
@@ -81,11 +81,10 @@
                                     <td style="text-align:center;">@per.Tutar</td>
                                     <td style="text-align:center;">
                                         <a href="/SubscriberPaymentInvoice/@per.AboneID" class="tip-top btn-large" data-original-title="Fatura"><i class="icon-money"></i></a>
-                                    
+
                                     </td>
                                 </tr>
                             }
-
 
                         </tbody>
                     </table>
@@ -101,6 +100,13 @@
 
 <script type="text/javascript">
     function submitForm() {
-        document.odeme.submit();
+        var model = { Tutar: $("#tutar").val() };
+        if (model.Tutar.trim() != "") {
+            document.odeme.submit();
+        }
+        else {
+            ShowMessage("warning", "Boş Geçilemez", "Lütfen Tutar Giriniz.");
+        }
+
     }
 </script>

@@ -121,20 +121,13 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
-        [HandleError]
+
         [HttpPost]
-        public ActionResult SubscriberPaymentAdd(AboneOdemeDTO odeme)
+        public ActionResult SubscriberPaymentInsert(AboneOdemeDTO odeme)
         {
-            if (odeme.Tutar != null)
-            {
-                odeme.OdemeTarihi = DateTime.Now;
-                _aboneService.SubscriberPaymentInsert(odeme);
-                return Json("/SubscriberList", JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json("", JsonRequestBehavior.AllowGet);
-            }
+            odeme.OdemeTarihi = DateTime.Now;
+            _aboneService.SubscriberPaymentInsert(odeme);
+            return RedirectToAction("SubscriberList", "Subscriber");
 
         }
 
