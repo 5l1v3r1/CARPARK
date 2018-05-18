@@ -30,6 +30,7 @@ namespace CARPARK.Data.Model
         public virtual DbSet<Arac> Arac { get; set; }
         public virtual DbSet<AracMarka> AracMarka { get; set; }
         public virtual DbSet<AracModel> AracModel { get; set; }
+        public virtual DbSet<Gelirler> Gelirler { get; set; }
         public virtual DbSet<KullaniciYetki> KullaniciYetki { get; set; }
         public virtual DbSet<Musteri> Musteri { get; set; }
         public virtual DbSet<MusteriPark> MusteriPark { get; set; }

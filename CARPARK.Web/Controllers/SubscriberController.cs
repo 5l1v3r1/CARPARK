@@ -17,15 +17,17 @@ namespace CARPARK.Web.Controllers
         private readonly ISubscriberService _aboneService;
         private readonly ICarService _aracService;
         private readonly IUserService _uyeService;
+        private readonly IMoneyEntryService _gelirService;
         private readonly IUnitofWork _uow;
         private SessionContext _sessionContext;
 
-        public SubscriberController(IUnitofWork uow, ISubscriberService aboneService, IUserService uyeService, ICarService aracService)
+        public SubscriberController(IUnitofWork uow, ISubscriberService aboneService, IUserService uyeService, ICarService aracService, IMoneyEntryService gelirService)
         {
             _uow = uow;
             _aboneService = aboneService;
             _uyeService = uyeService;
             _aracService = aracService;
+            _gelirService = gelirService;
             _sessionContext = new SessionContext();
         }
 
@@ -121,12 +123,19 @@ namespace CARPARK.Web.Controllers
             return View(model);
         }
 
-
+        [HandleError]
         [HttpPost]
         public ActionResult SubscriberPaymentInsert(AboneOdemeDTO odeme)
         {
             odeme.OdemeTarihi = DateTime.Now;
             _aboneService.SubscriberPaymentInsert(odeme);
+            GelirlerDTO gelir = new GelirlerDTO();
+            gelir.GelirTuru = "Abone Ödeme";
+            gelir.OdemeTarihi = Convert.ToDateTime(odeme.OdemeTarihi);
+            gelir.Tutar = Convert.ToDecimal(odeme.Tutar);
+            var abone = _aboneService.Subscriber(Convert.ToInt32(odeme.AboneID));
+            gelir.AracID = Convert.ToInt32(abone.AracID);
+            _gelirService.Insert(gelir);
             return RedirectToAction("SubscriberList", "Subscriber");
 
         }
@@ -135,8 +144,9 @@ namespace CARPARK.Web.Controllers
         [Route("SubscriberPaymentInvoice/{id}")]
         public ActionResult SubscriberPaymentInvoice(int id)
         {
+            var abone = _aboneService.SubscriberPayment(id);
             AboneViewModel model = new AboneViewModel();
-            model = AboneModel(id);
+            model = AboneModel(Convert.ToInt32(abone.AboneID));
             model.Odeme = _aboneService.SubscriberPayment(id);
             return View(model);
         }

@@ -48,6 +48,16 @@
     <Property Name="MarkaID" Type="int" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Gelirler">
+    <Key>
+      <PropertyRef Name="GelirID" />
+    </Key>
+    <Property Name="GelirID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GelirTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OdemeTarihi" Type="datetime" Nullable="false" />
+    <Property Name="Tutar" Type="money" Nullable="false" />
+    <Property Name="AracID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="KullaniciYetki">
     <Key>
       <PropertyRef Name="YetkiID" />
@@ -190,6 +200,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Gelirler_Arac">
+    <End Role="Arac" Type="Self.Arac" Multiplicity="1" />
+    <End Role="Gelirler" Type="Self.Gelirler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arac">
+        <PropertyRef Name="AracID" />
+      </Principal>
+      <Dependent Role="Gelirler">
+        <PropertyRef Name="AracID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Musteri_Arac">
     <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
     <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
@@ -256,6 +278,7 @@
     <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gelirler" EntityType="Self.Gelirler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
@@ -286,6 +309,10 @@
     <AssociationSet Name="FK_Arac_AracModel" Association="Self.FK_Arac_AracModel">
       <End Role="AracModel" EntitySet="AracModel" />
       <End Role="Arac" EntitySet="Arac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gelirler_Arac" Association="Self.FK_Gelirler_Arac">
+      <End Role="Arac" EntitySet="Arac" />
+      <End Role="Gelirler" EntitySet="Gelirler" />
     </AssociationSet>
     <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
       <End Role="Arac" EntitySet="Arac" />

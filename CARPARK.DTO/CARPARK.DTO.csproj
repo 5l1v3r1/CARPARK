@@ -48,6 +48,7 @@
     <Compile Include="EntitisDTO\AracDTO.cs" />
     <Compile Include="EntitisDTO\AracMarkaDTO.cs" />
     <Compile Include="EntitisDTO\AracModelDTO.cs" />
+    <Compile Include="EntitisDTO\GelirlerDTO.cs" />
     <Compile Include="EntitisDTO\LoginDTO.cs" />
     <Compile Include="EntitisDTO\MusteriDTO.cs" />
     <Compile Include="EntitisDTO\MusteriYikamaDTO.cs" />

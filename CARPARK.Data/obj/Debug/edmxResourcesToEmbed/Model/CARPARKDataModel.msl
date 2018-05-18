@@ -54,6 +54,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Gelirler">
+      <EntityTypeMapping TypeName="CARPARKModel.Gelirler">
+        <MappingFragment StoreEntitySet="Gelirler">
+          <ScalarProperty Name="GelirID" ColumnName="GelirID" />
+          <ScalarProperty Name="GelirTuru" ColumnName="GelirTuru" />
+          <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="AracID" ColumnName="AracID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="KullaniciYetki">
       <EntityTypeMapping TypeName="CARPARKModel.KullaniciYetki">
         <MappingFragment StoreEntitySet="KullaniciYetki">

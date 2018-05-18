@@ -53,6 +53,16 @@
           <Property Name="MarkaID" Type="int" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Gelirler">
+          <Key>
+            <PropertyRef Name="GelirID" />
+          </Key>
+          <Property Name="GelirID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GelirTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OdemeTarihi" Type="datetime" Nullable="false" />
+          <Property Name="Tutar" Type="money" Nullable="false" />
+          <Property Name="AracID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="KullaniciYetki">
           <Key>
             <PropertyRef Name="YetkiID" />
@@ -195,6 +205,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gelirler_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="1" />
+          <End Role="Gelirler" Type="Self.Gelirler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Gelirler">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musteri_Arac">
           <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
           <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
@@ -261,6 +283,7 @@
           <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gelirler" EntityType="Self.Gelirler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
@@ -291,6 +314,10 @@
           <AssociationSet Name="FK_Arac_AracModel" Association="Self.FK_Arac_AracModel">
             <End Role="AracModel" EntitySet="AracModel" />
             <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gelirler_Arac" Association="Self.FK_Gelirler_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Gelirler" EntitySet="Gelirler" />
           </AssociationSet>
           <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
             <End Role="Arac" EntitySet="Arac" />
@@ -358,6 +385,7 @@
           <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Arac" FromRole="Arac" ToRole="Abone" />
           <NavigationProperty Name="AracMarka" Relationship="Self.FK_Arac_AracMarka" FromRole="Arac" ToRole="AracMarka" />
           <NavigationProperty Name="AracModel" Relationship="Self.FK_Arac_AracModel" FromRole="Arac" ToRole="AracModel" />
+          <NavigationProperty Name="Gelirler" Relationship="Self.FK_Gelirler_Arac" FromRole="Arac" ToRole="Gelirler" />
           <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Arac" FromRole="Arac" ToRole="Musteri" />
         </EntityType>
         <EntityType Name="AracMarka">
@@ -376,6 +404,17 @@
           <Property Name="MarkaID" Type="Int32" Nullable="false" />
           <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Arac" Relationship="Self.FK_Arac_AracModel" FromRole="AracModel" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="Gelirler">
+          <Key>
+            <PropertyRef Name="GelirID" />
+          </Key>
+          <Property Name="GelirID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GelirTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OdemeTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AracID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_Gelirler_Arac" FromRole="Gelirler" ToRole="Arac" />
         </EntityType>
         <EntityType Name="KullaniciYetki">
           <Key>
@@ -530,6 +569,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gelirler_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="1" />
+          <End Role="Gelirler" Type="Self.Gelirler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="Gelirler">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musteri_Arac">
           <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
           <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
@@ -596,6 +647,7 @@
           <EntitySet Name="Arac" EntityType="Self.Arac" />
           <EntitySet Name="AracMarka" EntityType="Self.AracMarka" />
           <EntitySet Name="AracModel" EntityType="Self.AracModel" />
+          <EntitySet Name="Gelirler" EntityType="Self.Gelirler" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
@@ -626,6 +678,10 @@
           <AssociationSet Name="FK_Arac_AracModel" Association="Self.FK_Arac_AracModel">
             <End Role="AracModel" EntitySet="AracModel" />
             <End Role="Arac" EntitySet="Arac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gelirler_Arac" Association="Self.FK_Gelirler_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="Gelirler" EntitySet="Gelirler" />
           </AssociationSet>
           <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
             <End Role="Arac" EntitySet="Arac" />
@@ -704,6 +760,17 @@
                 <ScalarProperty Name="ModelID" ColumnName="ModelID" />
                 <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gelirler">
+            <EntityTypeMapping TypeName="CARPARKModel.Gelirler">
+              <MappingFragment StoreEntitySet="Gelirler">
+                <ScalarProperty Name="GelirID" ColumnName="GelirID" />
+                <ScalarProperty Name="GelirTuru" ColumnName="GelirTuru" />
+                <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="AracID" ColumnName="AracID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

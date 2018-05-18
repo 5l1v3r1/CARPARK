@@ -8,8 +8,8 @@
     #sub {
         margin-bottom: 0;
     }
-
 </style>
+
 <script type="text/javascript">
     function printlayer(Layer) {
         var generator = window.open("");
@@ -21,6 +21,7 @@
         generator.close();
     }
 </script>
+<link href="~/Content/Dashboard/AboneFatura/Fatura.css" rel="stylesheet" />
 <div id="content-header">
     <div id="breadcrumb">
         <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
@@ -29,7 +30,7 @@
     </div>
 </div>
 
-<div class="container-fluid" > 
+<div class="container-fluid">
     <hr id="sub">
     <div class="row-fluid">
         <div class="span12">
@@ -40,7 +41,7 @@
                 </div>
                 <div class="widget-content" id="printdiv">
                     <div class="row-fluid">
-                        <div class="span6" id="sirket">
+                        <div class="span6 yazdır">
                             <table class="">
                                 <tbody>
                                     <tr>
@@ -61,7 +62,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="span6">
+                        <div class="span6 yazdır">
                             <table class="table table-bordered table-invoice">
                                 <tbody>
                                     <tr>
@@ -71,7 +72,7 @@
                                     </tr>
                                     <tr>
                                         <td>Veriliş Tarihi:</td>
-                                        <td><strong>@String.Format("{0:MM/dd/yyyy}", DateTime.Now)</strong></td>
+                                        <td><strong>@String.Format("{0:dd/MM/yyyy}", DateTime.Now)</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Ödenen Ay:</td>

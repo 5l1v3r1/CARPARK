@@ -172,6 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Dashboard\AboneFatura\Fatura.css" />
     <Content Include="Content\Dashboard\Buton\DashboardButon.css" />
     <Content Include="Content\Dashboard\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Dashboard\css\bootstrap-wysihtml5.css" />
