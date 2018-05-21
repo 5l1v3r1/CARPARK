@@ -14,6 +14,7 @@ namespace CARPARK.DTO.EntitisModelViewDTO
         public MusteriYikamaDTO Yikama { get; set; }
         public AracViewModel AracModel { get; set; }
         public string CustomerPartial { get; set; }
+        public List<MusteriDTO> MusteriListe { get; set; }
 
     }
 }

@@ -145,5 +145,26 @@ namespace CARPARK.Service.Services
                 return new AracMarkaDTO();
             }
         }
+
+        public List<AracDTO> GetAllCarList()
+        {
+            try
+            {
+                var list = (from a in _aracRepo.GetAll()
+                            orderby a.AracID descending
+                            select new AracDTO
+                            {
+                                AracID = a.AracID,
+                                MarkaID = a.MarkaID,
+                                ModelID = a.ModelID,
+                                Plaka = a.Plaka
+                            }).ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+                return new List<AracDTO>();
+            }
+        }
     }
 }

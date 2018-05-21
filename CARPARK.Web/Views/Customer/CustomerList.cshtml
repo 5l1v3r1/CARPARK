@@ -15,7 +15,7 @@
     }
 </style>
 <div id="content-header">
-    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Müşteriler</a> </div>
+    <div id="breadcrumb"> <a href="/DashboardPanel" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Müşteriler</a> </div>
 </div>
 
 <div class="container-fluid">
@@ -53,7 +53,21 @@
                                     <td style="text-align:center;">@m.Plaka</td>
                                     <td style="text-align:center;">@m.Marka</td>
                                     <td style="text-align:center;">@m.Model</td>
-                                    <td style="text-align:center;">@m.Tutar</td>
+
+                                    @{
+                                        if (m.Tutar == 0)
+                                        {
+                                            <td style="text-align:center;">
+                                                Ödeme Yapılmadı.
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align:center;">
+                                                @m.Tutar
+                                            </td>
+                                        }
+                                    }
                                     <td style="text-align:center;">
                                         <a href="CustomerDetail/@m.MusteriID" class="tip-top btn-large" data-original-title="Detay"><i class="icon-user"></i></a>
                                         <a href="StaffUpdate/@m.MusteriID" class="tip-top btn-large" data-original-title="Düzenle"><i class="icon-pencil"></i></a>

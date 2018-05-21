@@ -405,7 +405,7 @@
     <Content Include="Views\Staff\StaffInsert.cshtml" />
     <Content Include="Views\Staff\StaffDetail.cshtml" />
     <Content Include="Views\Staff\StaffUpdate.cshtml" />
-    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Dashboard\DashboardPanel.cshtml" />
     <Content Include="Views\Subscriber\SubscriberList.cshtml" />
     <Content Include="Views\Subscriber\SubscriberInsert.cshtml" />
     <Content Include="Views\Subscriber\SubscriberDetail.cshtml" />

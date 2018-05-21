@@ -50,6 +50,10 @@ namespace CARPARK.Service.Interfaces
         /// <returns></returns>
         AracModelDTO Model(int modelID);
 
-
+        /// <summary>
+        /// Arac tablosunu bir listeye atarak geri döndürür.
+        /// </summary>
+        /// <returns></returns>
+        List<AracDTO> GetAllCarList();
     }
 }

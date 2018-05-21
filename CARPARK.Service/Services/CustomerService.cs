@@ -71,7 +71,7 @@ namespace CARPARK.Service.Services
         {
             try
             {
-                var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);
+                var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);            
                 musteriEntity.AracID = aracID;
                 musteriEntity.Durum = true;
                 _musteriRepo.Insert(musteriEntity);

@@ -45,7 +45,7 @@ namespace CARPARK.Web.Controllers
                 Session["UyeID"] = _sessionContext.UyeID;
                 Session["KullaniciAdi"] = _sessionContext.KullaniciAdi;
 
-                return Json("/Dashboard", JsonRequestBehavior.AllowGet);
+                return Json("/DashboardPanel", JsonRequestBehavior.AllowGet);
 
             }
             else

@@ -21,7 +21,7 @@
 
 <div id="content-header">
     <div id="breadcrumb">
-        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/DashboardPanel" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
         <a href="/SubscriberList" title="Abone Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Aboneler</a>
         <a href="#" class="current">Abone Ekle</a>
     </div>
@@ -37,7 +37,7 @@
                     <h5>Abone Ekle</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="/Subscriber/SubscriberInsert" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                    <form action="/Subscriber/SubscriberInsert" method="post" class="form-horizontal" role="form" >
                         <div class="control-group">
                             <label class="control-label">İsim :</label>
                             <div class="controls">
@@ -111,7 +111,6 @@
 </div>
 <script src="~/Content/Dashboard/GoogleMapJS/jquery-1.4.2.min.js"></script>
 <script src="~/Content/Dashboard/js/jquery.ui.custom.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#MarkaId").change(function () {

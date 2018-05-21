@@ -2,7 +2,7 @@
 
 <div id="content-header">
     <div id="breadcrumb">
-        <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/DashboardPanel" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
         <a href="#" class="current">Müşteri Park</a>
     </div>
 </div>
@@ -16,19 +16,7 @@
                     <h5>Müşteri Park</h5>
                 </div>
                 <div class="widget-content nopadding">
-                    <form action="/Customer/CustomerParkInsert" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-                        <div class="control-group">
-                            <label class="control-label">Giriş :</label>
-                            <div class="controls">
-                                <input type="text" disabled="disabled" name="GirisTarihi" class="span4" value="@DateTime.Now" />
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Çıkış :</label>
-                            <div class="controls">
-                                <input type="datetime-local" name="CikisTarihi" class="span4" />
-                            </div>
-                        </div>
+                    <form action="/Customer/CustomerParkInsert" method="post" class="form-horizontal" role="form">
                         <div class="control-group">
                             <label class="control-label">Plaka :</label>
                             <div class="controls">
@@ -36,19 +24,13 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Tutar :</label>
-                            <div class="controls">
-                                <input type="text" name="Tutar" class="span4" placeholder="Tutar Giriniz..." />
-                            </div>
-                        </div>
-                        <div class="control-group">
                             <label class="control-label">Araç Marka :</label>
                             <div class="controls">
                                 <select class="span4" name="MarkaID" id="MarkaID">
                                     @foreach (var item in Model.AracModel.MarkaListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>
@@ -57,9 +39,9 @@
                             <div class="controls">
                                 <select class="span4" name="ModelID" id="ModelID">
                                     @foreach (var item in Model.AracModel.ModelListesi)
-                {
-                    <option value="@item.Value">@item.Text</option>
-}
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
                                 </select><br /><br />
                             </div>
                         </div>

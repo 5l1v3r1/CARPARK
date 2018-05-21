@@ -82,7 +82,7 @@ namespace CARPARK.Web.Controllers
             List<SelectListItem> itemList = _aracService.GetAllModel(id);
             return Json(itemList, JsonRequestBehavior.AllowGet);
         }
-        
+
 
         [HttpPost]
         [HandleError]
@@ -94,8 +94,16 @@ namespace CARPARK.Web.Controllers
             arac.Plaka = musteri.Plaka;
             int aracID = _aracService.Insert(arac);
             musteri.HizmetTuru = "Park";
+            if (musteri.Aciklama == null)
+            {
+                musteri.Aciklama = "Açıklama Girilmedi.";
+            }
+            if (musteri.Tutar == null)
+            {
+                musteri.Tutar = 0;
+            }
             int musteriID = _musteriService.CustomerInsert(musteri, aracID);
-            _musteriService.CustomerParkInsert(park,musteriID);
+            _musteriService.CustomerParkInsert(park, musteriID);
             return RedirectToAction("CustomerList", "Customer");
         }
 
