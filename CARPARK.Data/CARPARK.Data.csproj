@@ -64,6 +64,9 @@
     <Compile Include="Model\AracModel.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Ayarlar.cs">
+      <DependentUpon>CARPARKDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CARPARKDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +95,9 @@
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\MusteriYikama.cs">
+      <DependentUpon>CARPARKDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OpenAprArac.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Personel.cs">

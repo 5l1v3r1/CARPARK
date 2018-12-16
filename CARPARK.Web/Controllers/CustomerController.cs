@@ -118,6 +118,14 @@ namespace CARPARK.Web.Controllers
             arac.Plaka = musteri.Plaka;
             int aracID = _aracService.Insert(arac);
             musteri.HizmetTuru = "Yıkama";
+            if (musteri.Aciklama == null)
+            {
+                musteri.Aciklama = "Açıklama Girilmedi.";
+            }
+            if (musteri.Tutar == null)
+            {
+                musteri.Tutar = 0;
+            }
             int musteriID = _musteriService.CustomerInsert(musteri, aracID);
             _musteriService.CustomerWashingInsert(yikama, musteriID);
             return RedirectToAction("CustomerList", "Customer");

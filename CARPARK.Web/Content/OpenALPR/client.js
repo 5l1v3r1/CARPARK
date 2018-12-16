@@ -1,0 +1,4 @@
+
+var client = {
+  'country': 'eu'
+}

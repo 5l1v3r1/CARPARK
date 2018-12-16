@@ -35,6 +35,8 @@
     </Key>
     <Property Name="AracID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MarkaID" Type="Int32" />
     <Property Name="ModelID" Type="Int32" />
     <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Arac" FromRole="Arac" ToRole="Abone" />
@@ -59,6 +61,16 @@
     <Property Name="MarkaID" Type="Int32" Nullable="false" />
     <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Arac" Relationship="Self.FK_Arac_AracModel" FromRole="AracModel" ToRole="Arac" />
+  </EntityType>
+  <EntityType Name="Ayarlar">
+    <Key>
+      <PropertyRef Name="AyarId" />
+    </Key>
+    <Property Name="AyarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ToplamKapasite" Type="Int32" />
+    <Property Name="OtomobilKapasite" Type="Int32" />
+    <Property Name="KamyonetKapasite" Type="Int32" />
+    <Property Name="ResimKlasorYolu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Gelirler">
     <Key>
@@ -113,6 +125,17 @@
     <Property Name="TeslimSaati" Type="DateTime" Precision="3" />
     <Property Name="MusteriID" Type="Int32" />
     <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
+  </EntityType>
+  <EntityType Name="OpenAprArac">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Personel">
     <Key>
@@ -302,11 +325,13 @@
     <EntitySet Name="Arac" EntityType="Self.Arac" />
     <EntitySet Name="AracMarka" EntityType="Self.AracMarka" />
     <EntitySet Name="AracModel" EntityType="Self.AracModel" />
+    <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
     <EntitySet Name="Gelirler" EntityType="Self.Gelirler" />
     <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" />
     <EntitySet Name="Musteri" EntityType="Self.Musteri" />
     <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
     <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" />
+    <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" />
     <EntitySet Name="Personel" EntityType="Self.Personel" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Uye" EntityType="Self.Uye" />

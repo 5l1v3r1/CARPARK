@@ -30,6 +30,8 @@
     </Key>
     <Property Name="AracID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+    <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
     <Property Name="MarkaID" Type="int" />
     <Property Name="ModelID" Type="int" />
   </EntityType>
@@ -47,6 +49,16 @@
     <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MarkaID" Type="int" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Ayarlar">
+    <Key>
+      <PropertyRef Name="AyarId" />
+    </Key>
+    <Property Name="AyarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ToplamKapasite" Type="int" />
+    <Property Name="OtomobilKapasite" Type="int" />
+    <Property Name="KamyonetKapasite" Type="int" />
+    <Property Name="ResimKlasorYolu" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="Gelirler">
     <Key>
@@ -93,6 +105,17 @@
     <Property Name="YikamaTuru" Type="nvarchar" MaxLength="50" />
     <Property Name="TeslimSaati" Type="datetime" />
     <Property Name="MusteriID" Type="int" />
+  </EntityType>
+  <EntityType Name="OpenAprArac">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+    <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Personel">
     <Key>
@@ -278,11 +301,13 @@
     <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gelirler" EntityType="Self.Gelirler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />

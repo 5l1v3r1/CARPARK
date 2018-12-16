@@ -3,13 +3,11 @@
     ViewBag.Title = "DashboardPanel";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
-<style>
-    #sub {
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-</style>
-<link href="~/Content/Dashboard/Buton/DashboardButon.css" rel="stylesheet" />
+<script src="~/Content/OpenALPR/utils.js"></script>
+<script src="~/Content/OpenALPR/server.js"></script>
+<script src="~/Content/OpenALPR/OpenALPRDemo.js"></script>
+<script src="~/Content/OpenALPR/OpenALPRAdapter.js"></script>
+<script src="~/Content/OpenALPR/client.js"></script>
 <link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
 <div id="content-header">
     <div id="breadcrumb">
@@ -17,21 +15,4 @@
     </div>
 </div>
 <br />
-<div class="container-fluid">
-    <hr id="sub"><br />
-    <div class="buttonHolder row">
-        <a href="/CustomerInsert/@Convert.ToInt32(1)" class="button tick span3 tip-bottom" title="Araç Park"></a>
-        <a href="/CustomerInsert/@Convert.ToInt32(2)" class="button cross span3 tip-bottom" title="Araç Yıkama"></a>
-        <a href="#" class="button heart span3 tip-bottom"></a>
-        <a href="#" class="button flower span3 tip-bottom"></a>
-    </div>
-    <hr id="sub">
-    <div class="row-fluid">
-        <div class="span8">
 
-        </div>
-        <div class="span4">
-         
-        </div>
-    </div>
-</div>

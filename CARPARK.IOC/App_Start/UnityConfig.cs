@@ -28,6 +28,7 @@ namespace CARPARK.IOC
             container.BindInRequestScope<ILoginService, LoginService>();
             container.BindInRequestScope<IStaffService, StaffService>();
             container.BindInRequestScope<IUserService, UserService>();
+            container.BindInRequestScope<IAyarlarService, AyarService>();
             container.BindInRequestScope<ICarService, CarService>();
             container.BindInRequestScope<IMoneyEntryService, MoneyEntryService>();
             container.BindInRequestScope<ICustomerService, CustomerService>();
@@ -35,6 +36,7 @@ namespace CARPARK.IOC
             container.BindInRequestScope<IRepository<Uye>, Repository<Uye>>();
             container.BindInRequestScope<IRepository<Personel>, Repository<Personel>>();
             container.BindInRequestScope<IRepository<Abone>, Repository<Abone>>();
+            container.BindInRequestScope<IRepository<Ayarlar>, Repository<Ayarlar>>();
             container.BindInRequestScope<IRepository<Arac>, Repository<Arac>>();
             container.BindInRequestScope<IRepository<Musteri>, Repository<Musteri>>();
             container.BindInRequestScope<IRepository<MusteriPark>, Repository<MusteriPark>>();

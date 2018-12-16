@@ -35,6 +35,8 @@
           </Key>
           <Property Name="AracID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+          <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
           <Property Name="MarkaID" Type="int" />
           <Property Name="ModelID" Type="int" />
         </EntityType>
@@ -52,6 +54,16 @@
           <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MarkaID" Type="int" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="AyarId" />
+          </Key>
+          <Property Name="AyarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToplamKapasite" Type="int" />
+          <Property Name="OtomobilKapasite" Type="int" />
+          <Property Name="KamyonetKapasite" Type="int" />
+          <Property Name="ResimKlasorYolu" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Gelirler">
           <Key>
@@ -98,6 +110,17 @@
           <Property Name="YikamaTuru" Type="nvarchar" MaxLength="50" />
           <Property Name="TeslimSaati" Type="datetime" />
           <Property Name="MusteriID" Type="int" />
+        </EntityType>
+        <EntityType Name="OpenAprArac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="50" />
+          <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -283,11 +306,13 @@
           <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gelirler" EntityType="Self.Gelirler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
@@ -380,6 +405,8 @@
           </Key>
           <Property Name="AracID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MarkaID" Type="Int32" />
           <Property Name="ModelID" Type="Int32" />
           <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Arac" FromRole="Arac" ToRole="Abone" />
@@ -404,6 +431,16 @@
           <Property Name="MarkaID" Type="Int32" Nullable="false" />
           <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Arac" Relationship="Self.FK_Arac_AracModel" FromRole="AracModel" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="AyarId" />
+          </Key>
+          <Property Name="AyarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToplamKapasite" Type="Int32" />
+          <Property Name="OtomobilKapasite" Type="Int32" />
+          <Property Name="KamyonetKapasite" Type="Int32" />
+          <Property Name="ResimKlasorYolu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Gelirler">
           <Key>
@@ -458,6 +495,17 @@
           <Property Name="TeslimSaati" Type="DateTime" Precision="3" />
           <Property Name="MusteriID" Type="Int32" />
           <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="OpenAprArac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -647,11 +695,13 @@
           <EntitySet Name="Arac" EntityType="Self.Arac" />
           <EntitySet Name="AracMarka" EntityType="Self.AracMarka" />
           <EntitySet Name="AracModel" EntityType="Self.AracModel" />
+          <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
           <EntitySet Name="Gelirler" EntityType="Self.Gelirler" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
           <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" />
+          <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" />
           <EntitySet Name="Personel" EntityType="Self.Personel" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Uye" EntityType="Self.Uye" />
@@ -741,6 +791,8 @@
               <MappingFragment StoreEntitySet="Arac">
                 <ScalarProperty Name="AracID" ColumnName="AracID" />
                 <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
                 <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
                 <ScalarProperty Name="ModelID" ColumnName="ModelID" />
               </MappingFragment>
@@ -760,6 +812,17 @@
                 <ScalarProperty Name="ModelID" ColumnName="ModelID" />
                 <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ayarlar">
+            <EntityTypeMapping TypeName="CARPARKModel.Ayarlar">
+              <MappingFragment StoreEntitySet="Ayarlar">
+                <ScalarProperty Name="AyarId" ColumnName="AyarId" />
+                <ScalarProperty Name="ToplamKapasite" ColumnName="ToplamKapasite" />
+                <ScalarProperty Name="OtomobilKapasite" ColumnName="OtomobilKapasite" />
+                <ScalarProperty Name="KamyonetKapasite" ColumnName="KamyonetKapasite" />
+                <ScalarProperty Name="ResimKlasorYolu" ColumnName="ResimKlasorYolu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -811,6 +874,18 @@
                 <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
                 <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
                 <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpenAprArac">
+            <EntityTypeMapping TypeName="CARPARKModel.OpenAprArac">
+              <MappingFragment StoreEntitySet="OpenAprArac">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

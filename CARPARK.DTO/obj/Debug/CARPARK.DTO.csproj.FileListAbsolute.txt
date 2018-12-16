@@ -5,3 +5,4 @@ C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debu
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.pdb
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\bin\Debug\System.Web.Mvc.dll
 C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\bin\Debug\System.Web.Mvc.xml
+C:\Users\Ahmet Turan Alp\Documents\Github -Projects\CARPARK\CARPARK.DTO\obj\Debug\CARPARK.DTO.csprojResolveAssemblyReference.cache

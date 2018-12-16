@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\CustomErrorAttribute.cs" />
+    <Compile Include="Code\SavePlateInformationToDatabase.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Dashboard\AboneFatura\Fatura.css" />
     <Content Include="Content\Dashboard\Buton\DashboardButon.css" />
     <Content Include="Content\Dashboard\css\bootstrap-responsive.min.css" />
     <Content Include="Content\Dashboard\css\bootstrap-wysihtml5.css" />
@@ -324,6 +324,12 @@
     <Content Include="Content\Home\images\pic03.jpg" />
     <Content Include="Content\Home\images\pic04.jpg" />
     <Content Include="Content\Home\images\pic05.jpg" />
+    <Content Include="Content\OpenALPR\client.js" />
+    <Content Include="Content\OpenALPR\OpenALPDataReader.js" />
+    <Content Include="Content\OpenALPR\OpenALPRAdapter.js" />
+    <Content Include="Content\OpenALPR\OpenALPRDemo.js" />
+    <Content Include="Content\OpenALPR\server.js" />
+    <Content Include="Content\OpenALPR\utils.js" />
     <Content Include="Content\Toastr\toastr.css" />
     <Content Include="Content\Toastr\toastr.js" />
     <Content Include="Content\Toastr\Utility.js" />
@@ -419,8 +425,13 @@
     <Content Include="Views\Shared\MusteriYikamaPartial.cshtml" />
     <Content Include="Views\Error\PageError.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Dashboard\GenelAyarlar.cshtml" />
+    <Content Include="Views\Dashboard\AracPlakaOkuma.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AracPlaka\" />
+    <Folder Include="Content\Dashboard\AboneFatura\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

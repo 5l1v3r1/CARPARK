@@ -32,6 +32,8 @@
         <MappingFragment StoreEntitySet="Arac">
           <ScalarProperty Name="AracID" ColumnName="AracID" />
           <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
           <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
           <ScalarProperty Name="ModelID" ColumnName="ModelID" />
         </MappingFragment>
@@ -51,6 +53,17 @@
           <ScalarProperty Name="ModelID" ColumnName="ModelID" />
           <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
           <ScalarProperty Name="Model" ColumnName="Model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ayarlar">
+      <EntityTypeMapping TypeName="CARPARKModel.Ayarlar">
+        <MappingFragment StoreEntitySet="Ayarlar">
+          <ScalarProperty Name="AyarId" ColumnName="AyarId" />
+          <ScalarProperty Name="ToplamKapasite" ColumnName="ToplamKapasite" />
+          <ScalarProperty Name="OtomobilKapasite" ColumnName="OtomobilKapasite" />
+          <ScalarProperty Name="KamyonetKapasite" ColumnName="KamyonetKapasite" />
+          <ScalarProperty Name="ResimKlasorYolu" ColumnName="ResimKlasorYolu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -102,6 +115,18 @@
           <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
           <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
           <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenAprArac">
+      <EntityTypeMapping TypeName="CARPARKModel.OpenAprArac">
+        <MappingFragment StoreEntitySet="OpenAprArac">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
