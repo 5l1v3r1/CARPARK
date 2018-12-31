@@ -17,6 +17,7 @@ namespace CARPARK.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Abone()
         {
+            this.AboneGiriCikis = new HashSet<AboneGiriCikis>();
             this.AboneOdeme = new HashSet<AboneOdeme>();
         }
     
@@ -26,6 +27,7 @@ namespace CARPARK.Data.Model
         public string TCNO { get; set; }
         public string CepTel { get; set; }
         public Nullable<System.DateTime> KayitTarihi { get; set; }
+        public string Islem { get; set; }
         public Nullable<bool> Durum { get; set; }
         public Nullable<int> AracID { get; set; }
         public Nullable<int> UyeID { get; set; }
@@ -34,6 +36,8 @@ namespace CARPARK.Data.Model
         public virtual Arac Arac { get; set; }
         public virtual KullaniciYetki KullaniciYetki { get; set; }
         public virtual Uye Uye { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AboneGiriCikis> AboneGiriCikis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AboneOdeme> AboneOdeme { get; set; }
     }

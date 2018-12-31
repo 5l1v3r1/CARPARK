@@ -52,6 +52,9 @@
     <Compile Include="Model\Abone.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\AboneGiriCikis.cs">
+      <DependentUpon>CARPARKDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\AboneOdeme.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
@@ -95,9 +98,6 @@
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\MusteriYikama.cs">
-      <DependentUpon>CARPARKDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\OpenAprArac.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Personel.cs">

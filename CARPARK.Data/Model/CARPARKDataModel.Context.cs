@@ -26,6 +26,7 @@ namespace CARPARK.Data.Model
         }
     
         public virtual DbSet<Abone> Abone { get; set; }
+        public virtual DbSet<AboneGiriCikis> AboneGiriCikis { get; set; }
         public virtual DbSet<AboneOdeme> AboneOdeme { get; set; }
         public virtual DbSet<Arac> Arac { get; set; }
         public virtual DbSet<AracMarka> AracMarka { get; set; }
@@ -36,7 +37,6 @@ namespace CARPARK.Data.Model
         public virtual DbSet<Musteri> Musteri { get; set; }
         public virtual DbSet<MusteriPark> MusteriPark { get; set; }
         public virtual DbSet<MusteriYikama> MusteriYikama { get; set; }
-        public virtual DbSet<OpenAprArac> OpenAprArac { get; set; }
         public virtual DbSet<Personel> Personel { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Uye> Uye { get; set; }

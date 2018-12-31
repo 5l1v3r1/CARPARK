@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitisDTO\AboneDTO.cs" />
+    <Compile Include="EntitisDTO\AboneGirisCikisDTO.cs" />
     <Compile Include="EntitisDTO\AboneOdemeDTO.cs" />
     <Compile Include="EntitisDTO\AracDTO.cs" />
     <Compile Include="EntitisDTO\AracMarkaDTO.cs" />

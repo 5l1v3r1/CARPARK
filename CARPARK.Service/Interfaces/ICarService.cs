@@ -30,6 +30,20 @@ namespace CARPARK.Service.Interfaces
         int Insert(AracDTO arac);
 
         /// <summary>
+        /// Arac marka ekleme işlemi yapar.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        int CarBrandInsert(AracMarkaDTO brand);
+
+        /// <summary>
+        /// Arac model ekleme işlemi yapar.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        int CarModelInsert(AracModelDTO model);
+
+        /// <summary>
         /// Id'ye göre arac getirir.
         /// </summary>
         /// <param name="id"></param>
@@ -55,5 +69,28 @@ namespace CARPARK.Service.Interfaces
         /// </summary>
         /// <returns></returns>
         List<AracDTO> GetAllCarList();
+
+        /// <summary>
+        /// Plaka verisine göre arac id döndürür.
+        /// </summary>
+        /// <param name="plaka"></param>
+        /// <returns></returns>
+        int GetCar(string plaka);
+
+        /// <summary>
+        /// Marka ismine göre arac marka verisini döndürür.
+        /// </summary>
+        /// <param name="brandName"></param>
+        /// <returns></returns>
+        AracMarkaDTO GetCarBrand(string brandName);
+
+        /// <summary>
+        /// Marka id' si ve model adına göre arac model verisinin döndürür.
+        /// </summary>
+        /// <param name="brandId"></param>
+        /// <param name="modelName"></param>
+        /// <returns></returns>
+        AracModelDTO GetCarModel(int brandId, string modelName);
+
     }
 }

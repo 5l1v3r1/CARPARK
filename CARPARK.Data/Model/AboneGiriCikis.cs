@@ -12,13 +12,13 @@ namespace CARPARK.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class OpenAprArac
+    public partial class AboneGiriCikis
     {
-        public int ID { get; set; }
-        public string Plaka { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public string Renk { get; set; }
-        public string UretimYili { get; set; }
+        public int TimeId { get; set; }
+        public Nullable<System.DateTime> Tarih { get; set; }
+        public Nullable<bool> Durum { get; set; }
+        public Nullable<int> AboneId { get; set; }
+    
+        public virtual Abone Abone { get; set; }
     }
 }

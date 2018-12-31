@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace CARPARK.DTO.EntitisDTO
 {
-   public class AracDTO
+    public class AracDTO
     {
         public int AracID { get; set; }
         public string Plaka { get; set; }
-        public int ?MarkaID { get; set; }
-        public int ?ModelID { get; set; }
+        public int? MarkaID { get; set; }
+        public int? ModelID { get; set; }
+        public string Renk { get; set; }
+        public string Bolge { get; set; }
+        public string Kasa { get; set; }
+
     }
 }

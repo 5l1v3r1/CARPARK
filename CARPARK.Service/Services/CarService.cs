@@ -166,5 +166,106 @@ namespace CARPARK.Service.Services
                 return new List<AracDTO>();
             }
         }
+
+        public int GetCar(string plaka)
+        {
+            try
+            {
+                if (_aracRepo.GetAll().Count() > 0)
+                {
+                    var aracEntity = (from a in _aracRepo.GetAll()
+                                      where a.Plaka == plaka
+                                      select new AracDTO
+                                      {
+                                          AracID = a.AracID,
+                                          Plaka = a.Plaka,
+                                          MarkaID = a.MarkaID,
+                                          ModelID = a.ModelID
+                                      }).SingleOrDefault();
+
+                    if (aracEntity == null)
+                    {
+                        return  0;
+                    }
+
+                    return aracEntity.AracID;
+                }
+                return 0;
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public AracMarkaDTO GetCarBrand(string brandName)
+        {
+            try
+            {
+                var aracEntity = (from a in _markaRepo.GetAll()
+                                  where a.Marka.Contains(brandName.Trim())
+                                  select new AracMarkaDTO
+                                  {
+                                      MarkaID = a.MarkaID,
+                                      Marka = a.Marka
+                                  }).SingleOrDefault();
+                return aracEntity;
+            }
+            catch (Exception)
+            {
+                return new AracMarkaDTO();
+            }
+        }
+
+        public AracModelDTO GetCarModel(int brandId, string modelName)
+        {
+            try
+            {
+                var aracEntity = (from a in _modelRepo.GetAll()
+                                  where a.MarkaID == brandId && a.Model.Contains(modelName.Trim())
+                                  select new AracModelDTO
+                                  {
+                                      MarkaID = a.MarkaID,
+                                      ModelID = a.ModelID,
+                                      Model = a.Model
+                                  }).SingleOrDefault();
+                return aracEntity;
+            }
+            catch (Exception)
+            {
+                return new AracModelDTO();
+            }
+        }
+
+        public int CarBrandInsert(AracMarkaDTO brand)
+        {
+            try
+            {
+                var liste = AutoMapper.Mapper.DynamicMap<AracMarka>(brand);
+                _markaRepo.Insert(liste);
+                _uow.SaveChanges();
+                return liste.MarkaID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public int CarModelInsert(AracModelDTO model)
+        {
+            try
+            {
+                var liste = AutoMapper.Mapper.DynamicMap<AracModel>(model);
+                _modelRepo.Insert(liste);
+                _uow.SaveChanges();
+                return liste.ModelID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

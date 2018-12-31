@@ -60,5 +60,21 @@ namespace CARPARK.Service.Interfaces
         /// </summary>
         /// <param name="odeme"></param>
         void SubscriberPaymentInsert(AboneOdemeDTO odeme);
+
+        /// <summary>
+        /// Arac Id'ye göre abone kontrol işlemi yapılıyor. Arac'a ait abone varsa aboneyi yoksa null geri dödürüyor. 
+        /// </summary>
+        /// <param name="aracId"></param>
+        /// <returns></returns>
+        AboneDTO GetSubscriber(int aracId);
+
+        /// <summary>
+        /// Abone Giriş Çıkış işlemini kayıt eder.
+        /// </summary>
+        /// <param name="abone"></param>
+        /// <returns></returns>
+        bool SubscriberInputOutput(AboneGirisCikisDTO abone);
+
+        List<AboneGirisCikisDTO> GetSubscriberAllInputOutput(int abooneId);
     }
 }

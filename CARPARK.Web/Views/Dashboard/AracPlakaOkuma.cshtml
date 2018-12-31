@@ -38,6 +38,7 @@
         margin-bottom: 0;
     }
 </style>
+<link href="~/Content/Dashboard/Buton/input-file.css" rel="stylesheet" />
 <div id="content-header">
     <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Arac Plaka</a> </div>
 </div>
@@ -52,21 +53,28 @@
                         <span class="icon"><i class="icon-th"></i></span>
                         <h5>Plaka Bilgi Tablosu</h5>
                     </div>
-                    <a href="/StaffAdd" class="pull-right" id="perEkle">
-                        <span class="icon"><i class="icon-plus"></i></span>
-                        <h5>Plaka Bilgisi Ekle</h5>
-                    </a>
+
                 </div>
-                <div class="widget-content nopadding">
+                <div class="widget-content nopadding" style="margin-left:50px; margin-top:25px; margin-right:50px; min-height:450px;">
                     <div>
-                        <input type="file" id="file-upload-input" class="">
+                        <form>
+                            <input id="file-upload-input" type="file" name="files" multiple>
+                        </form>
                     </div>
-                    <div>
-                        <img id="uploadedImage" src="" class="">
+                    <hr />
+                    <div class="">
+                        <img id="uploadedImage" style="max-width:450px; max-height:300px;" src="" class="span6">
                     </div>
-                    <div id="messages"></div>
+                    <div class="span6" style="font-size:medium;" id="messages"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="~/Content/Dashboard/Buton/input-file.min.js"></script>
+<script>
+    new InputFile({
+        // options
+    });
+</script>

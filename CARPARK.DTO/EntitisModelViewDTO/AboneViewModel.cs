@@ -17,6 +17,5 @@ namespace CARPARK.DTO.EntitisModelViewDTO
         public AracViewModel AracModel { get; set; }
         public AboneOdemeDTO Odeme { get; set; }
         public List<AboneOdemeDTO> AboneOdeme { get; set; }
-
     }
 }

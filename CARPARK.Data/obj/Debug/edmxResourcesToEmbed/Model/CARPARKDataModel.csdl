@@ -10,6 +10,7 @@
     <Property Name="TCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CepTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+    <Property Name="Islem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Durum" Type="Boolean" />
     <Property Name="AracID" Type="Int32" />
     <Property Name="UyeID" Type="Int32" />
@@ -17,7 +18,18 @@
     <NavigationProperty Name="Arac" Relationship="Self.FK_Abone_Arac" FromRole="Abone" ToRole="Arac" />
     <NavigationProperty Name="KullaniciYetki" Relationship="Self.FK_Abone_KullaniciYetki" FromRole="Abone" ToRole="KullaniciYetki" />
     <NavigationProperty Name="Uye" Relationship="Self.FK_Abone_Uye" FromRole="Abone" ToRole="Uye" />
+    <NavigationProperty Name="AboneGiriCikis" Relationship="Self.FK_AboneGiriCikis_Abone" FromRole="Abone" ToRole="AboneGiriCikis" />
     <NavigationProperty Name="AboneOdeme" Relationship="Self.FK_AboneOdeme_Abone" FromRole="Abone" ToRole="AboneOdeme" />
+  </EntityType>
+  <EntityType Name="AboneGiriCikis">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="Durum" Type="Boolean" />
+    <Property Name="AboneId" Type="Int32" />
+    <NavigationProperty Name="Abone" Relationship="Self.FK_AboneGiriCikis_Abone" FromRole="AboneGiriCikis" ToRole="Abone" />
   </EntityType>
   <EntityType Name="AboneOdeme">
     <Key>
@@ -36,9 +48,10 @@
     <Property Name="AracID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MarkaID" Type="Int32" />
     <Property Name="ModelID" Type="Int32" />
+    <Property Name="Bolge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kasa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Abone" Relationship="Self.FK_Abone_Arac" FromRole="Arac" ToRole="Abone" />
     <NavigationProperty Name="AracMarka" Relationship="Self.FK_Arac_AracMarka" FromRole="Arac" ToRole="AracMarka" />
     <NavigationProperty Name="AracModel" Relationship="Self.FK_Arac_AracModel" FromRole="Arac" ToRole="AracModel" />
@@ -126,17 +139,6 @@
     <Property Name="MusteriID" Type="Int32" />
     <NavigationProperty Name="Musteri" Relationship="Self.FK_MusteriYikama_Musteri" FromRole="MusteriYikama" ToRole="Musteri" />
   </EntityType>
-  <EntityType Name="OpenAprArac">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UretimYili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Personel">
     <Key>
       <PropertyRef Name="PersonelID" />
@@ -208,6 +210,18 @@
       </Principal>
       <Dependent Role="Abone">
         <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AboneGiriCikis_Abone">
+    <End Role="Abone" Type="Self.Abone" Multiplicity="0..1" />
+    <End Role="AboneGiriCikis" Type="Self.AboneGiriCikis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abone">
+        <PropertyRef Name="AboneID" />
+      </Principal>
+      <Dependent Role="AboneGiriCikis">
+        <PropertyRef Name="AboneId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -321,6 +335,7 @@
   </Association>
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Abone" EntityType="Self.Abone" />
+    <EntitySet Name="AboneGiriCikis" EntityType="Self.AboneGiriCikis" />
     <EntitySet Name="AboneOdeme" EntityType="Self.AboneOdeme" />
     <EntitySet Name="Arac" EntityType="Self.Arac" />
     <EntitySet Name="AracMarka" EntityType="Self.AracMarka" />
@@ -331,7 +346,6 @@
     <EntitySet Name="Musteri" EntityType="Self.Musteri" />
     <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
     <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" />
-    <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" />
     <EntitySet Name="Personel" EntityType="Self.Personel" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Uye" EntityType="Self.Uye" />
@@ -346,6 +360,10 @@
     <AssociationSet Name="FK_Abone_Uye" Association="Self.FK_Abone_Uye">
       <End Role="Uye" EntitySet="Uye" />
       <End Role="Abone" EntitySet="Abone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AboneGiriCikis_Abone" Association="Self.FK_AboneGiriCikis_Abone">
+      <End Role="Abone" EntitySet="Abone" />
+      <End Role="AboneGiriCikis" EntitySet="AboneGiriCikis" />
     </AssociationSet>
     <AssociationSet Name="FK_AboneOdeme_Abone" Association="Self.FK_AboneOdeme_Abone">
       <End Role="Abone" EntitySet="Abone" />

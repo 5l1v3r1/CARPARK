@@ -92,7 +92,12 @@ namespace CARPARK.Web.Controllers
             arac.MarkaID = musteri.MarkaID;
             arac.ModelID = musteri.ModelID;
             arac.Plaka = musteri.Plaka;
-            int aracID = _aracService.Insert(arac);
+            int aracID;
+            aracID = _aracService.GetCar(arac.Plaka);
+            if (aracID == 0)
+            {
+                aracID = _aracService.Insert(arac);
+            }
             musteri.HizmetTuru = "Park";
             if (musteri.Aciklama == null)
             {
@@ -116,7 +121,12 @@ namespace CARPARK.Web.Controllers
             arac.MarkaID = musteri.MarkaID;
             arac.ModelID = musteri.ModelID;
             arac.Plaka = musteri.Plaka;
-            int aracID = _aracService.Insert(arac);
+            int aracID;
+            aracID = _aracService.GetCar(arac.Plaka);
+            if (aracID == 0)
+            {
+                aracID = _aracService.Insert(arac);
+            }
             musteri.HizmetTuru = "Yıkama";
             if (musteri.Aciklama == null)
             {

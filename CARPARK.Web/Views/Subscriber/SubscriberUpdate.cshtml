@@ -40,6 +40,10 @@
                 </div>
                 <div class="widget-content nopadding">
                     <form action="/Subscriber/SubscriberUpdate" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                        @Html.Hidden("AboneID", Model.Abone.AboneID)
+                        @Html.Hidden("UyeID", Model.Uye.UyeID)
+                        @Html.Hidden("Durum", Model.Abone.Durum)
+                        @Html.Hidden("YetkiID", Model.Abone.YetkiID)
                         <div class="control-group">
                             <label class="control-label">İsim :</label>
                             <div class="controls">
@@ -99,11 +103,8 @@
                             <label class="control-label">Araç Model :</label>
                             <div class="controls">
                                 <select class="span4" name="ModelID" id="ModelID">
-                                    @*<option selected="selected" value="@Model.Model.ModelID">@Model.Model.Model</option>*@
-                                    @foreach (var item in Model.AracModel.ModelListesi)
-                                    {
-                                        <option value="@item.Value">@item.Text</option>
-                                    }
+                                    <option selected="selected" value="@Model.Model.ModelID">@Model.Model.Model</option>
+                                    
                                 </select><br /><br />
                             </div>
                         </div>

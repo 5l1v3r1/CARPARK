@@ -10,10 +10,20 @@
     <Property Name="TCNO" Type="nvarchar" MaxLength="50" />
     <Property Name="CepTel" Type="nvarchar" MaxLength="50" />
     <Property Name="KayitTarihi" Type="datetime" />
+    <Property Name="Islem" Type="nvarchar" MaxLength="50" />
     <Property Name="Durum" Type="bit" />
     <Property Name="AracID" Type="int" />
     <Property Name="UyeID" Type="int" />
     <Property Name="YetkiID" Type="int" />
+  </EntityType>
+  <EntityType Name="AboneGiriCikis">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tarih" Type="datetime" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="AboneId" Type="int" />
   </EntityType>
   <EntityType Name="AboneOdeme">
     <Key>
@@ -31,9 +41,10 @@
     <Property Name="AracID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
     <Property Name="Renk" Type="nvarchar" MaxLength="50" />
-    <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
     <Property Name="MarkaID" Type="int" />
     <Property Name="ModelID" Type="int" />
+    <Property Name="Bolge" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kasa" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="AracMarka">
     <Key>
@@ -106,17 +117,6 @@
     <Property Name="TeslimSaati" Type="datetime" />
     <Property Name="MusteriID" Type="int" />
   </EntityType>
-  <EntityType Name="OpenAprArac">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Plaka" Type="nvarchar" MaxLength="50" />
-    <Property Name="Marka" Type="nvarchar" MaxLength="50" />
-    <Property Name="Model" Type="nvarchar" MaxLength="50" />
-    <Property Name="Renk" Type="nvarchar" MaxLength="50" />
-    <Property Name="UretimYili" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Personel">
     <Key>
       <PropertyRef Name="PersonelID" />
@@ -184,6 +184,18 @@
       </Principal>
       <Dependent Role="Abone">
         <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AboneGiriCikis_Abone">
+    <End Role="Abone" Type="Self.Abone" Multiplicity="0..1" />
+    <End Role="AboneGiriCikis" Type="Self.AboneGiriCikis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abone">
+        <PropertyRef Name="AboneID" />
+      </Principal>
+      <Dependent Role="AboneGiriCikis">
+        <PropertyRef Name="AboneId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -297,6 +309,7 @@
   </Association>
   <EntityContainer Name="CARPARKModelStoreContainer">
     <EntitySet Name="Abone" EntityType="Self.Abone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AboneGiriCikis" EntityType="Self.AboneGiriCikis" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AboneOdeme" EntityType="Self.AboneOdeme" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Arac" EntityType="Self.Arac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AracMarka" EntityType="Self.AracMarka" Schema="dbo" store:Type="Tables" />
@@ -307,7 +320,6 @@
     <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriYikama" EntityType="Self.MusteriYikama" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OpenAprArac" EntityType="Self.OpenAprArac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
@@ -322,6 +334,10 @@
     <AssociationSet Name="FK_Abone_Uye" Association="Self.FK_Abone_Uye">
       <End Role="Uye" EntitySet="Uye" />
       <End Role="Abone" EntitySet="Abone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AboneGiriCikis_Abone" Association="Self.FK_AboneGiriCikis_Abone">
+      <End Role="Abone" EntitySet="Abone" />
+      <End Role="AboneGiriCikis" EntitySet="AboneGiriCikis" />
     </AssociationSet>
     <AssociationSet Name="FK_AboneOdeme_Abone" Association="Self.FK_AboneOdeme_Abone">
       <End Role="Abone" EntitySet="Abone" />

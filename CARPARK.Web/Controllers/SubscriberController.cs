@@ -69,7 +69,12 @@ namespace CARPARK.Web.Controllers
             uye.KullaniciAdi = (abone.Adi + abone.Soyad).Trim().Replace(" ", string.Empty).ToLower();
             uye.Parola = PassManager.Base64Encrypt(abone.TCNO);
             int uyeID = _uyeService.Insert(uye);
-            int aracID = _aracService.Insert(arac);
+            int aracID;
+            aracID = _aracService.GetCar(arac.Plaka);
+            if (aracID == 0)
+            {
+                aracID = _aracService.Insert(arac);
+            }
             _aboneService.Insert(abone, uyeID, aracID);
             return RedirectToAction("SubscriberList", "Subscriber");
         }
@@ -83,6 +88,7 @@ namespace CARPARK.Web.Controllers
             model.Arac = _aracService.Car(Convert.ToInt32(model.Abone.AracID));
             model.Marka = _aracService.Brand(Convert.ToInt32(model.Arac.MarkaID));
             model.Model = _aracService.Model(Convert.ToInt32(model.Arac.ModelID));
+           
             return model;
         }
 
@@ -103,6 +109,25 @@ namespace CARPARK.Web.Controllers
             model = AboneModel(id);
             model.AracModel = AracModel();
             return View(model);
+        }
+
+        [HandleError]
+        [HttpPost]
+        public ActionResult SubscriberUpdate(AboneDTO abone, UyeDTO uye, AracDTO arac)
+        {
+            uye.KullaniciAdi = (abone.Adi + abone.Soyad).Trim().Replace(" ", string.Empty).ToLower();
+            uye.Parola = PassManager.Base64Encrypt(abone.TCNO);
+            int aracID;
+            aracID = _aracService.GetCar(arac.Plaka);
+            if (aracID == 0)
+            {
+                aracID = _aracService.Insert(arac);
+            }
+
+            _uyeService.Update(uye);
+            abone.AracID = aracID;
+            _aboneService.Update(abone);
+            return RedirectToAction("SubscriberList", "Subscriber");
         }
 
         [HandleError]
@@ -148,6 +173,14 @@ namespace CARPARK.Web.Controllers
             AboneViewModel model = new AboneViewModel();
             model = AboneModel(Convert.ToInt32(abone.AboneID));
             model.Odeme = _aboneService.SubscriberPayment(id);
+            return View(model);
+        }
+
+        [HandleError]
+        [Route("SubscriberInputOutput/{id}")]
+        public ActionResult SubscriberInputOutput(int id)
+        {
+            List<AboneGirisCikisDTO> model = _aboneService.GetSubscriberAllInputOutput(id);
             return View(model);
         }
 

@@ -46,7 +46,9 @@ namespace CARPARK.Service.Services
             try
             {
                 var uyeEntity = _uyeRepo.Find(Convert.ToInt32(uye.UyeID));
-                _uyeRepo.Update(uyeEntity);
+                uyeEntity.KullaniciAdi = uye.KullaniciAdi;
+                var liste = AutoMapper.Mapper.DynamicMap<Uye>(uyeEntity);
+                _uyeRepo.Update(liste);
                 _uow.SaveChanges();
             }
             catch (Exception ex)

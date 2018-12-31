@@ -1,0 +1,75 @@
+﻿@model List<CARPARK.DTO.EntitisDTO.AboneGirisCikisDTO>
+
+@{
+    ViewBag.Title = "SubscriberInputOutput";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+<style>
+    #perEkle:hover {
+        color: darkblue;
+    }
+
+    #perEkle h5:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/DashboardPanel" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/SubscriberList" title="Abone Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Aboneler</a>
+        <a href="#" class="current">Abone Giriş Çıkış Kontrol</a>
+    </div>
+</div>
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Abone Giriş Çıkış Hareket Tablosu</h5>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var per in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td style="text-align:center;">@per.TimeId</td>
+                                    <td style="text-align:center;">@per.Tarih</td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+

@@ -25,9 +25,10 @@ namespace CARPARK.Data.Model
         public int AracID { get; set; }
         public string Plaka { get; set; }
         public string Renk { get; set; }
-        public string UretimYili { get; set; }
         public Nullable<int> MarkaID { get; set; }
         public Nullable<int> ModelID { get; set; }
+        public string Bolge { get; set; }
+        public string Kasa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Abone> Abone { get; set; }

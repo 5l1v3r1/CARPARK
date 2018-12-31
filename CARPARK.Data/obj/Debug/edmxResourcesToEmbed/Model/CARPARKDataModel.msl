@@ -10,10 +10,21 @@
           <ScalarProperty Name="TCNO" ColumnName="TCNO" />
           <ScalarProperty Name="CepTel" ColumnName="CepTel" />
           <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+          <ScalarProperty Name="Islem" ColumnName="Islem" />
           <ScalarProperty Name="Durum" ColumnName="Durum" />
           <ScalarProperty Name="AracID" ColumnName="AracID" />
           <ScalarProperty Name="UyeID" ColumnName="UyeID" />
           <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AboneGiriCikis">
+      <EntityTypeMapping TypeName="CARPARKModel.AboneGiriCikis">
+        <MappingFragment StoreEntitySet="AboneGiriCikis">
+          <ScalarProperty Name="TimeId" ColumnName="TimeId" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="AboneId" ColumnName="AboneId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,9 +44,10 @@
           <ScalarProperty Name="AracID" ColumnName="AracID" />
           <ScalarProperty Name="Plaka" ColumnName="Plaka" />
           <ScalarProperty Name="Renk" ColumnName="Renk" />
-          <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
           <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
           <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+          <ScalarProperty Name="Bolge" ColumnName="Bolge" />
+          <ScalarProperty Name="Kasa" ColumnName="Kasa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -115,18 +127,6 @@
           <ScalarProperty Name="YikamaTuru" ColumnName="YikamaTuru" />
           <ScalarProperty Name="TeslimSaati" ColumnName="TeslimSaati" />
           <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OpenAprArac">
-      <EntityTypeMapping TypeName="CARPARKModel.OpenAprArac">
-        <MappingFragment StoreEntitySet="OpenAprArac">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Plaka" ColumnName="Plaka" />
-          <ScalarProperty Name="Marka" ColumnName="Marka" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="Renk" ColumnName="Renk" />
-          <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
