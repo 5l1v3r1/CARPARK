@@ -15,13 +15,15 @@ namespace CARPARK.Web.Controllers
     {
         private readonly ICarService _aracService;
         private readonly ICustomerService _musteriService;
+        private readonly IMoneyEntryService _gelirService;
         private readonly IUnitofWork _uow;
         private SessionContext _sessionContext;
-        public CustomerController(IUnitofWork uow, ICarService aracService, ICustomerService musteriService)
+        public CustomerController(IUnitofWork uow, ICarService aracService, ICustomerService musteriService, IMoneyEntryService gelirService)
         {
             _uow = uow;
             _aracService = aracService;
             _musteriService = musteriService;
+            _gelirService = gelirService;
             _sessionContext = new SessionContext();
         }
 
@@ -138,6 +140,49 @@ namespace CARPARK.Web.Controllers
             }
             int musteriID = _musteriService.CustomerInsert(musteri, aracID);
             _musteriService.CustomerWashingInsert(yikama, musteriID);
+            return RedirectToAction("CustomerList", "Customer");
+        }
+
+
+        [Route("CustomerPayment/{id}")]
+        [HandleError]
+        public ActionResult CustomerPayment(int id)
+        {
+            MusteriDTO musteri = _musteriService.Customer(id);
+            MusteriParkDTO park = _musteriService.CustomerPark(id);
+            MusteriViewModel model = new MusteriViewModel();
+            model.Musteri = musteri;
+            model.Park = park;
+            return View(model);
+        }
+
+        [HttpPost]
+        [HandleError]
+        public ActionResult CustomerPaymentInsert(MusteriParkDTO park)
+        {
+            DateTime bas = Convert.ToDateTime(park.GirisTarihi);
+            DateTime son = Convert.ToDateTime(park.CikisTarihi);
+            var fark = (son - bas).Hours;
+            var fiyat = fark * 10;
+
+            MusteriDTO musteri = _musteriService.Customer(park.MusteriID);
+            musteri.Tutar = fiyat;
+            musteri.Durum = false;
+
+            bool durum = _musteriService.CustomerUpdate(musteri);
+            if (durum == true)
+            {
+                bool parkdurum = _musteriService.CustomerParkUpdate(park);
+                if (parkdurum == true)
+                {
+                    GelirlerDTO gelir = new GelirlerDTO();
+                    gelir.GelirTuru = "Müsteri Park Ödeme";
+                    gelir.OdemeTarihi = Convert.ToDateTime(park.CikisTarihi);
+                    gelir.Tutar = Convert.ToDecimal(fiyat);
+                    gelir.AracID = Convert.ToInt32(musteri.AracId);
+                    _gelirService.Insert(gelir);
+                }
+            }
             return RedirectToAction("CustomerList", "Customer");
         }
 

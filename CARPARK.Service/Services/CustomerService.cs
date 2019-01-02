@@ -57,7 +57,8 @@ namespace CARPARK.Service.Services
                                           Model = md.Model,
                                           ModelID = md.ModelID,
                                           Tutar = m.Tutar,
-                                          Durum = m.Durum
+                                          Durum = m.Durum,
+                                          AracId = m.AracID
                                       }).FirstOrDefault();
                 return musteri;
             }
@@ -67,11 +68,11 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public int CustomerInsert(MusteriDTO musteri,int aracID)
+        public int CustomerInsert(MusteriDTO musteri, int aracID)
         {
             try
             {
-                var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);            
+                var musteriEntity = AutoMapper.Mapper.DynamicMap<Musteri>(musteri);
                 musteriEntity.AracID = aracID;
                 musteriEntity.Durum = true;
                 _musteriRepo.Insert(musteriEntity);
@@ -92,6 +93,7 @@ namespace CARPARK.Service.Services
                              join a in _aracRepo.GetAll() on m.AracID equals a.AracID
                              join mk in _markaRepo.GetAll() on a.MarkaID equals mk.MarkaID
                              join md in _modelRepo.GetAll() on a.ModelID equals md.ModelID
+                             where m.Durum == true
                              select new MusteriDTO
                              {
                                  MusteriID = m.MusteriID,
@@ -150,6 +152,40 @@ namespace CARPARK.Service.Services
             }
         }
 
+        public bool CustomerParkUpdate(MusteriParkDTO park)
+        {
+            try
+            {
+                var parkEntity = _parkRepo.Find(park.ParkID);
+                AutoMapper.Mapper.DynamicMap(park, parkEntity);
+                _parkRepo.Update(parkEntity);
+                _uow.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool CustomerUpdate(MusteriDTO musteri)
+        {
+            try
+            {
+                var musteriEntity = _musteriRepo.Find(musteri.MusteriID);
+                AutoMapper.Mapper.DynamicMap(musteri, musteriEntity);
+                _musteriRepo.Update(musteriEntity);
+                _uow.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw new Exception(ex.Message);
+            }
+        }
+
         public MusteriYikamaDTO CustomerWashing(int musteriID)
         {
             try
@@ -171,7 +207,7 @@ namespace CARPARK.Service.Services
             }
         }
 
-        public void CustomerWashingInsert(MusteriYikamaDTO yikama,int musteriID)
+        public void CustomerWashingInsert(MusteriYikamaDTO yikama, int musteriID)
         {
             try
             {

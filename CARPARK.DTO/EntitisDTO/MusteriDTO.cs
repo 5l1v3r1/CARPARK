@@ -18,5 +18,6 @@ namespace CARPARK.DTO.EntitisDTO
         public bool? Durum { get; set; }
         public decimal ?Tutar { get; set; }
         public string Plaka { get; set; }
+        public int? AracId { get; set; }
     }
 }

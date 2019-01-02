@@ -1,0 +1,105 @@
+﻿@model List<CARPARK.DTO.EntitisModelViewDTO.BlackListViewModel>
+@{
+    ViewBag.Title = "BlackList";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/Content/Dashboard/css/uniform.css" />
+<link rel="stylesheet" href="~/Content/Dashboard/css/select2.css" />
+<link href="~/Content/Toastr/toastr.css" rel="stylesheet" />
+<style>
+    #perEkle:hover {
+        color: darkblue;
+    }
+
+    #perEkle h5:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    .container-fluid .row-fluid:first-child {
+        margin-top: 0;
+    }
+
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="/Dashboard" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a> <a href="#" class="current"><i class="icon-user"></i>Kara Liste</a> </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Kara Liste</h5>
+                    </div>
+                    <a href="/BlackListInsert" class="pull-right" id="perEkle">
+                        <span class="icon"><i class="icon-plus"></i></span>
+                        <h5>Araç Ekle</h5>
+                    </a>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Plaka</th>
+                                <th>Marka</th>
+                                <th>Model</th>
+                                <th>Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var per in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td style="text-align:center;">@per.ID</td>
+                                    <td style="text-align:center;">@per.Plaka</td>
+                                    <td style="text-align:center;">@per.Marka</td>
+                                    <td style="text-align:center;">@per.Model</td>
+                                    <td style="text-align:center;">@per.Aciklama</td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Dashboard/js/jquery.min.js"></script>
+<script src="~/Content/Dashboard/js/matrix.tables.js"></script>
+<script src="~/Content/Toastr/Utility.js"></script>
+<script src="~/Content/Toastr/toastr.js"></script>
+
+<script>
+    $(".prsSil").click(function () {
+        var sonuc = confirm("Kayıt Silinsin mi?")
+        if (sonuc) {
+            var perId = $(this).data("perid");
+            $.ajax({
+                type: "POST",
+                url: "/Staff/StaffDelete/" + perId,
+                success: function () {
+                    ShowMessage("success", "Personel Kayıt Silme", "Kayıt Silindi");
+                    window.location.replace("/StaffList");
+                },
+                error: function () {
+                    ShowMessage("error", "Personel Kayıt Silme", "Kayıt Silmede Hata Olustu");
+                }
+            });
+        }
+        else {
+            ShowMessage("warning", "Personel Kayıt Silme", "Personel Kayıt Silme İşlemi İptal Edildi.");
+        }
+    });
+</script>

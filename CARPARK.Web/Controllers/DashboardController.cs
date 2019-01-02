@@ -56,6 +56,7 @@ namespace CARPARK.Web.Controllers
 
         public ActionResult AracPlakaOkumaModel(string Plaka, string Bolge, string Marka, string Kasa, string Model, string Renk)
         {
+           
             int aracID;
             aracID = _aracService.GetCar(Plaka);
             if (aracID == 0)
@@ -103,55 +104,110 @@ namespace CARPARK.Web.Controllers
 
                 aracID = _aracService.Insert(arac);
             }
-
-            AboneDTO abone = _aboneService.GetSubscriber(aracID);
-            if (abone != null)
+            if (!_aracService.GetBlackListCarControl(aracID))
             {
-                AboneGirisCikisDTO kontrol = new AboneGirisCikisDTO();
-                kontrol.AboneId = abone.AboneID;
-                kontrol.Durum = true;
-                kontrol.Tarih = DateTime.Now;
-                bool durum = _aboneService.SubscriberInputOutput(kontrol);
-                if (durum == true)
+                AboneDTO abone = _aboneService.GetSubscriber(aracID);
+                if (abone != null)
                 {
-                    var islemdurum = abone.Islem;
-                    if (islemdurum == "Giriş Yaptı")
+                    AboneGirisCikisDTO kontrol = new AboneGirisCikisDTO();
+                    kontrol.AboneId = abone.AboneID;
+                    kontrol.Durum = true;
+                    kontrol.Tarih = DateTime.Now;
+                    bool durum = _aboneService.SubscriberInputOutput(kontrol);
+                    if (durum == true)
                     {
-                        abone.Islem = "Çıkış Yaptı";
+                        var islemdurum = abone.Islem;
+                        if (islemdurum == "Giriş Yaptı")
+                        {
+                            abone.Islem = "Çıkış Yaptı";
+                        }
+                        else if (islemdurum == "Çıkış Yaptı")
+                        {
+                            abone.Islem = "Giriş Yaptı";
+                        }
+                        _aboneService.Update(abone);
                     }
-                    else if (islemdurum=="Çıkış Yaptı")
+                }
+                else
+                {
+                    MusteriDTO musteri = new MusteriDTO();
+                    musteri.HizmetTuru = "Park";
+                    if (musteri.Aciklama == null)
                     {
-                        abone.Islem = "Giriş Yaptı";
+                        musteri.Aciklama = "Açıklama Girilmedi.";
                     }
-                    _aboneService.Update(abone);
+                    if (musteri.Tutar == null)
+                    {
+                        musteri.Tutar = 0;
+                    }
+
+                    int musteriID = _musteriService.CustomerInsert(musteri, aracID);
+                    MusteriParkDTO park = new MusteriParkDTO();
+                    park.MusteriID = musteriID;
+                    park.GirisTarihi = DateTime.Now;
+                    _musteriService.CustomerParkInsert(park, musteriID);
                 }
             }
             else
             {
-                MusteriDTO musteri = new MusteriDTO();
-                musteri.HizmetTuru = "Park";
-                if (musteri.Aciklama == null)
-                {
-                    musteri.Aciklama = "Açıklama Girilmedi.";
-                }
-                if (musteri.Tutar == null)
-                {
-                    musteri.Tutar = 0;
-                }
-
-                int musteriID = _musteriService.CustomerInsert(musteri, aracID);
-                MusteriParkDTO park = new MusteriParkDTO();
-                park.MusteriID = musteriID;
-                park.GirisTarihi = DateTime.Now;
-                _musteriService.CustomerParkInsert(park, musteriID);
+                return Json("fail", JsonRequestBehavior.AllowGet);
             }
 
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("BlackList")]
+        public ActionResult BlackList()
+        {
+            List<KaraListeDTO> list = _aracService.GetBlackList();
+            List<BlackListViewModel> blackList = new List<BlackListViewModel>();
+            foreach (var item in list)
+            {
+                BlackListViewModel black = new BlackListViewModel();
+                black.ID = item.ID;
+                black.Aciklama = item.Aciklama;
+                AracDTO arac = _aracService.Car(Convert.ToInt32(item.AracID));
+                AracMarkaDTO marka = _aracService.Brand(Convert.ToInt32(arac.MarkaID));
+                AracModelDTO model = _aracService.Model(Convert.ToInt32(arac.ModelID));
+                black.Marka = marka.Marka;
+                black.Model = model.Model;
+                black.Plaka = arac.Plaka;
+                blackList.Add(black);
+            }
+            return View(blackList);
+        }
+
+        [HandleError]
+        public AracViewModel AracModel()
+        {
+            AracViewModel aracModel = new AracViewModel();
+            aracModel.MarkaListesi = _aracService.GetAllBrand();
+            return aracModel;
+        }
 
 
+        [HandleError]
+        [Route("BlackListInsert")]
+        public ActionResult BlackListInsert()
+        {
+            return View(AracModel());
+        }
 
-
-
-            return View();
+        [HandleError]
+        [HttpPost]
+        public ActionResult BlackListInsert(AracDTO arac, KaraListeDTO kara)
+        {
+            int aracId;
+            aracId = _aracService.GetCar(arac.Plaka);
+            if (aracId == 0)
+            {
+                aracId = _aracService.Insert(arac);
+            }
+            KaraListeDTO ka = new KaraListeDTO();
+            ka.Aciklama = kara.Aciklama;
+            ka.AracID = aracId;
+            _aracService.BlackListCarInsert(ka);
+            return RedirectToAction("BlackList", "Dashboard");
         }
 
 

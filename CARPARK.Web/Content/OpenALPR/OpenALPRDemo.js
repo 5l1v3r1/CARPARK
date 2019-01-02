@@ -57,7 +57,7 @@ function OpenALPRAdapterDemo() {
             appendMessage('Veri alýnamadý ' + err.responseText)
         }
         else {
-            appendMessage('Istisna oluþtu', err)
+            appendMessage('Istisna olustu', err)
         }
     }
 
@@ -90,7 +90,14 @@ function OpenALPRAdapterDemo() {
                 Renk: _.get(result, 'vehicle.color[0].name', ''),
             };
 
-            $.post('/Dashboard/AracPlakaOkumaModel', model, function (response) {});
+            $.post('/Dashboard/AracPlakaOkumaModel', model, function (response) {
+                if (response =="success") {
+                    ShowMessage("success", "Plaka Okundu", "Araç Hareketi Eklendi");
+                }
+                else if (response=="fail") {
+                    ShowMessage("error", "Plaka Okuma Hatasý", "Araç Hareketi Eklenemedi.");
+                }
+            });
     
 
         }

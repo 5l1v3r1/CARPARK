@@ -86,6 +86,14 @@
           <Property Name="Tutar" Type="money" Nullable="false" />
           <Property Name="AracID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="KaraListe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AracID" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="KullaniciYetki">
           <Key>
             <PropertyRef Name="YetkiID" />
@@ -252,6 +260,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KaraListe_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="KaraListe" Type="Self.KaraListe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="KaraListe">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musteri_Arac">
           <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
           <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
@@ -321,6 +341,7 @@
           <EntitySet Name="AracModel" EntityType="Self.AracModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gelirler" EntityType="Self.Gelirler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KaraListe" EntityType="Self.KaraListe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" Schema="dbo" store:Type="Tables" />
@@ -359,6 +380,10 @@
           <AssociationSet Name="FK_Gelirler_Arac" Association="Self.FK_Gelirler_Arac">
             <End Role="Arac" EntitySet="Arac" />
             <End Role="Gelirler" EntitySet="Gelirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KaraListe_Arac" Association="Self.FK_KaraListe_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="KaraListe" EntitySet="KaraListe" />
           </AssociationSet>
           <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
             <End Role="Arac" EntitySet="Arac" />
@@ -442,6 +467,7 @@
           <NavigationProperty Name="AracMarka" Relationship="Self.FK_Arac_AracMarka" FromRole="Arac" ToRole="AracMarka" />
           <NavigationProperty Name="AracModel" Relationship="Self.FK_Arac_AracModel" FromRole="Arac" ToRole="AracModel" />
           <NavigationProperty Name="Gelirler" Relationship="Self.FK_Gelirler_Arac" FromRole="Arac" ToRole="Gelirler" />
+          <NavigationProperty Name="KaraListe" Relationship="Self.FK_KaraListe_Arac" FromRole="Arac" ToRole="KaraListe" />
           <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Arac" FromRole="Arac" ToRole="Musteri" />
         </EntityType>
         <EntityType Name="AracMarka">
@@ -481,6 +507,15 @@
           <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="AracID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Arac" Relationship="Self.FK_Gelirler_Arac" FromRole="Gelirler" ToRole="Arac" />
+        </EntityType>
+        <EntityType Name="KaraListe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AracID" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arac" Relationship="Self.FK_KaraListe_Arac" FromRole="KaraListe" ToRole="Arac" />
         </EntityType>
         <EntityType Name="KullaniciYetki">
           <Key>
@@ -659,6 +694,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KaraListe_Arac">
+          <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+          <End Role="KaraListe" Type="Self.KaraListe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arac">
+              <PropertyRef Name="AracID" />
+            </Principal>
+            <Dependent Role="KaraListe">
+              <PropertyRef Name="AracID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Musteri_Arac">
           <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
           <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
@@ -728,6 +775,7 @@
           <EntitySet Name="AracModel" EntityType="Self.AracModel" />
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
           <EntitySet Name="Gelirler" EntityType="Self.Gelirler" />
+          <EntitySet Name="KaraListe" EntityType="Self.KaraListe" />
           <EntitySet Name="KullaniciYetki" EntityType="Self.KullaniciYetki" />
           <EntitySet Name="Musteri" EntityType="Self.Musteri" />
           <EntitySet Name="MusteriPark" EntityType="Self.MusteriPark" />
@@ -766,6 +814,10 @@
           <AssociationSet Name="FK_Gelirler_Arac" Association="Self.FK_Gelirler_Arac">
             <End Role="Arac" EntitySet="Arac" />
             <End Role="Gelirler" EntitySet="Gelirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KaraListe_Arac" Association="Self.FK_KaraListe_Arac">
+            <End Role="Arac" EntitySet="Arac" />
+            <End Role="KaraListe" EntitySet="KaraListe" />
           </AssociationSet>
           <AssociationSet Name="FK_Musteri_Arac" Association="Self.FK_Musteri_Arac">
             <End Role="Arac" EntitySet="Arac" />
@@ -880,6 +932,15 @@
                 <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
                 <ScalarProperty Name="Tutar" ColumnName="Tutar" />
                 <ScalarProperty Name="AracID" ColumnName="AracID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KaraListe">
+            <EntityTypeMapping TypeName="CARPARKModel.KaraListe">
+              <MappingFragment StoreEntitySet="KaraListe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AracID" ColumnName="AracID" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

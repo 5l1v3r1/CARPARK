@@ -92,5 +92,24 @@ namespace CARPARK.Service.Interfaces
         /// <returns></returns>
         AracModelDTO GetCarModel(int brandId, string modelName);
 
+        /// <summary>
+        /// Kara listede bulunan araçları listeler.
+        /// </summary>
+        /// <returns></returns>
+        List<KaraListeDTO> GetBlackList();
+
+        /// <summary>
+        /// Kara listeye araç ekler.
+        /// </summary>
+        /// <param name=""></param>
+        void BlackListCarInsert(KaraListeDTO kara);
+
+        /// <summary>
+        /// Plaka şartına göre kara listede  araç kontrolu yapar.
+        /// </summary>
+        /// <param name="plaka"></param>
+        /// <returns></returns>
+        bool GetBlackListCarControl(int aracId);
+
     }
 }

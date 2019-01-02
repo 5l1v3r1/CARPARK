@@ -90,6 +90,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KaraListe">
+      <EntityTypeMapping TypeName="CARPARKModel.KaraListe">
+        <MappingFragment StoreEntitySet="KaraListe">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AracID" ColumnName="AracID" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="KullaniciYetki">
       <EntityTypeMapping TypeName="CARPARKModel.KullaniciYetki">
         <MappingFragment StoreEntitySet="KullaniciYetki">

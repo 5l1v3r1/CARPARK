@@ -51,6 +51,7 @@
     <Compile Include="EntitisDTO\AracModelDTO.cs" />
     <Compile Include="EntitisDTO\AyarlarDTO.cs" />
     <Compile Include="EntitisDTO\GelirlerDTO.cs" />
+    <Compile Include="EntitisDTO\KaraListeDTO.cs" />
     <Compile Include="EntitisDTO\LoginDTO.cs" />
     <Compile Include="EntitisDTO\MusteriDTO.cs" />
     <Compile Include="EntitisDTO\MusteriYikamaDTO.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="EntitisDTO\UyeDTO.cs" />
     <Compile Include="EntitisModelViewDTO\AboneViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\AracViewModel.cs" />
+    <Compile Include="EntitisModelViewDTO\BlackListViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\MusteriViewModel.cs" />
     <Compile Include="EntitisModelViewDTO\PersonelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

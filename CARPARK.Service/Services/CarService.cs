@@ -17,19 +17,23 @@ namespace CARPARK.Service.Services
         private readonly IRepository<Arac> _aracRepo;
         private readonly IRepository<AracMarka> _markaRepo;
         private readonly IRepository<AracModel> _modelRepo;
+        private readonly IRepository<KaraListe> _karaRepo;
         private readonly IUnitofWork _uow;
         private AracDTO _aracDTO;
         private AracMarkaDTO _markaDTO;
         private AracModelDTO _modelDTO;
+        private KaraListeDTO _karaDTO;
         public CarService(UnitofWork uow)
         {
             _uow = uow;
             _aracRepo = _uow.GetRepository<Arac>();
             _markaRepo = _uow.GetRepository<AracMarka>();
             _modelRepo = _uow.GetRepository<AracModel>();
+            _karaRepo = _uow.GetRepository<KaraListe>();
             _aracDTO = new AracDTO();
             _markaDTO = new AracMarkaDTO();
             _modelDTO = new AracModelDTO();
+            _karaDTO = new KaraListeDTO();
         }
 
         public AracDTO Car(int id)
@@ -185,7 +189,7 @@ namespace CARPARK.Service.Services
 
                     if (aracEntity == null)
                     {
-                        return  0;
+                        return 0;
                     }
 
                     return aracEntity.AracID;
@@ -265,6 +269,67 @@ namespace CARPARK.Service.Services
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public List<DTO.EntitisDTO.KaraListeDTO> GetBlackList()
+        {
+            try
+            {
+                var list = (from a in _karaRepo.GetAll()
+                            select new KaraListeDTO
+                            {
+                                AracID = a.AracID,
+                                Aciklama = a.Aciklama,
+                                ID = a.ID
+                            }).ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+                return new List<KaraListeDTO>();
+            }
+        }
+
+        public void BlackListCarInsert(KaraListeDTO kara)
+        {
+            try
+            {
+                var liste = AutoMapper.Mapper.DynamicMap<KaraListe>(kara);
+                _karaRepo.Insert(liste);
+                _uow.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool GetBlackListCarControl(int aracId)
+        {
+            try
+            {
+                var aracEntity = (from a in _karaRepo.GetAll()
+                                  where a.AracID == aracId
+                                  select new KaraListeDTO
+                                  {
+                                      AracID = a.AracID,
+                                      Aciklama = a.Aciklama,
+                                      ID = a.ID
+                                  }).SingleOrDefault();
+                if (aracEntity != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+               
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Global.asax.cs">
@@ -429,6 +430,10 @@
     <Content Include="Views\Dashboard\GenelAyarlar.cshtml" />
     <Content Include="Views\Dashboard\AracPlakaOkuma.cshtml" />
     <Content Include="Views\Subscriber\SubscriberInputOutput.cshtml" />
+    <Content Include="Views\Customer\CustomerPayment.cshtml" />
+    <Content Include="Views\Payment\PaymentList.cshtml" />
+    <Content Include="Views\Dashboard\BlackList.cshtml" />
+    <Content Include="Views\Dashboard\BlackListInsert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AracPlaka\" />

@@ -1,0 +1,76 @@
+﻿@model CARPARK.DTO.EntitisModelViewDTO.MusteriViewModel
+@{
+    ViewBag.Title = "CustomerPayment";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@{
+    DateTime bas = Convert.ToDateTime(Model.Park.GirisTarihi);
+    DateTime son = DateTime.Now;
+    var fark = (son - bas).Hours;
+    var fiyat = (fark * 10) + " TL";
+}
+<style>
+    #sub {
+        margin-bottom: 0;
+    }
+</style>
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="/DashboardPanel" title="Anasayfaya Geri Dön" class="tip-bottom"><i class="icon-home"></i> Anasayfa</a>
+        <a href="/CustomerList" title="Müşteri Sayfasına Geri Dön" class="tip-bottom"><i class="icon-user"></i> Müşteriler</a>
+        <a href="#" class="current">Ödeme</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <hr id="sub">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <div class="pull-left">
+                        <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Müşteri Ödeme</h5>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="/Customer/CustomerPaymentInsert" method="post" class="form-horizontal" role="form">
+                        @Html.Hidden("ParkID", Model.Park.ParkID)
+                        @Html.Hidden("MusteriID", Model.Park.MusteriID)
+                        @Html.Hidden("GirisTarihi", Model.Park.GirisTarihi)
+                        @Html.Hidden("CikisTarihi", @DateTime.Now)
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td class="span3">Müşteri ID:</td>
+                                    <td class="span9">@Model.Musteri.MusteriID</td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">Hizmet Türü:</td>
+                                    <td class="span9">@Model.Musteri.HizmetTuru</td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">Giriş Tarihi:</td>
+                                    <td class="span9">@Model.Park.GirisTarihi</td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">Çıkış Tarihi:</td>
+                                    <td class="span9">@DateTime.Now</td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">Fiyat</td>
+                                    <td class="span9">@fiyat</td>
+                                </tr>
+                                <tr>
+                                    <td><button type="submit" class="btn btn-success pull-left">Kaydet</button></td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

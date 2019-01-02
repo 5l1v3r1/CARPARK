@@ -59,6 +59,13 @@ namespace CARPARK.Service.Interfaces
         /// <param name="musteriID"></param>
         void CustomerWashingInsert(MusteriYikamaDTO yikama, int musteriID);
 
+        /// <summary>
+        /// Musteri bilgilerini günceller.
+        /// </summary>
+        /// <param name="musteri"></param>
+        /// <returns></returns>
+        bool CustomerUpdate(MusteriDTO musteri);
 
+        bool CustomerParkUpdate(MusteriParkDTO park);
     }
 }

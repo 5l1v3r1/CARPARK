@@ -39,6 +39,7 @@ namespace CARPARK.IOC
             container.BindInRequestScope<IRepository<AboneGiriCikis>, Repository<AboneGiriCikis>>();
             container.BindInRequestScope<IRepository<Ayarlar>, Repository<Ayarlar>>();
             container.BindInRequestScope<IRepository<Arac>, Repository<Arac>>();
+            container.BindInRequestScope<IRepository<KaraListe>, Repository<KaraListe>>();
             container.BindInRequestScope<IRepository<Musteri>, Repository<Musteri>>();
             container.BindInRequestScope<IRepository<MusteriPark>, Repository<MusteriPark>>();
             container.BindInRequestScope<IRepository<MusteriYikama>, Repository<MusteriYikama>>();

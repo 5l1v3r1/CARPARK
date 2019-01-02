@@ -19,6 +19,7 @@ namespace CARPARK.Data.Model
         {
             this.Abone = new HashSet<Abone>();
             this.Gelirler = new HashSet<Gelirler>();
+            this.KaraListe = new HashSet<KaraListe>();
             this.Musteri = new HashSet<Musteri>();
         }
     
@@ -36,6 +37,8 @@ namespace CARPARK.Data.Model
         public virtual AracModel AracModel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gelirler> Gelirler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KaraListe> KaraListe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Musteri> Musteri { get; set; }
     }

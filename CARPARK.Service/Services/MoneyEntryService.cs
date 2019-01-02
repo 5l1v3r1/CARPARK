@@ -22,6 +22,29 @@ namespace CARPARK.Service.Services
             _gelirRepo = _uow.GetRepository<Gelirler>();
             _gelirDTO = new GelirlerDTO();
         }
+
+        public List<GelirlerDTO> GetAllMoneyList()
+        {
+            try
+            {
+                var gelirListe = (from u in _gelirRepo.GetAll()
+                                     orderby u.OdemeTarihi descending
+                                     select new GelirlerDTO
+                                     {
+                                         AracID=u.AracID,
+                                         GelirID=u.GelirID,
+                                         GelirTuru=u.GelirTuru,
+                                         OdemeTarihi=u.OdemeTarihi,
+                                         Tutar=u.Tutar
+                                     }).ToList();
+                return gelirListe;
+            }
+            catch (Exception)
+            {
+                return new List<GelirlerDTO>();
+            }
+        }
+
         public void Insert(GelirlerDTO gelir)
         {
             try

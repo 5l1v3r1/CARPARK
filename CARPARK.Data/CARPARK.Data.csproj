@@ -88,6 +88,9 @@
     <Compile Include="Model\Gelirler.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\KaraListe.cs">
+      <DependentUpon>CARPARKDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\KullaniciYetki.cs">
       <DependentUpon>CARPARKDataModel.tt</DependentUpon>
     </Compile>
